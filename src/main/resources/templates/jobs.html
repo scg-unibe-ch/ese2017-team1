@@ -1,12 +1,35 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Displaying jobs</title>
+    <title>Aufträge</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
 <body>
     <p th:text="'Here will come a list containing the jobs.'" />
+
+    <table style="width:100%">
+        <tr>
+            <td><b>Auftragsnummer</b></td>
+            <td><b>Lieferung</b></td>
+            <td><b>Adresse</b></td>
+        </tr>
+        <tr>
+            <td>63101100</td>
+            <td>Chip Neon</td>
+            <td>Musterstrasse 23, 2455 Musterstadt</td>
+        </tr>
+        <tr>
+            <td>3920000</td>
+            <td>Chiperino</td>
+            <td>Mustern 13a, 2900 München</td>
+        </tr>
+        <tr>
+            <td>2730002</td>
+            <td>Chip de luxe</td>
+            <td>Bärenstrasse 13, 2455 Bern</td>
+        </tr>
+    </table>
 </body>
 
 
