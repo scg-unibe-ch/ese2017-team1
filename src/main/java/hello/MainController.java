@@ -14,4 +14,16 @@ public class MainController {
         model.addAttribute("name", name);
         return "greeting";
     }
+
+    @RequestMapping("/jobs")
+    public String jobs() {
+        return "jobs";
+    }
+
+    @RequestMapping("/newJob")
+    public String newJob() {
+        return "newJob";
+    }
+
+
 }
