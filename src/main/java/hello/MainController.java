@@ -15,6 +15,11 @@ public class MainController {
         return "greeting";
     }
 
+    @RequestMapping("/logistiker")
+    public String logistiker() {
+        return "logistiker";
+    }
+
     @RequestMapping("/jobs")
     public String jobs() {
         return "jobs";
