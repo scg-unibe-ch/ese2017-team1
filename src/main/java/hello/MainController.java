@@ -30,5 +30,10 @@ public class MainController {
         return "newJob";
     }
 
+    @RequestMapping("/fahrer")
+    public String fahrer() {
+        return "fahrer";
+    }
+
 
 }
