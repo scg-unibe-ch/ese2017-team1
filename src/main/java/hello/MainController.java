@@ -35,6 +35,7 @@ public class MainController {
         return "fahrer";
     }
 
+    // just to test whatever we like
     @RequestMapping("/bootStrap")
     public String bootStrap(){return "bootStrap";}
 
