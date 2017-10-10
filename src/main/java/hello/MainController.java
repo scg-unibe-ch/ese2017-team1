@@ -15,9 +15,9 @@ public class MainController {
         return "greeting";
     }
 
-    @RequestMapping("/logistiker")
-    public String logistiker() {
-        return "logistiker";
+    @RequestMapping("/logistician")
+    public String logistician() {
+        return "logistician";
     }
 
     @RequestMapping("/jobs")
@@ -30,9 +30,9 @@ public class MainController {
         return "newJob";
     }
 
-    @RequestMapping("/fahrer")
-    public String fahrer() {
-        return "fahrer";
+    @RequestMapping("/driver")
+    public String driver() {
+        return "driver";
     }
 
     // just to test whatever we like
