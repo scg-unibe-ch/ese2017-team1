@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<form action="#" th:action="@{/}" th:object="${personForm}" method="post">
+    <table>
+        <tr>
+            <td>Seriennummer:</td>
+            <td><input type="text" th:field="*{id}" /></td>
+            <td th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Id Error</td>
+        </tr>
+        <tr>
+            <td>Kunde:</td>
+            <td><input type="text" th:field="*{client}" /></td>
+            <td th:if="${#fields.hasErrors('client')}" th:errors="*{client}">Client Error</td>
+        </tr>
+        <tr>
+            <td>Produkt:</td>
+            <td><input type="text" th:field="*{product}" /></td>
+            <td th:if="${#fields.hasErrors('product')}" th:errors="*{product}">Product Error</td>
+        </tr>
+        <tr>
+            <td>Adresse:</td>
+            <td><input type="text" th:field="*{address}" /></td>
+            <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" th:field="*{email}" /></td>
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{client}">Email Error</td>
+        </tr>
+        <tr>
+            <td><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

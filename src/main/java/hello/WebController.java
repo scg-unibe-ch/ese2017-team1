@@ -16,7 +16,8 @@ import javax.validation.Valid;
 public class WebController extends WebMvcConfigurerAdapter {
 
     @Autowired
-    private JobRepository userRepository;
+    private JobRepository jobRepository;
+    private Job job;
 
     @RequestMapping(value="/")
     public String index(){
