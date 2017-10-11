@@ -11,13 +11,42 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
 </head>
 <body style = "background-color: blue">
-    <div style="text-align: center;">
-        <button type="button" class="btn btn-warning btn-cons">
-            <span style="color: black; ">
-                Hello, world!
-            </span>
-        </button>
+<form class="container" id="needs-validation">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom01" style="color: orange">Order Number</label>
+            <input type="text" class="form-control" id="validationCustom01" placeholder="Order Number"></input>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom02" style="color: orange">Client</label>
+            <input type="text" class="form-control" id="validationCustom02" placeholder="Client"></input>
+        </div>
     </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom03" style="color: orange">City</label>
+            <input type="text" class="form-control" id="validationCustom03" placeholder="City"></input>
+            <div class="invalid-feedback">
+                Please provide a valid city.
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="validationCustom04" style="color: orange">State</label>
+            <input type="text" class="form-control" id="validationCustom04" placeholder="State"></input>
+            <div class="invalid-feedback">
+                Please provide a valid state.
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="validationCustom05" style="color: orange">Zip</label>
+            <input type="text" class="form-control" id="validationCustom05" placeholder="Zip"></input>
+            <div class="invalid-feedback">
+                Please provide a valid zip.
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-outline-warning" type="submit">Submit</button>
+</form>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
