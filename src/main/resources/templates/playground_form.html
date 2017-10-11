@@ -1,37 +1,35 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-<body>
-<form action="#" th:action="@{/}" th:object="${personForm}" method="post">
-    <table>
-        <tr>
-            <td>Seriennummer:</td>
-            <td><input type="text" th:field="*{id}" /></td>
-            <td th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Id Error</td>
-        </tr>
-        <tr>
-            <td>Kunde:</td>
-            <td><input type="text" th:field="*{client}" /></td>
-            <td th:if="${#fields.hasErrors('client')}" th:errors="*{client}">Client Error</td>
-        </tr>
-        <tr>
-            <td>Produkt:</td>
-            <td><input type="text" th:field="*{product}" /></td>
-            <td th:if="${#fields.hasErrors('product')}" th:errors="*{product}">Product Error</td>
-        </tr>
-        <tr>
-            <td>Adresse:</td>
-            <td><input type="text" th:field="*{address}" /></td>
-            <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td><input type="text" th:field="*{email}" /></td>
-            <td th:if="${#fields.hasErrors('email')}" th:errors="*{client}">Email Error</td>
-        </tr>
-        <tr>
-            <td><button type="submit">Submit</button></td>
-        </tr>
-    </table>
-</form>
-</body>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<html xmlns:form="http://www.w3.org/1999/xhtml">
+    <head>
+        </head>
+    <body>
+        <h3>Neuer Auftrag erstellen:</h3>
+        <form:form method="POST" action="${pageContext.request.contextPath}/playground_form" modelAttribute="job">
+                 <table>
+                    <tr>
+                        <td><form:label path="id">Seriennummer</form:label></td>
+                        <td><form:input path="id"/></td>
+                    </tr>
+                    <tr>
+                        <td><form:label path="client">Kunde</form:label></td>
+                        <td><form:input path="client"/></td>
+                    </tr>
+                    <tr>
+                        <td><form:label path="product">Produkt</form:label></td>
+                        <td><form:input path="product"/></td>
+                    </tr>
+                    <tr>
+                        <td><form:label path="address">Adresse</form:label></td>
+                        <td><form:input path="address"/></td>
+                    </tr>
+                    <tr>
+                        <td><form:label path="email">Email</form:label></td>
+                        <td><form:input path="email"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Submit"/></td>
+                    </tr>
+                </table>
+            </form:form>
+    </body>
 </html>
