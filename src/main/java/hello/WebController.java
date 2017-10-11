@@ -14,6 +14,9 @@ import javax.validation.Valid;
 @Controller
 public class WebController extends WebMvcConfigurerAdapter {
 
+    @Autowired
+    private UserRepository userRepository;
+
     @RequestMapping(value="/")
     public String index(){
         return "index";
