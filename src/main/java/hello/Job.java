@@ -5,6 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * We are using Thymeleaf, which parses the form.html template
+ * and evaluates the various template expressions to render the form.
+ */
+
+
 @Entity // This tells Hibernate to make a table out of this class
 public class Job {
     @Id

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <body>
-<form:form method="POST" action="addJob.html" modelAttribute="job">
+<form action="#" th:action="@{/form}" th:object="${job}" method="post">
     <table>
         <tr>
             <td>Seriennummer:</td>
@@ -27,6 +27,6 @@
             <td><button type="submit">Submit</button></td>
         </tr>
     </table>
-</form:form>
+</form>
 </body>
 </html>
