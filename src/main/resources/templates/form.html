@@ -1,22 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
 <body>
-<form action="#" th:action="@{/}" th:object="${personForm}" method="post">
+<form:form method="POST" action="addJob.html" modelAttribute="job">
     <table>
         <tr>
-            <td>Name:</td>
-            <td><input type="text" th:field="*{name}" /></td>
-            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+            <td>Seriennummer:</td>
+            <td><input type="text" th:field="*{id}" /></td>
         </tr>
         <tr>
-            <td>Age:</td>
-            <td><input type="text" th:field="*{age}" /></td>
-            <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</td>
+            <td>Kunde:</td>
+            <td><input type="text" th:field="*{client}" /></td>
+        </tr>
+        <tr>
+            <td>Produkt:</td>
+            <td><input type="text" th:field="*{product}" /></td>
+        </tr>
+        <tr>
+            <td>Adresse:</td>
+            <td><input type="text" th:field="*{address}" /></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" th:field="*{email}" /></td>
         </tr>
         <tr>
             <td><button type="submit">Submit</button></td>
         </tr>
     </table>
-</form>
+</form:form>
 </body>
 </html>

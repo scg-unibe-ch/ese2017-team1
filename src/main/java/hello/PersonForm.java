@@ -6,7 +6,16 @@ import javax.validation.constraints.Size;
 
 public class PersonForm {
 
-    @NotNull
+    private Integer id;
+    private String client;
+    private String product;
+    private String address;
+    private String email;
+
+
+
+
+    /*@NotNull
     @Size(min=2, max=30)
     private String name;
 
@@ -32,5 +41,5 @@ public class PersonForm {
 
     public String toString() {
         return "Person(Name: " + this.name + ", Age: " + this.age + ")";
-    }
+    }*/
 }
