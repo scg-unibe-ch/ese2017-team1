@@ -68,7 +68,7 @@ public class WebController extends WebMvcConfigurerAdapter {
         return "form";
     }
 
-    @PostMapping("/newJob")
+    @PostMapping("/form")
     public String jobSubmit(@ModelAttribute Job job) {
         return "newJob";
     }
