@@ -20,24 +20,23 @@ public class MainController {
         return "logistician";
     }
 
-    @RequestMapping("/jobs")
-    public String jobs() {
-        return "jobs";
-    }
-
-    @RequestMapping("/newJob")
-    public String newJob() {
-        return "newJob";
-    }
 
     @RequestMapping("/driver")
     public String driver() {
         return "driver";
     }
 
+    /**
+     * Displays the jobs that have to be done
+     * @return template jobs
+     */
+    @RequestMapping("/jobs")
+    public String jobs() {
+        return "jobs";
+    }
+
+
     // just to test whatever we like
     @RequestMapping("/bootStrap")
     public String bootStrap(){return "bootStrap";}
-
-
 }

@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Ihre Eingaben:</title>
+    <title>Neuer Auftrag</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <h1>Result</h1>
+    <h1>Es wurde ein neuer Auftrag mit den folgenden Informationen erstellt:</h1>
         <p th:text="'Seriennummer: ' + ${job.id}" />
         <p th:text="'Kunde: ' + ${job.client}" />
         <p th:text="'Produkt: ' + ${job.product}" />
