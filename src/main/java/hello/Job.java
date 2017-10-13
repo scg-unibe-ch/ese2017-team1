@@ -34,7 +34,7 @@ public class Job {
     public String getClient() {
         return client;
     }
-    public void setClient(String name) {
+    public void setClient(String client) {
         this.client = client;
     }
 
