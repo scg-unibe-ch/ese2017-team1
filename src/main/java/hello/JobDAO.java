@@ -10,8 +10,8 @@ import java.util.List;
 public interface JobDAO {
 
     public void saveOrUpdate(Job job);
-    public void delete(int contactId);
-    public Job get(int contactId);
+    public void delete(int jobId);
+    public Job get(int jobId);
     public List<Job> list();
 }
 

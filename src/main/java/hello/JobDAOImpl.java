@@ -42,8 +42,7 @@ public class JobDAOImpl implements JobDAO {
             @Override
             public Job mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Job aJob = new Job();
-
-                               aJob.setId(rs.getInt("contact_id"));
+                aJob.setId(rs.getInt("contact_id"));
                 aJob.setClient(rs.getString("client"));
                 aJob.setProduct(rs.getString("product"));
                 aJob.setAddress(rs.getString("address"));

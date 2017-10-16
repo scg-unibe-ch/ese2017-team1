@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 
@@ -12,10 +13,12 @@ public class FormController extends WebMvcConfigurerAdapter {
 
     /**
      * to add infos in database (don't know how yet)
+     * let Spring inject an instance of the JobDAOimplementation into this controller automatically
      */
     @Autowired
     private JobRepository jobRepository;
     private Job job;
+    private JobDAO jobDAO;
 
     /**
      * First page is shown
@@ -52,6 +55,19 @@ public class FormController extends WebMvcConfigurerAdapter {
     public String jobSubmit(@ModelAttribute Job job) {
         return "addedJob";
     }
+
+
+    /**
+     * Method to save Job. Still have to look up stuff.
+     * http://www.codejava.net/frameworks/spring/spring-mvc-with-jdbctemplate-example
+     */
+    /*
+    @RequestMapping(value = "/form", method = RequestMethod.POST)
+    public ModelAndView saveJob(@ModelAttribute Job job) {
+        jobDAO.saveOrUpdate(job);
+        return new ModelAndView("redirect:/addedJob");
+    }*/
+
 
 
     /*@Override
