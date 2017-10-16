@@ -3,7 +3,7 @@ package hello;
 /**
  * Created by angelakeller on 16.10.17.
  * This class provides the product.html and saves the order details
- */
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,4 +26,4 @@ public class Order {
     public void setProduct() {this.product = product;}
     public void setAmount() {this.amount = amount;}
 
-}
+}*/

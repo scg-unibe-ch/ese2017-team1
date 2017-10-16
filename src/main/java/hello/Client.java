@@ -1,9 +1,9 @@
-package hello;
+/**package hello;
 
 /**
  * Created by angelakeller on 16.10.17.
  * This class should provide the clientForm.html
- */
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,4 +32,4 @@ public class Client {
     public void setStreet() {this.street = street;}
     public void setCity() {this.city = city;}
     public void setEmail() {this.email = email;}
-}
+}*/
