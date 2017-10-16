@@ -1,14 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- this HTML file should first enter or check the client and then it should go
      to the productForm
      informations: name, adress, email, -->
 
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Kunde</title>
 </head>
 <body>
 
+<clientForm action="#" th:action="@{/clientForm}" th:object="${job}" method="post">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Firma:</td>
+            <td><input type="text" th:field="*{company}"/></td>
+        </tr>
+        <tr>
+            <td>Strasse:</td>
+            <td><input type="text" th:field="*{street}"/></td>
+        </tr>
+        <tr>
+            <td>Stadt:</td>
+            <td><input type="text" th:field="*{city}"/></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" th:field="*{email}"/></td>
+        </tr>
+        <tr>
+            <td>
+                <p><input type="submit" value="Kunde speichern" /> <input type="reset" value="Reset" /></p>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
