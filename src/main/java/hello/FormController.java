@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 
@@ -76,6 +77,7 @@ public class FormController extends WebMvcConfigurerAdapter {
 
     }
 
+
     @PostMapping("/orderForm")
     public String productSubmit(@ModelAttribute ProductOrder productOrder) {
         return "addedProduct";
@@ -86,10 +88,10 @@ public class FormController extends WebMvcConfigurerAdapter {
      * http://www.codejava.net/frameworks/spring/spring-mvc-with-jdbctemplate-example
      */
     /*
-    @RequestMapping(value = "/form", method = RequestMethod.POST)
+    @RequestMapping(value = "/orderForm", method = RequestMethod.POST)
     public ModelAndView saveJob(@ModelAttribute Job job) {
         jobDAO.saveOrUpdate(job);
-        return new ModelAndView("redirect:/addedJob");
+        return new ModelAndView("redirect:/addedProduct");
     }*/
 
 

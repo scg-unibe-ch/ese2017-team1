@@ -43,10 +43,7 @@ public class JobDAOImpl implements JobDAO {
             public Job mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Job aJob = new Job();
                 aJob.setId(rs.getInt("contact_id"));
-                aJob.setClient(rs.getString("client"));
                 aJob.setProduct(rs.getString("product"));
-                aJob.setAddress(rs.getString("address"));
-                aJob.setEmail(rs.getString("email"));
 
                 return aJob;
             }
@@ -67,10 +64,7 @@ public class JobDAOImpl implements JobDAO {
                 if (rs.next()) {
                     Job job = new Job();
                     job.setId(rs.getInt("contact_id"));
-                    job.setClient(rs.getString("client"));
                     job.setProduct(rs.getString("product"));
-                    job.setAddress(rs.getString("address"));
-                    job.setEmail(rs.getString("email"));
 
                     return job;
                 }

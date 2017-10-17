@@ -18,10 +18,8 @@ public class Job {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-    private String client;
     private String product;
-    private String address;
-    private String email;
+    private int amount;
 
 
     public Integer getId() {
@@ -31,13 +29,6 @@ public class Job {
         this.id = id;
     }
 
-    public String getClient() {
-        return client;
-    }
-    public void setClient(String client) {
-        this.client = client;
-    }
-
     public String getProduct(){
         return product;
     }
@@ -45,17 +36,10 @@ public class Job {
         this.product = product;
     }
 
-    public String getAddress() {
-        return address;
+    public int getAmount(){
+        return amount;
     }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }

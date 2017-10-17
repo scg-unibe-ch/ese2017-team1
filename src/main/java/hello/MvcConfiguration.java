@@ -24,7 +24,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
     public ViewResolver getViewResolver(){
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/views/");
-        resolver.setSuffix(".jsp");
+        resolver.setSuffix(".html");
         return resolver;
     }
 
@@ -37,7 +37,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/eseapp");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/ese");
         dataSource.setUsername("root");
         dataSource.setPassword("");
         return dataSource;
@@ -47,5 +47,4 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
     public JobDAO getContactDAO() {
         return new JobDAOImpl(getDataSource());
     }
-}
-*/
+}*/
