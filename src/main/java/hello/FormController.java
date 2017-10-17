@@ -19,7 +19,9 @@ public class FormController extends WebMvcConfigurerAdapter {
     private JobRepository jobRepository;
     private Job job;
     private JobDAO jobDAO;
-    //private Client client;
+    private Client client;
+    private ClientRepository clientRepository;
+
 
     /**
      * First page is shown
@@ -46,19 +48,19 @@ public class FormController extends WebMvcConfigurerAdapter {
      * The Job object in the following code contains fields such as id and content that correspond to the form fields in the job view,
      * and will be used to capture the information from the form.
      */
-    @GetMapping("/form")
+    /*@GetMapping("/form")
     public String jobForm(Model model) {
         model.addAttribute("job", new Job());
         return "form";
 
-    }
+    }*/
 
-    /*@GetMapping("/clientForm")
+    @GetMapping("/clientForm")
     public String jobForm(Model model) {
         model.addAttribute("client", new Client());
         return "clientForm";
 
-    }*/
+    }
 
     @PostMapping("/form")
     public String jobSubmit(@ModelAttribute Job job) {
