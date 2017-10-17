@@ -6,7 +6,7 @@
 
 <body>
 
-<clientForm action="#" th:action="@{/clientForm}" th:object="${client}" method="post">
+<form action="#" th:action="@{/clientForm}" th:object="${client}" method="post">
     <table>
         <tr>
             <td>KundenId:</td>
@@ -39,6 +39,15 @@
         </tr>
     </table>
 
-</clientForm>
+</form>
+
+        <!-- Form button -->
+            <p align="center">
+                <a href="/clientForm">
+                     <button type="button" class="btn btn-outline-warning btn-lg">
+                         Neuer Auftrag ersellen
+                    </button>
+    </a>
+</p>
 </body>
 </html>

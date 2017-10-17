@@ -62,11 +62,10 @@ public class FormController extends WebMvcConfigurerAdapter {
 
     }
 
-    @PostMapping("/form")
-    public String jobSubmit(@ModelAttribute Job job) {
-        return "addedJob";
+    @PostMapping("/clientForm")
+    public String jobSubmit(@ModelAttribute Client client) {
+        return "addedClient";
     }
-
 
     /**
      * Method to save Job. Still have to look up stuff.
