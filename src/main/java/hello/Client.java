@@ -1,4 +1,4 @@
-/**package hello;
+/*package hello;
 
 /**
  * Created by angelakeller on 16.10.17.
@@ -27,9 +27,9 @@ public class Client {
     public String getCity() {return city;}
     public String getEmail() {return email;}
 
-    public void setName() {this.name = name;}
-    public void setCompany() {this.company = company;}
-    public void setStreet() {this.street = street;}
-    public void setCity() {this.city = city;}
-    public void setEmail() {this.email = email;}
+    public void setName(String name) {this.name = name;}
+    public void setCompany(String company) {this.company = company;}
+    public void setStreet(String street) {this.street = street;}
+    public void setCity(String city) {this.city = city;}
+    public void setEmail(String email) {this.email = email;}
 }*/

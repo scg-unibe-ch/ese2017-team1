@@ -19,6 +19,7 @@ public class FormController extends WebMvcConfigurerAdapter {
     private JobRepository jobRepository;
     private Job job;
     private JobDAO jobDAO;
+    //private Client client;
 
     /**
      * First page is shown
@@ -49,7 +50,15 @@ public class FormController extends WebMvcConfigurerAdapter {
     public String jobForm(Model model) {
         model.addAttribute("job", new Job());
         return "form";
+
     }
+
+    /*@GetMapping("/clientForm")
+    public String jobForm(Model model) {
+        model.addAttribute("client", new Client());
+        return "clientForm";
+
+    }*/
 
     @PostMapping("/form")
     public String jobSubmit(@ModelAttribute Job job) {
