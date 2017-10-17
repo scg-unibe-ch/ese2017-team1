@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 
@@ -21,6 +20,9 @@ public class FormController extends WebMvcConfigurerAdapter {
     private JobDAO jobDAO;
     private Client client;
     private ClientRepository clientRepository;
+    private ProductOrder productOrder;
+    private ProductOrderRepository productOrderRepository;
+
 
 
     /**
@@ -56,15 +58,27 @@ public class FormController extends WebMvcConfigurerAdapter {
     }*/
 
     @GetMapping("/clientForm")
-    public String jobForm(Model model) {
+    public String clientForm(Model model) {
         model.addAttribute("client", new Client());
         return "clientForm";
 
     }
 
     @PostMapping("/clientForm")
-    public String jobSubmit(@ModelAttribute Client client) {
+    public String clientSubmit(@ModelAttribute Client client) {
         return "addedClient";
+    }
+
+    @GetMapping("/orderForm")
+    public String productForm(Model model) {
+        model.addAttribute("productOrder", new ProductOrder());
+        return "orderForm";
+
+    }
+
+    @PostMapping("/orderForm")
+    public String productSubmit(@ModelAttribute ProductOrder productOrder) {
+        return "addedProduct";
     }
 
     /**

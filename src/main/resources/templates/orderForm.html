@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
     <!-- In the product form should be entered the product that the client ordered
      informations: serialnumber, product, price -->
 
-    <meta charset="UTF-8">
-    <title>Bestellung</title>
-</head>
 <body>
 <!--/*@thymesVar id="job" type="hello"*/-->
-<productForm action="#" th:action="@{/productForm}" th:object="${order}" method="post">
+<form action="#" th:action="@{/orderForm}" th:object="${productOrder}" method="post">
     <table>
         <tr>
             <td>Artikelnummer:</td>
@@ -29,6 +25,6 @@
             </td>
         </tr>
     </table>
-</productForm>
+</form>
 </body>
 </html>
