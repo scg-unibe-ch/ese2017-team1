@@ -14,12 +14,14 @@
     </head>
     <body style = "background-color: blue">
     <!--/*@thymesVar id="job" type="hello"*/-->
-    <form th:action="@{/orderForm}" method="post" th:object="${productOrder}" class="container" id="needs-validation" style="align-content: center">
+    <form th:action="@{/orderForm}" method="post" th:object="${productOrder}" id="needs-validation" style="align-content: center">
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="Artikelnummer" style="color: orange">Artikelnummer::</label>
                 <input type="text" th:field="*{id}" class="form-control" id="Artikelnummer" placeholder="id"></input>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="Produkt" style="color: orange">Produkt:</label>
                 <input type="text" th:field="*{product}" class="form-control" id="Produkt" placeholder="product"></input>
@@ -30,7 +32,6 @@
                 <label for="Menge" style="color: orange">Firma:</label>
                 <input type="text" th:field="*{product}" class="form-control" id="Menge" placeholder="amount"></input>
             </div>
-
         </div>
         <button class="btn btn-outline-warning" type="submit">Bestellung Speichern</button>
         <button class="btn btn-outline-warning" type="reset">Reset</button>

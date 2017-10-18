@@ -35,24 +35,15 @@
             <div class="col-md-3 mb-3">
                 <label for="Strasse" style="color: orange">Strasse:</label>
                 <input type="text" th:field="*{street}" class="form-control" id="Strasse" placeholder="street"></input>
-                <div class="invalid-feedback">
-                    Please provide a valid address.
-                </div>
             </div>
             <div class="col-md-3 mb-3">
                 <label for="Stadt" style="color: orange">Stadt:</label>
                 <input type="text" th:field="*{city}" class="form-control" id="Stadt" placeholder="city"></input>
-                <div class="invalid-feedback">
-                    Please provide a valid Email.
-                </div>
             </div>
 
             <div class="col-md-3 mb-3">
                 <label for="Email" style="color: orange">Email:</label>
                 <input type="text" th:field="*{email}" class="form-control" id="Email" placeholder="email"></input>
-                <div class="invalid-feedback">
-                    Please provide a valid Email.
-                </div>
             </div>
         </div>
         <button class="btn btn-outline-warning" type="submit">Kunde Speichern</button>
