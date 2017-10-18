@@ -3,42 +3,67 @@
     <!-- his HTML file should first enter or check the client and then it should go
       to the productForm
       informations: name, adress, email,-->
+    <head>
+        <title>Form</title>
+        <!-- Required meta tags -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-<body>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+    </head>
 
-<form action="#" th:action="@{/clientForm}" th:object="${client}" method="post">
-    <table>
-        <tr>
-            <td>KundenId:</td>
-            <td><input type="text" th:field="*{id}"/></td>
-        </tr>
-        <tr>
-            <td>Name:</td>
-            <td><input type="text" th:field="*{name}"/></td>
-        </tr>
-        <tr>
-            <td>Firma:</td>
-            <td><input type="text" th:field="*{company}"/></td>
-        </tr>
-        <tr>
-            <td>Strasse:</td>
-            <td><input type="text" th:field="*{street}"/></td>
-        </tr>
-        <tr>
-            <td>Stadt:</td>
-            <td><input type="text" th:field="*{city}"/></td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td><input type="text" th:field="*{email}"/></td>
-        </tr>
-        <tr>
-            <td>
-                <p><input type="submit" value="Kunde speichern" /> <input type="submit" value="Kunde suchen" /> <input type="reset" value="Reset" /></p>
-            </td>
-        </tr>
-    </table>
+    <body style = "background-color: blue">
+    <!--/*@thymesVar id="job" type="hello"*/-->
+    <form th:action="@{/bootStrap}" method="post" th:object="${client}" class="container" id="needs-validation" style="align-content: center">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="Kunden Id" style="color: orange">Kunden Id:</label>
+                <input type="text" th:field="*{id}" class="form-control" id="Kunden Id" placeholder="id"></input>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="Name" style="color: orange">Name:</label>
+                <input type="text" th:field="*{name}" class="form-control" id="Name" placeholder="name"></input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="Firma" style="color: orange">Firma:</label>
+                <input type="text" th:field="*{company}" class="form-control" id="Firma" placeholder="company"></input>
+            </div>
 
-</form>
-</body>
+            <div class="col-md-3 mb-3">
+                <label for="Strasse" style="color: orange">Strasse:</label>
+                <input type="text" th:field="*{street}" class="form-control" id="Strasse" placeholder="street"></input>
+                <div class="invalid-feedback">
+                    Please provide a valid address.
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="Stadt" style="color: orange">Stadt:</label>
+                <input type="text" th:field="*{city}" class="form-control" id="Stadt" placeholder="city"></input>
+                <div class="invalid-feedback">
+                    Please provide a valid Email.
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label for="Email" style="color: orange">Email:</label>
+                <input type="text" th:field="*{email}" class="form-control" id="Email" placeholder="email"></input>
+                <div class="invalid-feedback">
+                    Please provide a valid Email.
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-outline-warning" type="submit">Kunde Speichern</button>
+        <button class="btn btn-outline-warning" type="submit">Kunde Suchen</button>
+        <button class="btn btn-outline-warning" type="reset">Reset</button>
+    </form>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    </body>
 </html>

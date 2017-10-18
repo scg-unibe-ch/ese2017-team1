@@ -12,39 +12,48 @@
 </head>
 <body style = "background-color: blue">
 <!--/*@thymesVar id="job" type="hello"*/-->
-<form action="/spring-mvc-xml/form" th:action="@{/bootStrap}" method="post" modelAttribute="Job" class="container" id="needs-validation" style="align-content: center">
+<form th:action="@{/bootStrap}" method="post" th:object="${client}" class="container" id="needs-validation" style="align-content: center">
     <div class="row">
         <div class="col-md-6 mb-3">
-            <label for="Seriennummer" style="color: orange">Seriennummer:</label>
-            <input type="text" path="id" class="form-control" id="Seriennummer" placeholder="id"></input>
+            <label for="Kunden Id" style="color: orange">Kunden Id:</label>
+            <input type="text" th:field="*{id}" class="form-control" id="Kunden Id" placeholder="id"></input>
         </div>
         <div class="col-md-6 mb-3">
-            <label for="Kunde" style="color: orange">Kunde:</label>
-            <input type="text" path="client" class="form-control" id="Kunde" placeholder="client"></input>
+            <label for="Name" style="color: orange">Name:</label>
+            <input type="text" th:field="*{name}" class="form-control" id="Name" placeholder="name"></input>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6 mb-3">
-            <label for="Produkt" style="color: orange">Produkt:</label>
-            <input type="text" path="product" class="form-control" id="Produkt" placeholder="product"></input>
+            <label for="Firma" style="color: orange">Firma:</label>
+            <input type="text" th:field="*{company}" class="form-control" id="Firma" placeholder="company"></input>
         </div>
 
         <div class="col-md-3 mb-3">
-            <label for="validationCustom04" style="color: orange">Adresse:</label>
-            <input type="text" path="address" class="form-control" id="validationCustom04" placeholder="address"></input>
+            <label for="Strasse" style="color: orange">Strasse:</label>
+            <input type="text" th:field="*{street}" class="form-control" id="Strasse" placeholder="street"></input>
             <div class="invalid-feedback">
                 Please provide a valid address.
             </div>
         </div>
         <div class="col-md-3 mb-3">
-            <label for="validationCustom05" style="color: orange">Email:</label>
-            <input type="text" path="email" class="form-control" id="validationCustom05" placeholder="email"></input>
+            <label for="Stadt" style="color: orange">Stadt:</label>
+            <input type="text" th:field="*{city}" class="form-control" id="Stadt" placeholder="city"></input>
+            <div class="invalid-feedback">
+                Please provide a valid Email.
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <label for="Email" style="color: orange">Email:</label>
+            <input type="text" th:field="*{email}" class="form-control" id="Email" placeholder="email"></input>
             <div class="invalid-feedback">
                 Please provide a valid Email.
             </div>
         </div>
     </div>
-    <button class="btn btn-outline-warning" type="submit">Auftrag Speichern</button>
+    <button class="btn btn-outline-warning" type="submit">Kunde Speichern</button>
+    <button class="btn btn-outline-warning" type="submit">Kunde Suchen</button>
     <button class="btn btn-outline-warning" type="reset">Reset</button>
 </form>
 

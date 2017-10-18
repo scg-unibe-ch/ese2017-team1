@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-<!--/*@thymesVar id="job" type="hello"*/-->
-<form action="#" th:action="@{/form}" th:object="${job}" method="post">
+<form th:action="@{/form}" th:object="${job}" method="post">
     <table>
         <tr>
             <td>Seriennummer:</td>
