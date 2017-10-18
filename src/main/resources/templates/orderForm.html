@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- In the product form should be entered the product that the client ordered
+     informations: serialnumber, product, price -->
+
+<body>
+<!--/*@thymesVar id="job" type="hello"*/-->
+<form action="#" th:action="@{/orderForm}" th:object="${productOrder}" method="post">
+    <table>
+        <tr>
+            <td>Artikelnummer:</td>
+            <td><input type="text" th:field="*{id}"/></td>
+        </tr>
+        <tr>
+            <td>Produkt:</td>
+            <td><input type="text" th:field="*{product}"/></td>
+        </tr>
+        <tr>
+            <td>Menge:</td>
+            <td><input type="text" th:field="*{amount}"/></td>
+        </tr>
+        <tr>
+            <td>
+                <p><input type="submit" value="Bestellung speichern" /> <input type="reset" value="Reset" /></p>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

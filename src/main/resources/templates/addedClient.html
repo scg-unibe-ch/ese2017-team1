@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Neuer Kunde</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Dieser Kunde wurde erstellt:</h1>
+        <p th:text="'KundenId: ' + ${client.id}"/>
+        <p th:text="'Name: ' + ${client.name}"/>
+        <p th:text="'Firma: ' + ${client.company}"/>
+        <p th:text="'Strasse: ' + ${client.street}"/>
+        <p th:text="'Stadt: ' + ${client.city}"/>
+        <p th:text="'Email: ' + ${client.email}"/>
+    <a href="/clientForm">Weitere Kunden hinzufügen</a>
+    <a href="/orderForm">Auftrag erstellen</a>
+</body>
+</html>

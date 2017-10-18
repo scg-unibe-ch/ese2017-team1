@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Auftrag</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Dieser Auftrag wurde erstellt:</h1>
+<p th:text="'KundenId: ' + ${productOrder.id}"/>
+<p th:text="'Name: ' + ${productOrder.product}"/>
+<p th:text="'Firma: ' + ${productOrder.amount}"/>
+<a href="/orderForm">Weitere Produkte hinzufügen</a>
+
+</body>
+</html>

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 
@@ -12,10 +13,18 @@ public class FormController extends WebMvcConfigurerAdapter {
 
     /**
      * to add infos in database (don't know how yet)
+     * let Spring inject an instance of the JobDAOimplementation into this controller automatically
      */
     @Autowired
     private JobRepository jobRepository;
     private Job job;
+    private JobDAO jobDAO;
+    private Client client;
+    private ClientRepository clientRepository;
+    private ProductOrder productOrder;
+    private ProductOrderRepository productOrderRepository;
+
+
 
     /**
      * First page is shown
@@ -42,16 +51,49 @@ public class FormController extends WebMvcConfigurerAdapter {
      * The Job object in the following code contains fields such as id and content that correspond to the form fields in the job view,
      * and will be used to capture the information from the form.
      */
-    @GetMapping("/form")
+    /*@GetMapping("/form")
     public String jobForm(Model model) {
         model.addAttribute("job", new Job());
         return "form";
+
+    }*/
+
+    @GetMapping("/clientForm")
+    public String clientForm(Model model) {
+        model.addAttribute("client", new Client());
+        return "clientForm";
+
     }
 
-    @PostMapping("/form")
-    public String jobSubmit(@ModelAttribute Job job) {
-        return "addedJob";
+    @PostMapping("/clientForm")
+    public String clientSubmit(@ModelAttribute Client client) {
+        return "addedClient";
     }
+
+    @GetMapping("/orderForm")
+    public String productForm(Model model) {
+        model.addAttribute("productOrder", new ProductOrder());
+        return "orderForm";
+
+    }
+
+
+    @PostMapping("/orderForm")
+    public String productSubmit(@ModelAttribute ProductOrder productOrder) {
+        return "addedProduct";
+    }
+
+    /**
+     * Method to save Job. Still have to look up stuff.
+     * http://www.codejava.net/frameworks/spring/spring-mvc-with-jdbctemplate-example
+     */
+    /*
+    @RequestMapping(value = "/orderForm", method = RequestMethod.POST)
+    public ModelAndView saveJob(@ModelAttribute Job job) {
+        jobDAO.saveOrUpdate(job);
+        return new ModelAndView("redirect:/addedProduct");
+    }*/
+
 
 
     /*@Override
