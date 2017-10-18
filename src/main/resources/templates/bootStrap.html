@@ -12,27 +12,17 @@
 </head>
 <body style = "background-color: blue">
 <!--/*@thymesVar id="job" type="hello"*/-->
-<form th:action="@{/orderForm}" method="post" th:object="${productOrder}" class="container" id="needs-validation" style="align-content: center">
-    <div class="row">
-        <div class="col-md-6 mb-3">
-            <label for="Artikelnummer" style="color: orange">Artikelnummer::</label>
-            <input type="text" th:field="*{id}" class="form-control" id="Artikelnummer" placeholder="id"></input>
-        </div>
-        <div class="col-md-6 mb-3">
-            <label for="Produkt" style="color: orange">Produkt:</label>
-            <input type="text" th:field="*{product}" class="form-control" id="Produkt" placeholder="product"></input>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 mb-3">
-            <label for="Menge" style="color: orange">Firma:</label>
-            <input type="text" th:field="*{product}" class="form-control" id="Menge" placeholder="amount"></input>
-        </div>
-
-    </div>
-    <button class="btn btn-outline-warning" type="submit">Bestellung Speichern</button>
-    <button class="btn btn-outline-warning" type="reset">Reset</button>
-</form>
+<h1>Dieser Kunde wurde erstellt:</h1>
+<ul class="list-group">
+    <li class="list-group-item" th:text="'Kunden Id: '+ ${client.id}"/>
+    <li class="list-group-item" th:text="'Name: ' + ${client.name}"/>
+    <li class="list-group-item" th:text="'Firma: ' + ${client.company}"/>
+    <li class="list-group-item" th:text="'Strasse: ' + ${client.street}"/>
+    <li class="list-group-item" th:text="'Stadt: ' + ${client.city}"/>
+    <li class="list-group-item" th:text="'Email: ' + ${client.email}"/>
+</ul>
+<a href="/clientForm">Weitere Kunden hinzufügen</a>
+<a href="/orderForm">Auftrag erstellen</a>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
