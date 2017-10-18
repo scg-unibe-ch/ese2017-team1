@@ -22,8 +22,10 @@ public class FormController extends WebMvcConfigurerAdapter {
     private Job job;
     private JobDAO jobDAO;
     private Client client;
+    @Autowired
     private ClientRepository clientRepository;
     private ProductOrder productOrder;
+    @Autowired
     private ProductOrderRepository productOrderRepository;
 
 
@@ -68,7 +70,7 @@ public class FormController extends WebMvcConfigurerAdapter {
     }
 
     @PostMapping("/clientForm")
-    public String clientSubmit(@ModelAttribute Client client) {
+    public String clientSubmit(@ModelAttribute("client") Client client) {
         this.clientRepository.save(client);
         return "addedClient";
     }
@@ -82,7 +84,7 @@ public class FormController extends WebMvcConfigurerAdapter {
 
 
     @PostMapping("/orderForm")
-    public String productSubmit(@ModelAttribute ProductOrder productOrder) {
+    public String productSubmit(@ModelAttribute("productOrder") ProductOrder productOrder) {
         this.productOrderRepository.save(productOrder);
         return "addedProduct";
     }
