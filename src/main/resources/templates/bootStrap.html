@@ -12,48 +12,25 @@
 </head>
 <body style = "background-color: blue">
 <!--/*@thymesVar id="job" type="hello"*/-->
-<form th:action="@{/bootStrap}" method="post" th:object="${client}" class="container" id="needs-validation" style="align-content: center">
+<form th:action="@{/orderForm}" method="post" th:object="${productOrder}" class="container" id="needs-validation" style="align-content: center">
     <div class="row">
         <div class="col-md-6 mb-3">
-            <label for="Kunden Id" style="color: orange">Kunden Id:</label>
-            <input type="text" th:field="*{id}" class="form-control" id="Kunden Id" placeholder="id"></input>
+            <label for="Artikelnummer" style="color: orange">Artikelnummer::</label>
+            <input type="text" th:field="*{id}" class="form-control" id="Artikelnummer" placeholder="id"></input>
         </div>
         <div class="col-md-6 mb-3">
-            <label for="Name" style="color: orange">Name:</label>
-            <input type="text" th:field="*{name}" class="form-control" id="Name" placeholder="name"></input>
+            <label for="Produkt" style="color: orange">Produkt:</label>
+            <input type="text" th:field="*{product}" class="form-control" id="Produkt" placeholder="product"></input>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6 mb-3">
-            <label for="Firma" style="color: orange">Firma:</label>
-            <input type="text" th:field="*{company}" class="form-control" id="Firma" placeholder="company"></input>
+            <label for="Menge" style="color: orange">Firma:</label>
+            <input type="text" th:field="*{product}" class="form-control" id="Menge" placeholder="amount"></input>
         </div>
 
-        <div class="col-md-3 mb-3">
-            <label for="Strasse" style="color: orange">Strasse:</label>
-            <input type="text" th:field="*{street}" class="form-control" id="Strasse" placeholder="street"></input>
-            <div class="invalid-feedback">
-                Please provide a valid address.
-            </div>
-        </div>
-        <div class="col-md-3 mb-3">
-            <label for="Stadt" style="color: orange">Stadt:</label>
-            <input type="text" th:field="*{city}" class="form-control" id="Stadt" placeholder="city"></input>
-            <div class="invalid-feedback">
-                Please provide a valid Email.
-            </div>
-        </div>
-
-        <div class="col-md-3 mb-3">
-            <label for="Email" style="color: orange">Email:</label>
-            <input type="text" th:field="*{email}" class="form-control" id="Email" placeholder="email"></input>
-            <div class="invalid-feedback">
-                Please provide a valid Email.
-            </div>
-        </div>
     </div>
-    <button class="btn btn-outline-warning" type="submit">Kunde Speichern</button>
-    <button class="btn btn-outline-warning" type="submit">Kunde Suchen</button>
+    <button class="btn btn-outline-warning" type="submit">Bestellung Speichern</button>
     <button class="btn btn-outline-warning" type="reset">Reset</button>
 </form>
 
