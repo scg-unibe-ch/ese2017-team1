@@ -22,6 +22,16 @@ public class Client {
     private String city;
     private String email;
 
+    public String getLand() {
+        return land;
+    }
+
+    public void setLand(String land) {
+        this.land = land;
+    }
+
+    private String land;
+
     public Integer getId() {return id;}
     public String getName() {return name;}
     public String getCompany() { return company;}

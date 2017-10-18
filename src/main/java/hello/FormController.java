@@ -39,6 +39,16 @@ public class FormController extends WebMvcConfigurerAdapter {
         return "index";
     }
 
+    @RequestMapping(value="/selectClient")
+    public String selectClient(){
+        return "selectClient";
+    }
+
+    @RequestMapping(value="/searchClient")
+    public String searchClient(){
+        return "searchClient";
+    }
+
     /**
      * Some information taken from the Spring Guide "Handling Form Submission"
      * concerning the methods jobForm() and jobSubmit():
