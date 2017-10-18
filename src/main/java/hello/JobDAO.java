@@ -4,8 +4,8 @@ import java.util.List;
 import javax.sql.DataSource;
 
 /**
- * Defines DAO operations for the contact model.
- * @author www.codejava.net
+ * Defines DAO (Data Access Object) operations for the job model.
+ *
  *
  */
 public interface JobDAO {

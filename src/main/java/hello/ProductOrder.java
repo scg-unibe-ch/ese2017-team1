@@ -16,14 +16,14 @@ public class ProductOrder {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private String product;
-    private Integer amount;
+    private String firmaId;
 
     public Integer getId() {return id;}
     public String getProduct() { return product;}
-    public Integer getAmount() {return amount;}
+    public String getFirmaId() {return firmaId;}
 
     public void setId(Integer id) {this.id = id;}
     public void setProduct(String product) {this.product = product;}
-    public void setAmount(Integer amount) {this.amount = amount;}
+    public void setFirmaId(String firmaId) {this.firmaId = firmaId;}
 
 }
