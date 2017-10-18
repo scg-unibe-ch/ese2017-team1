@@ -12,33 +12,33 @@
 </head>
 <body style = "background-color: blue">
 <!--/*@thymesVar id="job" type="hello"*/-->
-<form class="container" id="needs-validation" action="#" th:action="@{/form}" th:object="${job}" method="post">
+<form action="/spring-mvc-xml/form" th:action="@{/bootStrap}" method="post" modelAttribute="Job" class="container" id="needs-validation" style="align-content: center">
     <div class="row">
         <div class="col-md-6 mb-3">
-            <label for="validationCustom01" style="color: orange">Seriennummer:</label>
-            <input type="text" class="form-control" id="validationCustom01" placeholder="id" th:field="*{id}"></input>
+            <label for="Seriennummer" style="color: orange">Seriennummer:</label>
+            <input type="text" path="id" class="form-control" id="Seriennummer" placeholder="id"></input>
         </div>
         <div class="col-md-6 mb-3">
-            <label for="validationCustom02" style="color: orange">Kunde:</label>
-            <input type="text" class="form-control" id="validationCustom02" placeholder="client" th:field="*{client}"></input>
+            <label for="Kunde" style="color: orange">Kunde:</label>
+            <input type="text" path="client" class="form-control" id="Kunde" placeholder="client"></input>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6 mb-3">
-            <label for="validationCustom03" style="color: orange">Produkt:</label>
-            <input type="text" class="form-control" id="validationCustom03" placeholder="product" th:field="*{product}"></input>
+            <label for="Produkt" style="color: orange">Produkt:</label>
+            <input type="text" path="product" class="form-control" id="Produkt" placeholder="product"></input>
         </div>
 
         <div class="col-md-3 mb-3">
             <label for="validationCustom04" style="color: orange">Adresse:</label>
-            <input type="text" class="form-control" id="validationCustom04" placeholder="address" th:field="*{address}"></input>
+            <input type="text" path="address" class="form-control" id="validationCustom04" placeholder="address"></input>
             <div class="invalid-feedback">
                 Please provide a valid address.
             </div>
         </div>
         <div class="col-md-3 mb-3">
             <label for="validationCustom05" style="color: orange">Email:</label>
-            <input type="text" class="form-control" id="validationCustom05" placeholder="email" th:field="*{email}"></input>
+            <input type="text" path="email" class="form-control" id="validationCustom05" placeholder="email"></input>
             <div class="invalid-feedback">
                 Please provide a valid Email.
             </div>
