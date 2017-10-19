@@ -10,11 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 @Controller
 public class FormController extends WebMvcConfigurerAdapter {
+
+
+    private static List<ProductOrder> products = new ArrayList<ProductOrder>();
+
 
     /**
      * to add infos in database (don't know how yet)
@@ -50,6 +55,16 @@ public class FormController extends WebMvcConfigurerAdapter {
     @RequestMapping(value="/searchClient")
     public String searchClient(){
         return "searchClient";
+    }
+
+    @RequestMapping(value="/jobs")
+    public String jobs(){
+        return "jobs";
+    }
+
+    @RequestMapping(value="/jobList")
+    public String listJobs(){
+        return "jobList";
     }
 
     /**
@@ -103,14 +118,43 @@ public class FormController extends WebMvcConfigurerAdapter {
     }
 
 
-    @GetMapping("/jobs")
-    public ModelAndView listJobs(@ModelAttribute("productOrder") ProductOrder productOrder) {
+    /**
+     * Working on displaying data from database. Does not work yet
+     * @param productOrder
+     * @return
+     */
+    @RequestMapping("/showJobs")
+    public String listJobs(@ModelAttribute("productOrder") ProductOrder productOrder) {
 
-        List<hello.ProductOrder> products = (List<ProductOrder>) productOrderRepository.findAll();
+        products = (List<ProductOrder>) productOrderRepository.findAll();
+
         ModelAndView model = new ModelAndView("jobs");
-        model.addObject("productListing", products);
-        return model;
+        model.addObject("productOrder", products);
+
+        return "showJobs";
     }
+
+
+    /**
+     * Trying stuff out for displaying data from database
+     * @param model
+     * @return
+     */
+    /*@RequestMapping("/catalogue")
+    public String catalogue( Model model) {
+
+        products = (List<ProductOrder>) productOrderRepository.findAll();
+
+
+        model.addAttribute("listJobs", products.get(1)); //the model object "carries" objects from the controller to the view
+
+        return "listJobs";
+    }*/
+
+
+
+
+
 
 
     /**

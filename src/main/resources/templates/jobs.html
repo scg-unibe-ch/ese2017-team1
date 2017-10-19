@@ -10,13 +10,6 @@
     <p th:text="'Here will come a list containing the jobs.'" />
 
 
-    <script>
-        var wtf = "${productListing.id}";
-
-        alert(wtf);
-        var bs;
-    </script>
-
     <table style="width:100%">
         <tr>
             <td><b>Auftragsnummer</b></td>
@@ -45,6 +38,12 @@
         <input type="button" value="Zurück" onclick="history.back()">
         </input>
     </form>
+
+    <a href="/showJobs">
+        <button type="button" class="btn btn-outline-warning btn-lg">
+            Aufträge anzeigen
+        </button>
+    </a>
 </body>
 
 
