@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import java.util.List;
 
 
 @Controller
@@ -98,6 +101,17 @@ public class FormController extends WebMvcConfigurerAdapter {
         this.productOrderRepository.save(productOrder);
         return "addedProduct";
     }
+
+
+    @GetMapping("/jobs")
+    public ModelAndView listJobs(@ModelAttribute("productOrder") ProductOrder productOrder) {
+
+        List<hello.ProductOrder> products = (List<ProductOrder>) productOrderRepository.findAll();
+        ModelAndView model = new ModelAndView("jobs");
+        model.addObject("productListing", products);
+        return model;
+    }
+
 
     /**
      * Method to save Job. Still have to look up stuff.

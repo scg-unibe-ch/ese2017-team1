@@ -30,10 +30,10 @@ public class MainController {
      * Displays the jobs that have to be done
      * @return template jobs
      */
-    @RequestMapping("/jobs")
+    /*@RequestMapping("/jobs")
     public String jobs() {
         return "jobs";
-    }
+    }*/
 
 
     // just to test whatever we like
