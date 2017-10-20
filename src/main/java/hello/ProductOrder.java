@@ -16,7 +16,7 @@ public class ProductOrder {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private String product;
-    private String firmaId;
+    private String amount;
     private int clientId;
 
 
@@ -30,10 +30,10 @@ public class ProductOrder {
 
     public Integer getId() {return id;}
     public String getProduct() { return product;}
-    public String getFirmaId() {return firmaId;}
+    public String getAmount() {return amount;}
 
     public void setId(Integer id) {this.id = id;}
     public void setProduct(String product) {this.product = product;}
-    public void setFirmaId(String firmaId) {this.firmaId = firmaId;}
+    public void setAmount(String amount) {this.amount = amount;}
 
 }

@@ -14,8 +14,8 @@
     <h1>Dieser Auftrag wurde erstellt</h1>
     <ul class="list-group">
         <li class="list-group-item list-group-item-warning" th:text="'Artikelnummer: '+ ${productOrder.id}"/>
-        <li class="list-group-item list-group-item-warning" th:text="'Produkt: ' + ${productOrder.product}"/>
-        <li class="list-group-item list-group-item-warning" th:text="'Firma ID: ' + ${productOrder.firmaId}"/>
+        <li class="list-group-item list-group-item-warning" th:text="'Produktbeschreibung: ' + ${productOrder.product}"/>
+        <li class="list-group-item list-group-item-warning" th:text="'Menge: ' + ${productOrder.amount}"/>
     </ul>
     <div class="col-md-3 mb-3">
         <div class="btn-group" role="group">

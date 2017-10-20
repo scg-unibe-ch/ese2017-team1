@@ -20,7 +20,7 @@
             <td>${products.clientId}</td>
             <td>${products.id}</td>
             <td>${products.product}</td>
-            <td>${products.firmaId}</td>
+            <td>${products.amount}</td>
         </tr>
     </c:forEach>
 </table>
