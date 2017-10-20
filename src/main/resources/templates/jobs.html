@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Aufträge</title>
@@ -7,6 +8,7 @@
 
 <body>
     <p th:text="'Here will come a list containing the jobs.'" />
+
 
     <table style="width:100%">
         <tr>
@@ -36,6 +38,12 @@
         <input type="button" value="Zurück" onclick="history.back()">
         </input>
     </form>
+
+    <a href="/showJobs">
+        <button type="button" class="btn btn-outline-warning btn-lg">
+            Aufträge anzeigen
+        </button>
+    </a>
 </body>
 
 

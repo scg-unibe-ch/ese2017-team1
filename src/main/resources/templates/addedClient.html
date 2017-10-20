@@ -18,6 +18,7 @@
             <li class="list-group-item list-group-item-warning" th:text="'Firma: ' + ${client.company}"/>
             <li class="list-group-item list-group-item-warning" th:text="'Strasse: ' + ${client.street}"/>
             <li class="list-group-item list-group-item-warning" th:text="'Stadt: ' + ${client.city}"/>
+            <li class="list-group-item list-group-item-warning" th:text="'Land: ' + ${client.land}"/>
             <li class="list-group-item list-group-item-warning" th:text="'Email: ' + ${client.email}"/>
         </ul>
         <div class="col-md-3 mb-3">
@@ -29,7 +30,7 @@
                 </a>
                 <a href="/orderForm">
                     <button type="button" class="btn btn-outline-warning btn-lg">
-                        Auftrag erstellen
+                        Diesem Kunden einen Auftrag zuordnen
                     </button>
                 </a>
                 <a href="/logistician">

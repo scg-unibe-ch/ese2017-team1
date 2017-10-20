@@ -5,10 +5,13 @@ package hello;
  * This class should provide the clientForm.html
  */
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.List;
 
 
 @Entity // This tells Hibernate to make a table out of this class
@@ -21,6 +24,20 @@ public class Client {
     private String street;
     private String city;
     private String email;
+
+
+
+
+
+    public String getLand() {
+        return land;
+    }
+
+    public void setLand(String land) {
+        this.land = land;
+    }
+
+    private String land;
 
     public Integer getId() {return id;}
     public String getName() {return name;}

@@ -40,6 +40,10 @@
                 <label for="Stadt" style="color: orange">Stadt:</label>
                 <input type="text" th:field="*{city}" class="form-control" id="Stadt" placeholder="city"></input>
             </div>
+            <div class="col-md-3 mb-3">
+                <label for="Land" style="color: orange">Land:</label>
+                <input type="text" th:field="*{land}" class="form-control" id="Land" placeholder="land"></input>
+            </div>
 
             <div class="col-md-3 mb-3">
                 <label for="Email" style="color: orange">Email:</label>
@@ -48,7 +52,6 @@
         </div>
         <div class="btn-group" role="group">
             <button class="btn btn-outline-warning" type="submit">Kunde Speichern</button>
-            <button class="btn btn-outline-warning" type="submit">Kunde Suchen</button>
             <button class="btn btn-outline-warning" type="reset">Reset</button>
             <button class="btn btn-outline-warning" type="button" onclick="history.back()">Zurück</button>
         </div>

@@ -7,11 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
 public class FormController extends WebMvcConfigurerAdapter {
+
+
+    private static List<ProductOrder> products = new ArrayList<ProductOrder>();
+
 
     /**
      * to add infos in database (don't know how yet)
@@ -36,6 +44,26 @@ public class FormController extends WebMvcConfigurerAdapter {
     @RequestMapping(value="/")
     public String index(){
         return "index";
+    }
+
+    @RequestMapping(value="/selectClient")
+    public String selectClient(){
+        return "selectClient";
+    }
+
+    @RequestMapping(value="/searchClient")
+    public String searchClient(){
+        return "searchClient";
+    }
+
+    @RequestMapping(value="/jobs")
+    public String jobs(){
+        return "jobs";
+    }
+
+    @RequestMapping(value="/jobList")
+    public String listJobs(){
+        return "jobList";
     }
 
     /**
@@ -87,6 +115,46 @@ public class FormController extends WebMvcConfigurerAdapter {
         this.productOrderRepository.save(productOrder);
         return "addedProduct";
     }
+
+
+    /**
+     * Working on displaying data from database. Does not work yet
+     * @param productOrder
+     * @return
+     */
+    @RequestMapping("/showJobs")
+    public String listJobs(@ModelAttribute("productOrder") ProductOrder productOrder) {
+
+        products = (List<ProductOrder>) productOrderRepository.findAll();
+
+        ModelAndView model = new ModelAndView("jobs");
+        model.addObject("productOrder", products);
+
+        return "showJobs";
+    }
+
+
+    /**
+     * Trying stuff out for displaying data from database
+     * @param model
+     * @return
+     */
+    /*@RequestMapping("/catalogue")
+    public String catalogue( Model model) {
+
+        products = (List<ProductOrder>) productOrderRepository.findAll();
+
+
+        model.addAttribute("listJobs", products.get(1)); //the model object "carries" objects from the controller to the view
+
+        return "listJobs";
+    }*/
+
+
+
+
+
+
 
     /**
      * Method to save Job. Still have to look up stuff.

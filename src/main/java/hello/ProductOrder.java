@@ -17,6 +17,16 @@ public class ProductOrder {
     private Integer id;
     private String product;
     private String firmaId;
+    private int clientId;
+
+
+    public int getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
 
     public Integer getId() {return id;}
     public String getProduct() { return product;}
