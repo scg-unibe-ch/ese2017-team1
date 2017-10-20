@@ -21,13 +21,12 @@ public class FormController extends WebMvcConfigurerAdapter {
     private JobRepository jobRepository;
     private Job job;
     private JobDAO jobDAO;
-    private Client client;
     @Autowired
     private ClientRepository clientRepository;
-    private ProductOrder productOrder;
+    private Client client;
     @Autowired
     private ProductOrderRepository productOrderRepository;
-
+    private ProductOrder productOrder;
 
 
     /**
