@@ -1,14 +1,33 @@
 <!DOCTYPE HTML>
 
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Aufträge</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
 <body>
-    <p th:text="'Here will come a list containing the jobs.'" />
+<div class="container">
+    <div th:if="${not #lists.isEmpty(jobList)}">
+        <h2>Aufträge</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Product</th>
+                <th>Amount</th>
+            </tr>
+            <tr th:each="productOrder : ${jobList}">
+                <td th:text="${productOrder.id}"></td>
+                <td th:text="${productOrder.product}"></td>
+                <td th:text="${productOrder.amount}"></td>
+            </tr>
+        </table>
+    </div>
 
+</div>
+
+<!--<p th:text="'Here will come a list containing the jobs.'" />
 
     <table style="width:100%">
         <tr>
@@ -31,7 +50,7 @@
             <td>Chip de luxe</td>
             <td>Bärenstrasse 13, 2455 Bern</td>
         </tr>
-    </table>
+    </table>-->
 
     <!-- Zurück button -->
     <form>

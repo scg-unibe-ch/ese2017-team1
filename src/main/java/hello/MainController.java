@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
 
+    private jobService jobService;
+
     @RequestMapping("/greeting")
     public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
@@ -24,6 +26,14 @@ public class MainController {
     @RequestMapping("/driver")
     public String driver() {
         return "driver";
+    }
+
+    @RequestMapping("/jobs")
+    public String listProductOrders(Model model){
+
+        model.addAttribute("listJobs", jobService.listAllJobs());
+
+        return "listJobs";
     }
 
     /**
