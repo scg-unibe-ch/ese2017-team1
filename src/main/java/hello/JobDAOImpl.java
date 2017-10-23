@@ -12,10 +12,13 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
 /**
- * Implementation of the JobDAO interface.
+ * This class was created to save a job. At the moment we are not using it.
+ * Instead we are using the ProductOrder classes and the FormController for it.
  *
+ * Implementation of the JobDAO interface.
  */
-public class JobDAOImpl implements JobDAO {
+
+/*public class JobDAOImpl implements JobDAO {
 
     private JdbcTemplate jdbcTemplate;
 
@@ -74,4 +77,4 @@ public class JobDAOImpl implements JobDAO {
         });
     }
 
-}
+}*/

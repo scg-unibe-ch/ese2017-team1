@@ -9,7 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.WebContext;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +31,6 @@ public class FormController extends WebMvcConfigurerAdapter {
      * to add infos in database (don't know how yet)
      * let Spring inject an instance of the JobDAOimplementation into this controller automatically
      */
-    @Autowired
-    private JobRepository jobRepository;
-    private Job job;
-    private JobDAO jobDAO;
     @Autowired
     private ClientRepository clientRepository;
     private Client client;
@@ -116,6 +118,36 @@ public class FormController extends WebMvcConfigurerAdapter {
         return "addedProduct";
     }
 
+
+
+    /*public void process(
+            final HttpServletRequest request, final HttpServletResponse response,
+            final ServletContext servletContext) throws IOException {
+
+        final TemplateEngine templateEngine = new TemplateEngine();
+
+        products = (List<ProductOrder>) productOrderRepository.findAll();
+
+        WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
+        ctx.setVariable("prods", products);
+
+        templateEngine.process("showJobs", ctx, response.getWriter());
+
+    }*/
+
+    /*public void process(
+            final HttpServletRequest request, final HttpServletResponse response,
+            final ServletContext servletContext, final ITemplateEngine templateEngine)
+            throws Exception {
+
+        products = (List<ProductOrder>) productOrderRepository.findAll();
+
+        WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
+        ctx.setVariable("prods", products);
+
+        templateEngine.process("product/list", ctx, response.getWriter());
+
+    }*/
 
     /**
      * Working on displaying data from database. Does not work yet

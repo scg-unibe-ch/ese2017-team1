@@ -6,6 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
+ * This class was created to save a job. At the moment we are not using it.
+ * Instead we are using the ProductOrder classes and the FormController for it.
+ *
+ *
  * Job object which contains the required information concerning a job:
  * Id of the product, client (name), product description, address of the client, email of the client (not mandatory).
  *
@@ -13,7 +17,7 @@ import javax.persistence.Id;
  * and evaluates the various template expressions to render the form.
  */
 
-@Entity // This tells Hibernate to make a table out of this class
+/*@Entity // This tells Hibernate to make a table out of this class
 public class Job {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -42,4 +46,4 @@ public class Job {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-}
+}*/

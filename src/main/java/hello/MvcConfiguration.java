@@ -11,7 +11,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
- * Don't know yet if and how we use this class
+ * This class was created to help us with saving data in the database.
+ * Instead we used the Repository classes of the objects.
+ * We still keep this class in case we could use it.
  */
 
 /*
