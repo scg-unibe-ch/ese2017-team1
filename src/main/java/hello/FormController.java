@@ -56,15 +56,15 @@ public class FormController extends WebMvcConfigurerAdapter {
         return "searchClient";
     }
 
-    @RequestMapping(value="/jobs")
+    /*@RequestMapping(value="/jobs")
     public String jobs(){
         return "jobs";
-    }
+    }*/
 
-    @RequestMapping(value="/jobList")
+    /*@RequestMapping(value="/jobList")
     public String listJobs(){
         return "jobList";
-    }
+    }*/
 
     /**
      * Some information taken from the Spring Guide "Handling Form Submission"
