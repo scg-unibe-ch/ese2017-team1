@@ -3,14 +3,19 @@ package hello;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
-public class GTVGApplication {
+/**
+ * The class was created to help us display data from the database.
+ * First we need to do some research on how to do it.
+ *
+ * Working with the documentation from thymeleaf:
+ * http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html
+ */
 
+/*public class GTVGApplication {
 
     private static TemplateEngine templateEngine;
 
-
     static {
-
         initializeTemplateEngine();
     }
 
@@ -29,8 +34,5 @@ public class GTVGApplication {
 
         templateEngine = new TemplateEngine();
         templateEngine.setTemplateResolver(templateResolver);
-
     }
-
-
-}
+}*/
