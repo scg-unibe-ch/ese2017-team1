@@ -1,3 +1,5 @@
+<!-- Accessed from Driver. -->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,29 +10,42 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
 </head>
-<body>
-    <p th:text="'Aktuelle Tour'" />
+<body style="background-color: #87AFC7">
+
+    <h1>Aktuelle Tour </h1>
+
+
+    <p th:text="'Work in Progress: Auf dieser Seite wird die aktuelle Tour des jeweiligen Fahrers in einer Tabelle aufgelistet. Es sollte später in etwa so aussehen wie bei der Beispiel-Tabelle (noch nicht mit den richtigen Aufträgen aus der Datenbank).'" />
+
 
     <table style="width:100%">
         <tr>
-            <td><b>Auftragsnummer</b></td>
-            <td><b>Lieferung</b></td>
-            <td><b>Adresse</b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Auftragsnummer'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Lieferung'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Anzahl'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Adresse'"/></b></td>
         </tr>
         <tr>
-            <td>63101100</td>
-            <td>Chip Neon</td>
-            <td>Musterstrasse 23, 2455 Musterstadt</td>
+            <td><li class="list-group-item list-group-item-warning" th:text="63101100"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="'Chip Neon'"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="125"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="'Max Mustermann'"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="'Musterstrasse 23, 2455 Musterstadt, Musterland'"/></td>
         </tr>
         <tr>
-            <td>3920000</td>
-            <td>Chiperino</td>
-            <td>Mustern 13a, 2900 München</td>
+            <td><li class="list-group-item list-group-item-warning" th:text="3920000"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="'Chiperino'"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="300"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="'Maria Venedig'"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="'Mustern 13a, 2900 München, Deutschland'"/></td>
         </tr>
         <tr>
-            <td>2730002</td>
-            <td>Chip de luxe</td>
-            <td>Bärenstrasse 13, 2455 Bern</td>
+            <td><li class="list-group-item list-group-item-warning" th:text="2730002"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="'Chip de luxe'"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="600"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="'Max Meyer'"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="'Bärenstrasse 13, 2455 Bern, Schweiz'"/></td>
         </tr>
     </table>
 
@@ -38,17 +53,20 @@
     <!-- Job button -->
     <p>
         <a href="/jobs">
-            <button type="button" class="btn btn-outline-dark btn-lg">
+            <button type="button" class="btn btn-outline-warning btn-lg">
                 Aufträge
             </button>
         </a>
     </p>
 
     <!-- Zurück button -->
-    <form>
-        <input type="button" value="Zurück" onclick="history.back()">
-        </input>
-    </form>
+    <p>
+        <a href="/">
+            <button type="button" class="btn btn-outline-warning btn-lg">
+                Zurück
+            </button>
+        </a>
+    </p>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
