@@ -29,7 +29,7 @@
                         Weitere Kunden hinzufügen
                     </button>
                 </a>
-                <a href="/orderForm">
+                <a th:href="@{/orderForm(id=${client.id})}">
                     <button type="button" class="btn btn-outline-warning btn-lg">
                         Diesem Kunden einen Auftrag zuordnen
                     </button>
