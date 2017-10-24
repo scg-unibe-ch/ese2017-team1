@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Spring 3 MVC Multipe Row Submit - viralpatel.net</title>
+</head>
+<body>
+<h2>Show Contacts</h2>
+<table width="50%">
+    <tr>
+        <th>Name</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Phone</th>
+    </tr>
+        <tr th:each="prod : ${products}" >
+            <td th:text="${prod.clientId}"></td>
+            <td th:text="${prod.id}"></td>
+            <td th:text="${prod.product}"></td>
+            <td th:text="${prod.amount}"></td>
+        </tr>
+</table>
+<br/>
+<input type="button" value="Back" onclick="javascript:history.back()"/>
+</body>
+</html>

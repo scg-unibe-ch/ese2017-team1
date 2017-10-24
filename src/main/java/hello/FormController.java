@@ -23,10 +23,6 @@ import java.util.List;
 @Controller
 public class FormController extends WebMvcConfigurerAdapter {
 
-
-    private static List<ProductOrder> products = new ArrayList<ProductOrder>();
-
-
     /**
      * to add infos in database (don't know how yet)
      * let Spring inject an instance of the JobDAOimplementation into this controller automatically
@@ -155,13 +151,10 @@ public class FormController extends WebMvcConfigurerAdapter {
      * @return
      */
     @RequestMapping("/showJobs")
-    public String listJobs(@ModelAttribute("productOrder") ProductOrder productOrder) {
+    public String listJobs(@ModelAttribute("productOrder") ProductOrder productOrder, Model model) {
 
-        products = (List<ProductOrder>) productOrderRepository.findAll();
-
-        ModelAndView model = new ModelAndView("jobs");
-        model.addObject("productOrder", products);
-
+        Iterable<ProductOrder> products = this.productOrderRepository.findAll();
+        model.addAttribute("products", products);
         return "showJobs";
     }
 
