@@ -25,13 +25,13 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="Produktbeschreibung" style="color: orange">Produktbeschreibung:</label>
-                <input type="text" th:field="*{product}" class="form-control" id="Produktbeschreibung" placeholder="product" required="product"></input>
+                <input type="text" th:field="*{product}" placeholder="Produkt" class="form-control" id="Produktbeschreibung" required="product"></input>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 mb-3">
-                <label for="Menge" style="color: orange">Anzahl:</label>
-                <input type="number" th:field="*{amount}" class="form-control" id="Menge" placeholder="amount" required="amount"></input>
+                <label for="Menge" style="color: orange">Menge:</label>
+                <input type="number" th:field="*{amount}" placeholder="Menge" class="form-control" id="Menge" required="amount"></input>
             </div>
         </div>
         <button class="btn btn-outline-warning" type="submit">Bestellung Speichern</button>
