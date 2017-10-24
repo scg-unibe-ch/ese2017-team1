@@ -18,7 +18,7 @@ import java.util.List;
 public class Client {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String name;
     private String company;
     private String street;
@@ -39,14 +39,14 @@ public class Client {
 
     private String land;
 
-    public Integer getId() {return id;}
+    public Long getId() {return id;}
     public String getName() {return name;}
     public String getCompany() { return company;}
     public String getStreet() {return street;}
     public String getCity() {return city;}
     public String getEmail() {return email;}
 
-    public void setId (Integer id) {this.id = id;}
+    public void setId (Long id) {this.id = id;}
     public void setName(String name) {this.name = name;}
     public void setCompany(String company) {this.company = company;}
     public void setStreet(String street) {this.street = street;}

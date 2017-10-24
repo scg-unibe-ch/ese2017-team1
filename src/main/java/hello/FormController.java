@@ -3,10 +3,7 @@ package hello;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.TemplateEngine;
@@ -101,8 +98,10 @@ public class FormController extends WebMvcConfigurerAdapter {
     }
 
     @GetMapping("/orderForm")
-    public String productForm(Model model) {
-        model.addAttribute("productOrder", new ProductOrder());
+    public String productForm(@RequestParam Long id, Model model) {
+        ProductOrder order = new ProductOrder();
+        //order.setClient(this.clientRepository.findOne(id));
+        model.addAttribute("productOrder", productOrder);
         return "orderForm";
 
     }
