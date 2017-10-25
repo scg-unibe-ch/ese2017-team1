@@ -14,9 +14,16 @@ public class ProductOrder {
     private Integer id;
     private String product;
     private String amount;
-    @ManyToOne
-    private Client client;
+    private int clientId;
 
+
+    public int getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
 
     public Integer getId() {return id;}
     public String getProduct() { return product;}
@@ -25,12 +32,4 @@ public class ProductOrder {
     public void setId(Integer id) {this.id = id;}
     public void setProduct(String product) {this.product = product;}
     public void setAmount(String amount) {this.amount = amount;}
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
 }
