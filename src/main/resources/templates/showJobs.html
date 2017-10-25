@@ -16,12 +16,12 @@
         <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
         <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
     </tr>
-    <tr th:each="prod : ${products}" >
-        <td><li class="list-group-item list-group-item-warning" th:text="${prod.clientId}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${prod.id}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${prod.product}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
-    </tr>
+        <tr th:each="prod : ${products}" >
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.clientId}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.id}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.product}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
+        </tr>
 </table>
 <br/>
 <input type="button" class="btn btn-outline-warning btn-lg" value="Zurück" onclick="javascript:history.back()"/>

@@ -28,22 +28,13 @@ public class MainController {
         return "driver";
     }
 
-    /*@RequestMapping("/jobs")
+    @RequestMapping("/jobs")
     public String listProductOrders(Model model){
 
         model.addAttribute("listJobs", jobService.listAllJobs());
 
         return "listJobs";
-    }*/
-
-    /**
-     * Displays the jobs that have to be done
-     * @return template jobs
-     */
-    /*@RequestMapping("/jobs")
-    public String jobs() {
-        return "jobs";
-    }*/
+    }
 
 
     // just to test whatever we like
