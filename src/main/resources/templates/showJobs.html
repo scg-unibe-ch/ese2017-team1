@@ -1,6 +1,6 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Spring 3 MVC Multipe Row Submit - viralpatel.net</title>
+    <title>showJobs</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -10,18 +10,22 @@
 <body style="background-color: #87AFC7">
 <h2>Aufträge</h2><br/>
 <table style="width:100%">
-    <tr>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'KundenId'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'ProduktId'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
-    </tr>
+    <thead>
+        <tr>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'KundenId'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'ProduktId'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
+        </tr>
+    </thead>
+    <tbody>
         <tr th:each="prod : ${products}" >
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.clientId}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.id}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.product}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
         </tr>
+    </tbody>
 </table>
 <br/>
 <input type="button" class="btn btn-outline-warning btn-lg" value="Zurück" onclick="javascript:history.back()"/>
