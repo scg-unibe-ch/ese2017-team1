@@ -1,4 +1,4 @@
-package hello;
+package hello.ProductOrders;
 
 /**
  * Created by angelakeller on 16.10.17.
