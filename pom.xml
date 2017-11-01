@@ -46,6 +46,12 @@
 			<version>${jstl.version}</version>
 		</dependency>
 
+		<!-- Security for Login -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<properties>
