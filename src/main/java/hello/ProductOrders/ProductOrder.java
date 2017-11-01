@@ -17,19 +17,13 @@ public class ProductOrder {
     private int clientId;
 
 
-    public int getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
-    }
-
     public Integer getId() {return id;}
     public String getProduct() { return product;}
     public String getAmount() {return amount;}
+    public int getClientId() {return clientId;}
 
     public void setId(Integer id) {this.id = id;}
     public void setProduct(String product) {this.product = product;}
     public void setAmount(String amount) {this.amount = amount;}
+    public void setClientId(int clientId) {this.clientId = clientId;}
 }
