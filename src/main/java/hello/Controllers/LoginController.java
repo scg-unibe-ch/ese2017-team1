@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created by angelakeller on 26.10.17.
  */
-/*
+
 @Controller
 public class LoginController {
 
@@ -44,4 +44,4 @@ public class LoginController {
         return mav;
 
     }
-}*/
+}

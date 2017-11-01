@@ -1,8 +1,12 @@
 package hello.Login;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -12,44 +16,34 @@ import java.util.List;
 /**
  * Created by angelakeller on 26.10.17.
  */
-/*
-public class UserDAOImpl implements UserDOA {
+
+public class UserDAOImpl implements UserDAO {
+
+    NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Autowired
-    DataSource dataSource;
-
-    @Autowired
-    JdbcTemplate jdbcTemplate;
-
-    public void register(User user) {
-
-        String sql = "insert into users values(?,?,?,?,?,?)";
-
-        jdbcTemplate.update(sql, new Object[] { user.getUsername(), user.getPassword(), user.getFirstname(),
-                user.getLastname(), user.getEmail(), user.getAddress(), user.getPhone()});
+    public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate) throws DataAccessException {
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
-    public User validateUser(Login login) {
-        String sql = " 'select * from users where username =' " + login.getUsername() +
-                " ' and password= ' " + login.getPassword() + " ' ";
-        List<User> users = jdbcTemplate.query(sql, new UserMapper());
-        return users.size() > 0 ? users.get(0) : null;
+    @Override
+    public UserInfo findUserInfo(String username) {
+        String query = "select * from user where username = :username";
+        return null;
     }
 
-    class UserMapper implements RowMapper<User> {
+    private SqlParameterSource getSqlParameterByModel(String username, String password) {
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+        parameterSource.addValue("username", username);
+        parameterSource.addValue("password", password);
 
-        public User mapRow(ResultSet rs, int arg1) throws SQLException {
-        User user = new User();
-
-        user.setUsername(rs.getString("username"));
-        user.setPassword(rs.getString("password"));
-        user.setFirstname(rs.getString("firstname"));
-        user.setLastname(rs.getString("lastname"));
-        user.setEmail(rs.getString("email"));
-        user.setAddress(rs.getString("address"));
-        user.setPhone(rs.getInt("phone"));
-
-        return user;
-        }
+        return parameterSource;
     }
-}*/
+
+
+
+    @Override
+    public List<String> getUserRoles(String username) {
+        return null;
+    }
+}

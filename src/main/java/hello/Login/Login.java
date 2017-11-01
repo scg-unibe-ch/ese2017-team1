@@ -3,7 +3,7 @@ package hello.Login;
 /**
  * Created by angelakeller on 26.10.17.
  */
-/*public class Login {
+public class Login {
 
     private String username;
     private String password;
@@ -13,4 +13,4 @@ package hello.Login;
 
     public void setUsername() { this.username = username; }
     public void setPassword() { this.password = password; }
-}*/
+}
