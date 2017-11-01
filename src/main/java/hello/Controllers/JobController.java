@@ -1,6 +1,6 @@
 package hello.Controllers;
 
-import hello.ProductOrders.JobService;
+import hello.Job.JobService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
