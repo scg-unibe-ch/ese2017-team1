@@ -1,5 +1,5 @@
 package hello.Login;
-
+/*
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -38,4 +38,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("driver").password("password").roles("DRIVER");
 
     }
-}
+}*/
