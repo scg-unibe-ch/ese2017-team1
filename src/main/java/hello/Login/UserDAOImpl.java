@@ -2,6 +2,7 @@ package hello.Login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -29,7 +30,13 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public UserInfo findUserInfo(String username) {
         String query = "select * from user where username = :username";
-        return null;
+
+        try{
+            UserInfo userinfo = namedParameterJdbcTemplate.queryForObject(query, getSqlParameterByModel(username, ""), new UserInfoMapper());
+            return userinfo;
+        } catch (EmptyResultDataAccessException e){
+            return null;
+        }
     }
 
     private SqlParameterSource getSqlParameterByModel(String username, String password) {
@@ -40,7 +47,16 @@ public class UserDAOImpl implements UserDAO {
         return parameterSource;
     }
 
+    private static final class UserInfoMapper implements RowMapper<UserInfo> {
 
+        public UserInfo mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+            String username = rs.getString("username");
+            String passowrd = rs.getString("password");
+
+            return new UserInfo(username, passowrd);
+        }
+    }
 
     @Override
     public List<String> getUserRoles(String username) {
