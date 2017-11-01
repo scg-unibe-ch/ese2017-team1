@@ -1,7 +1,7 @@
 package hello;
 
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+//import org.thymeleaf.TemplateEngine;
+//import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 /**
  * The class was created to help us display data from the database.
