@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by angelakeller on 26.10.17.
  */
-
+/*
 public class UserDAOImpl implements UserDAO {
 
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -62,4 +62,4 @@ public class UserDAOImpl implements UserDAO {
     public List<String> getUserRoles(String username) {
         return null;
     }
-}
+}*/
