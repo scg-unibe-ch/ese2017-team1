@@ -21,32 +21,13 @@ public class FormController extends WebMvcConfigurerAdapter {
      * to add infos in database (don't know how yet)
      * let Spring inject an instance of the JobDAOimplementation into this controller automatically
      */
-    @Autowired
-    private ClientRepository clientRepository;
-    private Client client;
-    @Autowired
-    private ProductOrderRepository productOrderRepository;
-    private ProductOrder productOrder;
 
 
-    /**
-     * First page is shown
-     * @return index template
-     */
-    @RequestMapping(value="/")
-    public String index(){
-        return "index";
-    }
 
-    @RequestMapping(value="/selectClient")
-    public String selectClient(){
-        return "selectClient";
-    }
 
-    @RequestMapping(value="/searchClient")
-    public String searchClient(){
-        return "searchClient";
-    }
+
+
+
     
     /**
      * Some information taken from the Spring Guide "Handling Form Submission"
@@ -66,44 +47,15 @@ public class FormController extends WebMvcConfigurerAdapter {
      */
 
 
-    @GetMapping("/clientForm")
-    public String clientForm(Model model) {
-        model.addAttribute("client", new Client());
-        return "clientForm";
-
-    }
-
-    @PostMapping("/clientForm")
-    public String clientSubmit(@ModelAttribute("client") Client client) {
-        this.clientRepository.save(client);
-        return "addedClient";
-    }
-
-    @GetMapping("/orderForm")
-    public String productForm(Model model) {
-        model.addAttribute("productOrder", new ProductOrder());
-        return "orderForm";
-
-    }
 
 
-    @PostMapping("/orderForm")
-    public String productSubmit(@ModelAttribute("productOrder") ProductOrder productOrder) {
-        this.productOrderRepository.save(productOrder);
-        return "addedProduct";
-    }
+
 
     /**
      * Working on displaying data from database. Does not work yet
      * @param productOrder
      * @return
      */
-    @RequestMapping("/showJobs")
-    public String listJobs(@ModelAttribute("productOrder") ProductOrder productOrder, Model model) {
 
-        Iterable<ProductOrder> products = this.productOrderRepository.findAll();
-        model.addAttribute("products", products);
-        return "showJobs";
-    }
 
 }

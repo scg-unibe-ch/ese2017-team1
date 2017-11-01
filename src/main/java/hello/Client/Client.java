@@ -24,20 +24,8 @@ public class Client {
     private String street;
     private String city;
     private String email;
-
-
-
-
-
-    public String getLand() {
-        return land;
-    }
-
-    public void setLand(String land) {
-        this.land = land;
-    }
-
     private String land;
+
 
     public Long getId() {return id;}
     public String getName() {return name;}
@@ -45,6 +33,7 @@ public class Client {
     public String getStreet() {return street;}
     public String getCity() {return city;}
     public String getEmail() {return email;}
+    public String getLand() {return land;}
 
     public void setId (Long id) {this.id = id;}
     public void setName(String name) {this.name = name;}
@@ -52,4 +41,6 @@ public class Client {
     public void setStreet(String street) {this.street = street;}
     public void setCity(String city) {this.city = city;}
     public void setEmail(String email) {this.email = email;}
+    public void setLand(String land) { this.land = land;}
+
 }
