@@ -84,6 +84,7 @@ INSERT INTO `client` (`id`, `city`, `company`, `email`, `land`, `name`, `street`
 --
 -- Tabellenstruktur für Tabelle `job`
 --
+DROP TABLE `job`;
 
 CREATE TABLE `job` (
   `id` int(11) NOT NULL,
@@ -117,6 +118,7 @@ CREATE TABLE `product_order` (
 --
 -- Tabellenstruktur für Tabelle `user`
 --
+DROP TABLE `user`;
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
