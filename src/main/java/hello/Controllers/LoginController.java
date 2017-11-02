@@ -1,47 +1,44 @@
 package hello.Controllers;
 
+import hello.Login.User;
+import hello.Login.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by angelakeller on 26.10.17.
  */
-/*
+
 @Controller
 public class LoginController {
 
     @Autowired
-    Userservice userService;
+    private UserRepository userRepository;
+    private User user;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView mav = new ModelAndView("login");
-        mav.addObject("login", new Login());
-        return mav;
+
+    @RequestMapping("/loginForm")
+    public String login(@ModelAttribute("User") User user, Model model) {
+
+        Iterable<User> users = this.userRepository.findAll();
+        model.addAttribute("user", user);
+        return "loginForm";
     }
 
-    @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
-    public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("login") Login login) {
-        ModelAndView mav = null;
-        User user = userService.validateUser(login);
 
-        if (null != user) {
-            mav = new ModelAndView("welcome");
-            mav.addObject("firstname", user.getFirstname());
-        }
-        else {
-            mav = new ModelAndView("login");
-            mav.addObject("message", "Username oder Passwort ist falsch!");
-
-            }
-        return mav;
-
+    @GetMapping("/loginForm")
+    public String loginForm(Model model) {
+        model.addAttribute("user", new User());
+        return "loginForm";
     }
-}*/
+
+
+    @PostMapping("/loginForm")
+    public String loginSubmit(@ModelAttribute("user") User user) {
+        //this.productOrderRepository.save(productOrder);
+        return "driver";
+    }
+}
