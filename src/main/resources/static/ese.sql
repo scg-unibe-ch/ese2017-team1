@@ -28,6 +28,11 @@ SET time_zone = "+00:00";
 -- Tabellenstruktur für Tabelle `client`
 --
 
+--
+-- DROP TABLE first so new table can be created (table client already exists)
+--
+DROP TABLE `client`;
+
 CREATE TABLE `client` (
   `id` bigint(20) NOT NULL,
   `city` varchar(255) DEFAULT NULL,
@@ -79,6 +84,7 @@ INSERT INTO `client` (`id`, `city`, `company`, `email`, `land`, `name`, `street`
 --
 -- Tabellenstruktur für Tabelle `job`
 --
+DROP TABLE `job`;
 
 CREATE TABLE `job` (
   `id` int(11) NOT NULL,
@@ -95,6 +101,11 @@ CREATE TABLE `job` (
 -- Tabellenstruktur für Tabelle `product_order`
 --
 
+--
+-- DROP TABLE first so new table can be created (table product_order already exists)
+--
+DROP TABLE `product_order`;
+
 CREATE TABLE `product_order` (
   `id` int(11) NOT NULL,
   `amount` varchar(255) DEFAULT NULL,
@@ -107,6 +118,7 @@ CREATE TABLE `product_order` (
 --
 -- Tabellenstruktur für Tabelle `user`
 --
+DROP TABLE `user`;
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,

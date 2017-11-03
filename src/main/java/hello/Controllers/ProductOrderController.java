@@ -1,15 +1,16 @@
 package hello.Controllers;
 
+import hello.Client.Client;
+import hello.Client.ClientRepository;
 import hello.ProductOrders.ProductOrder;
 import hello.ProductOrders.ProductOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 /**
  * Created by angelakeller on 01.11.17.
@@ -20,6 +21,10 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
 
     @Autowired
     private ProductOrderRepository productOrderRepository;
+    @Autowired
+    private ClientRepository clientRepository;
+
+
     private ProductOrder productOrder;
 
 
@@ -40,7 +45,9 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
 
 
     @PostMapping("/orderForm")
-    public String productSubmit(@ModelAttribute("productOrder") ProductOrder productOrder) {
+    public String productSubmit(@ModelAttribute("productOrder") ProductOrder productOrder, @RequestParam("id") Long id) {
+        Client client = this.clientRepository.findOne(id);
+        productOrder.setClient(client);
         this.productOrderRepository.save(productOrder);
         return "addedProduct";
     }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Login</title>
     <!-- Required meta tags -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -17,13 +17,13 @@
     <div class="row">
         <div class="col-md-6 mb-3">
             <label for="Username" style="color: orange">Username:</label>
-            <input type="text" th:field="*{username}" placeholder="Username" class="form-control" id="Username" required="username"></input>
+            <input type="text" th:field="*{username}" placeholder="Username" class="form-control" id="Username" required="username" />
         </div>
     </div>
     <div class="row">
         <div class="col-md-6 mb-3">
             <label for="Passwort" style="color: orange">Passwort:</label>
-            <input type="password" th:field="*{password}" placeholder="Passwort" class="form-control" id="Passwort" min="1" required="password"></input>
+            <input type="password" th:field="*{password}" placeholder="Passwort" class="form-control" id="Passwort" min="1" required="password" />
         </div>
     </div>
     <button class="btn btn-outline-warning" type="submit">Login</button>

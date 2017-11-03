@@ -14,7 +14,7 @@
     </head>
     <body style = "background-color: #87AFC7">
     <h1><code></code></h1>
-    <form th:action="@{/orderForm}" method="post" th:object="${productOrder}" class="container" id="needs-validation" style="align-content: center">
+    <form th:action="@{/orderForm(id=${param.id})}" method="post" th:object="${productOrder}" class="container" id="needs-validation" style="align-content: center">
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="Produktbeschreibung" style="color: orange">Produktbeschreibung:</label>
