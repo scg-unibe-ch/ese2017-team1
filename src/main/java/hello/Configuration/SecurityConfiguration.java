@@ -40,6 +40,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(bCryptPasswordEncoder);
     }
 
+    /**
+     * Here we still need to change the permit, we have to work
+     * with the logistician and the drivers. We have to give them different
+     * access to the program/webpage
+     * @param http
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 

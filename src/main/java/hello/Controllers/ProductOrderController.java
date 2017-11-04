@@ -21,8 +21,6 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
     private ProductOrderRepository productOrderRepository;
     @Autowired
     private ClientRepository clientRepository;
-
-
     private ProductOrder productOrder;
 
 
