@@ -1,15 +1,24 @@
 package hello.Logistician;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by angelakeller on 01.11.17.
  */
+@Entity
 public class Logistician {
-
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer id;
     private String firstName;
     private String lastName;
     private int phoneNumber;
     private String email;
 
+    public Integer getId() {return id;}
     public String getFirstName() {return firstName;}
     public String getLastName() {return lastName;}
     public int getPhoneNumber() {return phoneNumber;}

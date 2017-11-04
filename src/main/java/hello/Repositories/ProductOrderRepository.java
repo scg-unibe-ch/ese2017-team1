@@ -1,4 +1,4 @@
-package hello.ProductOrders;
+package hello.Repositories;
 
 /**
  * Created by angelakeller on 17.10.17.

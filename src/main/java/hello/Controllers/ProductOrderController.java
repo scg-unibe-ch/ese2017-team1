@@ -1,16 +1,14 @@
 package hello.Controllers;
 
 import hello.Client.Client;
-import hello.Client.ClientRepository;
+import hello.Repositories.ClientRepository;
 import hello.ProductOrders.ProductOrder;
-import hello.ProductOrders.ProductOrderRepository;
+import hello.Repositories.ProductOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 /**
  * Created by angelakeller on 01.11.17.

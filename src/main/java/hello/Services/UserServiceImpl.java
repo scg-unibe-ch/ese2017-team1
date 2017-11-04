@@ -4,14 +4,13 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import hello.Login.Role;
 import hello.Login.User;
-import hello.Login.RoleRepository;
-import hello.Login.UserRepository;
+import hello.Repositories.RoleRepository;
+import hello.Repositories.UserRepository;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{

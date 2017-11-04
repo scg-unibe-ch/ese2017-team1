@@ -1,4 +1,4 @@
-package hello.Client;
+package hello.Repositories;
 
 import hello.Client.Client;
 import org.springframework.data.repository.CrudRepository;

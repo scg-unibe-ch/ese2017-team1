@@ -1,7 +1,7 @@
 package hello.Controllers;
 
 import hello.Client.Client;
-import hello.Client.ClientRepository;
+import hello.Repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
