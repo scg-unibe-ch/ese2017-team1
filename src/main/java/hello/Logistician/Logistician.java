@@ -1,5 +1,7 @@
 package hello.Logistician;
 
+import hello.Login.UserInterface;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +11,7 @@ import javax.persistence.Id;
  * Created by angelakeller on 01.11.17.
  */
 @Entity
-public class Logistician {
+public class Logistician{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
