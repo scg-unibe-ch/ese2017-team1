@@ -33,7 +33,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="client : ${client}" >
+    <tr th:each="client : ${clients}" >
         <td><li class="list-group-item list-group-item-warning" th:text="${client.id}"/></td>
         <td><li class="list-group-item list-group-item-warning" th:text="${client.name}"/></td>
         <td><li class="list-group-item list-group-item-warning" th:text="${client.company}"/></td>

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import java.util.Iterator;
+
 /**
  * This is the controller for the client
  */
@@ -27,9 +29,12 @@ public class ClientController extends WebMvcConfigurerAdapter {
     }
 
     @RequestMapping(value="/searchClient")
-    public String searchClient(){
+    public String searchClient(@ModelAttribute("client") Client client, Model model){
+        Iterable<Client> clients = this.clientRepository.findAll();
+        model.addAttribute("clients", clients);
         return "searchClient";
     }
+
 
     @GetMapping("/clientForm")
     public String clientForm(Model model) {
