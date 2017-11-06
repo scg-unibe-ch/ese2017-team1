@@ -206,3 +206,14 @@ INSERT INTO `driver` (`id`, `email`, `first_name`, `last_name`, `phone_number`) 
   (7, 'harmon@example.com', 'Ben', 'Harmon', '031 843 72 39'),
   (8, 'curry@example.com', 'Jason', 'Curry', '031 843 72 40'),
   (9, 'mitchell@example.com', 'Eunice', 'Mitchell', '031 843 72 41');
+
+INSERT INTO `logistician` (`id`, `email`, `first_name`, `last_name`, `phone_number`) VALUES
+  (1, 'warner@example.com', 'Devin', 'Warner', '031 843 71 13'),
+  (2, 'brock@example.com', 'Debra', 'Brock', '031 843 71 14'),
+  (3, 'mckenzie@example.com', 'Daryl', 'Mckenzie', '031 843 71 15'),
+  (4, 'greer@example.com', 'Dixie', 'Greer', '031 843 71 16'),
+  (5, 'oliver@example.com', 'Clarence', 'Oliver', '031 843 71 17'),
+  (6, 'riley@example.com', 'Ignacio', 'Riley', '031 843 71 18'),
+  (7, 'gutierrez@example.com', 'Wendy', 'Gutierrez', '031 843 71 19'),
+  (8, 'mcdaniel@example.com', 'Dallas', 'Mcdaniel', '031 843 71 20'),
+  (9, 'patterson@example.com', 'Harry', 'Patterson', '031 843 71 21');
