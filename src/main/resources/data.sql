@@ -24,7 +24,7 @@ INSERT INTO `client` (`id`, `city`, `company`, `email`, `land`, `name`, `street`
   (18, '6500 Landeck', '(727) 294-5007', 'nemoair@example.com', 'Austria', 'Nemoair', 'Perjenerweg 2'),
   (19, '3600 Thun', '(177) 593-0085', 'peachstar@example.com', 'Switzerland', 'Peachstar', 'Burgerstrasse 13-15'),
   (20, '1627 Vaulruz', '(530) 277-8373', 'hatchman@example.com', 'Switzerland', 'Hatchman', 'Vue-des-Alpes 19-1'),
-  (21, '6032 Emmen', '(912) 643-4135', 'sphinx.enterprises@example.com', 'Switzerland', 'Sphinx Enterprises', 'R?tistrasse 28'),
+  (21, '6032 Emmen', '(912) 643-4135', 'sphinx.enterprises@example.com', 'Switzerland', 'Sphinx Enterprises', 'Rütistrasse 28'),
   (22, '6330 Cham', '(494) 888-4751', 'core.security@example.com', 'Switzerland', 'Core Security', 'Rührliberg 32'),
   (23, '6932 Lugano', '(408) 472-1821', 'hurricane.systems@example.com', 'Switzerland', 'Hurricane Systems', 'Via Vergiò 8-18'),
   (24, '3400 Burgdorf', '(743) 775-0073', 'signalimited@example.com', 'Switzerland', 'Signalimited', 'Meiefeldstrasse 34'),
