@@ -14,6 +14,16 @@ public class Product {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     private String productName;
+    private Integer palettes;
+
+
+    public Integer getPalettes() {
+        return palettes;
+    }
+
+    public void setPalettes(Integer palettes) {
+        this.palettes = palettes;
+    }
 
     public Integer getId() {
         return id;
