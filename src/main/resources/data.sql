@@ -195,3 +195,14 @@ INSERT INTO `product` (`id`, `palettes`, `product_name`) VALUES
   (156, 7, 'ABE-WQ-700'),
   (157, 5, 'ABE-X-272'),
   (158, 3, 'ABE-ZZ-441');
+
+INSERT INTO `driver` (`id`, `email`, `first_name`, `last_name`, `phone_number`) VALUES
+  (1, 'stokes@example.com', 'Celia', 'Stokes', '031 843 72 33'),
+  (2, 'ball@example.com', 'Emma', 'Ball', '031 843 72 34'),
+  (3, 'keller@example.com', 'Eloise', 'Keller', '031 843 72 35'),
+  (4, 'stone@example.com', 'Guadalupe', 'Stone', '031 843 72 36'),
+  (5, 'clarke@example.com', 'Isaac', 'Clarke', '031 843 72 37'),
+  (6, 'miller@example.com', 'Candice', 'Miller', '031 843 72 38'),
+  (7, 'harmon@example.com', 'Ben', 'Harmon', '031 843 72 39'),
+  (8, 'curry@example.com', 'Jason', 'Curry', '031 843 72 40'),
+  (9, 'mitchell@example.com', 'Eunice', 'Mitchell', '031 843 72 41');
