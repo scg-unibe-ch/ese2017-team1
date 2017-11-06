@@ -1,4 +1,4 @@
-INSERT IGNORE INTO role (role) VALUES
+INSERT INTO `role` (`role`) VALUES
   ('ADMIN'),
   ('DRIVER'),
   ('LOGISTICIAN');
