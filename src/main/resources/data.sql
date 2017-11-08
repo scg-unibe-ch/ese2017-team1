@@ -3,7 +3,7 @@ INSERT INTO `role` (`role`) VALUES
   ('DRIVER'),
   ('LOGISTICIAN');
 
-INSERT INTO `client` (`id`, `city`, `company`, `email`, `land`, `name`, `street`) VALUES
+INSERT INTO `client` (`id`, `city`, `phone`, `email`, `land`, `name`, `street`) VALUES
   (1, '2770-123 Paço de Arcos', '(977) 828-9760', 'cyclops.motors@example.com', 'Portugal', 'Cyclops Motors', 'Praceta Rosa 1'),
   (2, 'Dunrobin, ON K0A 1T0', '(627) 137-1790', 'sail.navigations@example.com', 'Canada', 'Sail Navigations', '98 Porcupine Trail'),
   (3, '45004 Toledo', '(567) 906-4052', 'rose.limited@example.com', 'Spain', 'Rose Limited', 'Ronda de el Olivar de los Pozos, 4'),
