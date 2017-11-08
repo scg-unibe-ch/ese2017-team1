@@ -29,32 +29,14 @@
                 <label for="Name" style="color: orange">Name:</label>
                 <input type="text" th:field="*{name}" class="form-control" id="Name" placeholder="Name" required="name"></input>
             </div>
+            <div class="btn-group" role="group">
+                <button class="btn btn-outline-warning" type="submit">Suchen</button>
+            </div>
         </div>
     </form>
 
 
-    <thead>
-    <tr>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'KundenId'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Name'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Firma'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Strasse'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Stadt'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Land'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Emailadresse'"/></b></td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="client : ${clients}" >
-        <td><li class="list-group-item list-group-item-warning" th:text="${client.id}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${client.name}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${client.company}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${client.street}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${client.city}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${client.land}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${client.email}"/></td>
-    </tr>
-    </tbody>
+
 </table>
 <br/>
 <input type="button" class="btn btn-outline-warning btn-lg" value="Zurück" onclick="javascript:history.back()"/>
