@@ -40,7 +40,7 @@ public class ClientController extends WebMvcConfigurerAdapter {
     public String searchClient(@ModelAttribute("client") Client client1){
         Client client = this.clientRepository.findByName(client1.name);
         //model.addAttribute("client", client);
-        return "addedClient";
+        return "foundClient";
     }
 
 
