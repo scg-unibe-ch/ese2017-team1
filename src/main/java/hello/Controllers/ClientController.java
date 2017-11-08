@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * This is the controller for the client
@@ -33,6 +34,13 @@ public class ClientController extends WebMvcConfigurerAdapter {
         Iterable<Client> clients = this.clientRepository.findAll();
         model.addAttribute("clients", clients);
         return "searchClient";
+    }
+
+    @PostMapping(value="/searchClient")
+    public String searchClient(@ModelAttribute("client") Client client1){
+        Client client = this.clientRepository.findByName(client1.name);
+        //model.addAttribute("client", client);
+        return "addedClient";
     }
 
 
