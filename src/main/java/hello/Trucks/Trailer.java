@@ -8,9 +8,9 @@ import javax.persistence.Id;
 /**
  * Created by angelakeller on 10.11.17.
  */
-
+/*
 @Entity
-public class Trailer {
+public class Trailer{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
@@ -57,4 +57,4 @@ public class Trailer {
     public void setFreight(Integer freight) {
         this.freight = freight;
     }
-}
+}*/

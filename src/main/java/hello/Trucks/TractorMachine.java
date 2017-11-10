@@ -16,7 +16,7 @@ public class TractorMachine {
     private Integer id;
     private String model;
     private Integer amount;
-    private Trailer trailer;
+    //private Trailer trailer;
 
 
     public Integer getId() {
