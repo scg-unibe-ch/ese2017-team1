@@ -13,6 +13,7 @@ public class Boxes {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+    private Integer amount;
     private String model;
     private Integer palettesAmount;
     private Integer freight;
@@ -24,6 +25,14 @@ public class Boxes {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     public String getModel() {

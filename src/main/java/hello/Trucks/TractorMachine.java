@@ -10,12 +10,13 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class Truck {
+public class TractorMachine {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     private String model;
     private Integer amount;
+    private Trailer trailer;
 
 
     public Integer getId() {

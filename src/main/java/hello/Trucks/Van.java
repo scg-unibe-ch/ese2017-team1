@@ -13,6 +13,7 @@ public class Van {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+    private Integer amount;
     private String model;
     private Integer palettesAmount;
     private Integer freight;
@@ -47,5 +48,13 @@ public class Van {
 
     public void setFreight(Integer freight) {
         this.freight = freight;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 }

@@ -14,6 +14,7 @@ public class Trailer {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+    private Integer amount;
     private String model;
     private Integer palettesAmount;
     private Integer freight;
@@ -26,6 +27,13 @@ public class Trailer {
         this.id = id;
     }
 
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
     public String getModel() {
         return model;
     }
