@@ -5,6 +5,7 @@ package hello.ProductOrders;
  * This class provides the product.html and saves the order details
 */
 import hello.Client.Client;
+import hello.Driver.Driver;
 
 import javax.persistence.*;
 
@@ -18,6 +19,8 @@ public class ProductOrder {
     private String amount;
     @ManyToOne
     private Client client;
+    @ManyToOne
+    private Driver driver;
 
 
     public Integer getId() {return id;}
@@ -33,5 +36,12 @@ public class ProductOrder {
     }
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public Driver getDriver() {
+        return driver;
+    }
+    public void setCDriver(Driver driver) {
+        this.driver = driver;
     }
 }

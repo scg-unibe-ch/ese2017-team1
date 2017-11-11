@@ -110,6 +110,7 @@ CREATE TABLE `product_order` (
   `id` int(11) NOT NULL,
   `amount` varchar(255) DEFAULT NULL,
   `client_id` int(11) NOT NULL,
+  `driver_id` int(11) DEFAULT NULL,
   `product` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

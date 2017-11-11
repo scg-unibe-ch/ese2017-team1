@@ -1,8 +1,10 @@
 package hello.Controllers;
 
 import hello.Client.Client;
+import hello.Driver.Driver;
 import hello.Repositories.ClientRepository;
 import hello.ProductOrders.ProductOrder;
+import hello.Repositories.DriverRepository;
 import hello.Repositories.ProductOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
 
     @Autowired
     private ProductOrderRepository productOrderRepository;
+    @Autowired
+    private DriverRepository driverRepository;
+    private Driver driver;
     @Autowired
     private ClientRepository clientRepository;
     private ProductOrder productOrder;
@@ -46,6 +51,14 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
         productOrder.setClient(client);
         this.productOrderRepository.save(productOrder);
         return "addedProduct";
+    }
+
+    @RequestMapping("/jobToDriver")
+    public String listDriver(@ModelAttribute("driver") Driver driver, Model model) {
+        Iterable<Driver> drivers = this.driverRepository.findAll();
+        model.addAttribute("drivers", drivers);
+
+        return "jobToDriver";
     }
 
 }
