@@ -20,13 +20,17 @@
                 </button>
             </a>
         </div>
-        Diesen Auftrag einem Fahrer zuordnen!
+        Diesen Auftrag einem Fahrer zuordnen:
     </h1>
-    <!--<ul class="list-group">
-        <li class="list-group-item list-group-item-warning" th:text="'AuftragsId: '+ ${productOrder.id}"/>
-        <li class="list-group-item list-group-item-warning" th:text="'Produktbeschreibung: ' + ${productOrder.product}"/>
-        <li class="list-group-item list-group-item-warning" th:text="'Menge: ' + ${productOrder.amount}"/>
-    </ul>-->
+    <table style="width:100%">
+        <tr>
+            <td><li class="list-group-item list-group-item-warning" th:text="'AuftragsId: '+ ${productOrder.id}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="'Produktbeschreibung: ' + ${productOrder.product}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="'Menge: ' + ${productOrder.amount}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="'Kunde: ' + ${productOrder.client.id}"/></td>
+        </tr>
+    </table>
+
     <br/>
     <table style="width:100%">
         <thead>

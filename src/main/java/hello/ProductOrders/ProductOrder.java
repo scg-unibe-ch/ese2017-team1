@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class ProductOrder {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String product;
     private String amount;
     @ManyToOne
@@ -23,11 +23,11 @@ public class ProductOrder {
     private Driver driver;
 
 
-    public Integer getId() {return id;}
+    public Long getId() {return id;}
     public String getProduct() { return product;}
     public String getAmount() {return amount;}
 
-    public void setId(Integer id) {this.id = id;}
+    public void setId(Long id) {this.id = id;}
     public void setProduct(String product) {this.product = product;}
     public void setAmount(String amount) {this.amount = amount;}
 
@@ -41,7 +41,7 @@ public class ProductOrder {
     public Driver getDriver() {
         return driver;
     }
-    public void setCDriver(Driver driver) {
+    public void setDriver(Driver driver) {
         this.driver = driver;
     }
 }

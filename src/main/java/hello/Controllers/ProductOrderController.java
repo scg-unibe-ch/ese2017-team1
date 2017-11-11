@@ -21,12 +21,9 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
 
     @Autowired
     private ProductOrderRepository productOrderRepository;
-    @Autowired
-    private DriverRepository driverRepository;
-    private Driver driver;
+
     @Autowired
     private ClientRepository clientRepository;
-    private ProductOrder productOrder;
 
 
     @RequestMapping("/showJobs")
@@ -36,7 +33,6 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
         model.addAttribute("products", products);
         return "showJobs";
     }
-
 
     @GetMapping("/orderForm")
     public String productForm(Model model) {
@@ -51,26 +47,6 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
         productOrder.setClient(client);
         this.productOrderRepository.save(productOrder);
         return "addedProduct";
-    }
-
-/**    @GetMapping("/jobToDriver")
-    public String product(Model model) {
-        model.addAttribute("productOrder", new ProductOrder());
-        return "jobToDriver";
-    }*/
-
-    @RequestMapping("/jobToDriver")
-    public String listDriver(@ModelAttribute("driver") Driver driver, Model model) {
-        Iterable<Driver> drivers = this.driverRepository.findAll();
-        model.addAttribute("drivers", drivers);
-
-        return "jobToDriver";
-    }
-
-    @GetMapping("/assignedJob")
-    public String driver(Model model) {
-        model.addAttribute("driver", new Driver());
-        return "assignedJob";
     }
 
 }
