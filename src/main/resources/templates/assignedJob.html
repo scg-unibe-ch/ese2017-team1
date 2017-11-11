@@ -20,45 +20,15 @@
                 </button>
             </a>
         </div>
-        Diesen Auftrag einem Fahrer zuordnen!
+        Der Auftrag wurde dem Fahrer zugeteilt
     </h1>
     <!--<ul class="list-group">
         <li class="list-group-item list-group-item-warning" th:text="'AuftragsId: '+ ${productOrder.id}"/>
         <li class="list-group-item list-group-item-warning" th:text="'Produktbeschreibung: ' + ${productOrder.product}"/>
         <li class="list-group-item list-group-item-warning" th:text="'Menge: ' + ${productOrder.amount}"/>
     </ul>-->
-    <br/>
-    <table style="width:100%">
-        <thead>
-        <tr>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'FahrerId'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Vorname'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Nachname'"/></b></td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="driver : ${drivers}" >
-            <td><li class="list-group-item list-group-item-warning" th:text="${driver.id}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${driver.firstName}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${driver.lastName}"/></td>
-            <td>
-                <a th:href="@{/assignedJob(id=${driver.id})}">
-                    <button type="button" class="btn btn-outline-warning btn-lg">
-                        Weiter
-                    </button>
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <br/>
     <div class="col-md-3 mb-3">
         <div class="btn-group" role="group">
-<!--            <a href="/orderForm">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Weitere Produkte hinzufügen
-                </button>
-            </a>-->
             <a href="/logistician">
                 <button type="button" class="btn btn-outline-warning btn-lg">
                     Zurück zur Übersicht

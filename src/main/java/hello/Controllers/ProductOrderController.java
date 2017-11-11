@@ -53,12 +53,24 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
         return "addedProduct";
     }
 
+/**    @GetMapping("/jobToDriver")
+    public String product(Model model) {
+        model.addAttribute("productOrder", new ProductOrder());
+        return "jobToDriver";
+    }*/
+
     @RequestMapping("/jobToDriver")
     public String listDriver(@ModelAttribute("driver") Driver driver, Model model) {
         Iterable<Driver> drivers = this.driverRepository.findAll();
         model.addAttribute("drivers", drivers);
 
         return "jobToDriver";
+    }
+
+    @GetMapping("/assignedJob")
+    public String driver(Model model) {
+        model.addAttribute("driver", new Driver());
+        return "assignedJob";
     }
 
 }
