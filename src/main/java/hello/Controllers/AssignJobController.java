@@ -1,8 +1,6 @@
 package hello.Controllers;
 
-import hello.Client.Client;
 import hello.Driver.Driver;
-import hello.Repositories.ClientRepository;
 import hello.ProductOrders.ProductOrder;
 import hello.Repositories.DriverRepository;
 import hello.Repositories.ProductOrderRepository;
@@ -24,22 +22,19 @@ public class AssignJobController extends WebMvcConfigurerAdapter {
 
 
     @RequestMapping("/jobToDriver")
-    public String listDrivers(@ModelAttribute("driver") Driver driver, Model model) {
+    public String list(@ModelAttribute("driver") Driver driver, Model model) {
 
         Iterable<Driver> drivers = this.driverRepository.findAll();
         model.addAttribute("drivers", drivers);
         return "jobToDriver";
     }
 
-
-    @GetMapping("/jobToDriver")
+/**    @GetMapping("/jobToDriver")
     public String product(@RequestParam("id") Long id, Model model) {
         ProductOrder productOrder = this.productOrderRepository.findOne(id);
         model.addAttribute("productOrder", productOrder);
         return "jobToDriver";
-    }
-
-
+    }**/
 
     @PostMapping("/jobToDriver")
     public String submit(@ModelAttribute("productOrder") ProductOrder productOrder, @RequestParam("id") Long id) {

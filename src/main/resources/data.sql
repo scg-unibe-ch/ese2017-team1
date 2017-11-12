@@ -217,3 +217,7 @@ INSERT INTO `logistician` (`id`, `email`, `first_name`, `last_name`, `phone_numb
   (7, 'gutierrez@example.com', 'Wendy', 'Gutierrez', '031 843 71 19'),
   (8, 'mcdaniel@example.com', 'Dallas', 'Mcdaniel', '031 843 71 20'),
   (9, 'patterson@example.com', 'Harry', 'Patterson', '031 843 71 21');
+
+INSERT INTO `product_order` (`id`, `amount`, `product`, `client_id`, `driver_id`) VALUES
+(1, '1', 'öpis', 28, NULL),
+(2, '4', 'no chli meh', 22, NULL);
