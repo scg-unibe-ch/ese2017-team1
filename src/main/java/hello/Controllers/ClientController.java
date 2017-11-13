@@ -29,19 +29,27 @@ public class ClientController extends WebMvcConfigurerAdapter {
         return "selectClient";
     }
 
-    @RequestMapping(value="/searchClient")
+/**    @RequestMapping(value="/searchClient")
     public String searchClient(@ModelAttribute("client") Client client, Model model){
+        Iterable<Client> clients = this.clientRepository.findAll();
+        model.addAttribute("clients", clients);
+        return "searchClient";
+    }**/
+
+    @RequestMapping("/searchClient")
+    public String list(@ModelAttribute("client") Client client, Model model) {
+
         Iterable<Client> clients = this.clientRepository.findAll();
         model.addAttribute("clients", clients);
         return "searchClient";
     }
 
-    @PostMapping(value="/searchClient")
+/**    @PostMapping(value="/searchClient")
     public String searchClient(@ModelAttribute("client") Client client1){
         Client client = this.clientRepository.findByName(client1.name);
         //model.addAttribute("client", client);
         return "foundClient";
-    }
+    }**/
 
 
     @GetMapping("/clientForm")

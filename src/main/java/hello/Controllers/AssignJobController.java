@@ -29,20 +29,20 @@ public class AssignJobController extends WebMvcConfigurerAdapter {
         return "jobToDriver";
     }
 
-/**    @GetMapping("/jobToDriver")
-    public String product(@RequestParam("id") Long id, Model model) {
+/**    @RequestMapping(value = "/jobToDriver", params = "id")
+    public String product(@RequestParam Long id, Model model) {
         ProductOrder productOrder = this.productOrderRepository.findOne(id);
         model.addAttribute("productOrder", productOrder);
         return "jobToDriver";
     }**/
 
-    @PostMapping("/jobToDriver")
+/**    @PostMapping("/jobToDriver")
     public String submit(@ModelAttribute("productOrder") ProductOrder productOrder, @RequestParam("id") Long id) {
     Driver driver = this.driverRepository.findOne(id);
     productOrder.setDriver(driver);
     this.productOrderRepository.save(productOrder);
     return "assignedJob";
-    }
+    }**/
 
     @RequestMapping("/assignedJob")
     public String assignedJob() {
