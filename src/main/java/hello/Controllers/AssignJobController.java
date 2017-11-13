@@ -21,8 +21,8 @@ public class AssignJobController extends WebMvcConfigurerAdapter {
     private DriverRepository driverRepository;
 
 
-    @RequestMapping("/jobToDriver")
-    public String list(@ModelAttribute("driver") Driver driver, Model model) {
+    @RequestMapping(value="/jobToDriver/{id}")
+    public String list(@ModelAttribute("driver") Driver driver, Model model, @PathVariable("id") long id) {
 
         Iterable<Driver> drivers = this.driverRepository.findAll();
         model.addAttribute("drivers", drivers);
