@@ -221,3 +221,26 @@ INSERT INTO `logistician` (`id`, `email`, `first_name`, `last_name`, `phone_numb
 INSERT INTO `product_order` (`id`, `amount`, `product`, `client_id`, `driver_id`) VALUES
 (1, '1', 'öpis', 28, NULL),
 (2, '4', 'no chli meh', 22, NULL);
+
+-- All drivers (user_id 1 to 9) have password "driver"
+INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password`) VALUES
+(1, 1, 'stokes@example.com', 'Stokes', 'Celia', '$2a$10$K/2nhMGmH29GdiExDUtwPeWQNzHux.xFhMe4RzLM.mUG7WgrUhL.y'),
+(2, 1, 'ball@example.com', 'Ball', 'Emma', '$2a$10$Ap/4eeOUC5AsLqKrTIL3j.tjB6dG0g5yxj24/rURhxojBcZgFG02i'),
+(3, 1, 'keller@example.com', 'Keller', 'Eloise', '$2a$10$Kxl61etWij1KgzJaclL2/OL1xEYmx8fKv56PTWl9jRueDs1clMahG'),
+(4, 1, 'stone@example.com', 'Stone', 'Guadalupe', '$2a$10$LJ3GLJJpbHCvi4nlD8aagugX7oNk5wbLQ9mPhesyZ3cqKndOkrhxG'),
+(5, 1, 'clarke@example.com', 'Clarke', 'Isaac', '$2a$10$t0lHEn/NWL88QLnqw5bhQuLFx/6zOy6kE36H/PPH31joKXdTdb2Qe'),
+(6, 1, 'miller@example.com', 'Miller', 'Candice', '$2a$10$xxBtpkjjF1nF2pFzo1mToODlX6gGa9wou24mIxmCwq2vQUlLoIiV.'),
+(7, 1, 'harmon@example.com', 'Harmon', 'Ben', '$2a$10$rJZziDrgkLcXFPEMIx3zZeJrdSnqqwE7kWHGwnFg0BAxjFQLZoED.'),
+(8, 1, 'curry@example.com', 'Curry', 'Jason', '$2a$10$1P4dksyxv6d8eDylBdg8VOgja7tkNI6XU9G8dHUmctb66/IkagSt2'),
+(9, 1, 'mitchell@example.com', 'Mitchell', 'Eunice', '$2a$10$fdM4JlQKYFT4Y3RMf4r.ZOQGztL5j/l1zLygF/8H9omWTD5q1eCS2');
+
+INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
+(1, 2),
+(2, 2),
+(3, 2),
+(4, 2),
+(5, 2),
+(6, 2),
+(7, 2),
+(8, 2),
+(9, 2);
