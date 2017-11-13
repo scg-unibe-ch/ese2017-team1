@@ -21,8 +21,8 @@ public class AssignJobController extends WebMvcConfigurerAdapter {
     private DriverRepository driverRepository;
 
 
-    @RequestMapping(value="/jobToDriver/{id}")
-    public String list(@ModelAttribute("driver") Driver driver, Model model, @PathVariable("id") long id) {
+    @RequestMapping(value="/jobToDriver/{productOrderId}")
+    public String list(@ModelAttribute("driver") Driver driver, Model model, @PathVariable("productOrderId") long productOrderId) {
 
         Iterable<Driver> drivers = this.driverRepository.findAll();
         model.addAttribute("drivers", drivers);
@@ -44,8 +44,8 @@ public class AssignJobController extends WebMvcConfigurerAdapter {
     return "assignedJob";
     }**/
 
-    @RequestMapping("/assignedJob")
-    public String assignedJob() {
+    @RequestMapping(value="/assignedJob/{driverId}")
+    public String assignedJob(@PathVariable("driverId") long driverId) {
         return "assignedJob";
     }
 
