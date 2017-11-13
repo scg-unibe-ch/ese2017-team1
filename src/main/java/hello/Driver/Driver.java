@@ -12,13 +12,13 @@ import javax.persistence.Id;
 public class Driver {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String email;
 
-    public Integer getId() {return id;}
+    public Long getId() {return id;}
     public String getFirstName() {return firstName;}
     public String getLastName() {return lastName;}
     public String getPhoneNumber() {return phoneNumber;}
