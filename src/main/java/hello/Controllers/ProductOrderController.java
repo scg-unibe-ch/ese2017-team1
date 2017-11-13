@@ -25,6 +25,9 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
     @Autowired
     private ClientRepository clientRepository;
 
+    @Autowired
+    private DriverRepository driverRepository;
+
 
     @RequestMapping("/showJobs")
     public String listJobs(@ModelAttribute("productOrder") ProductOrder productOrder, Model model) {
@@ -45,6 +48,10 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
     public String productSubmit(@ModelAttribute("productOrder") ProductOrder productOrder, @RequestParam("id") Long id) {
         Client client = this.clientRepository.findOne(id);
         productOrder.setClient(client);
+
+        Long driverId = (long) 10;
+        Driver driver = this.driverRepository.findOne(driverId);
+        productOrder.setDriver(driver);
         this.productOrderRepository.save(productOrder);
         return "addedProduct";
     }
