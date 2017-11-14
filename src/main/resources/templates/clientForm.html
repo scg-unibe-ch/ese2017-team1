@@ -22,6 +22,11 @@
                     Logout
                 </button>
             </a>
+            <a href="/info/user">
+                <button type="button" class="btn btn-outline-warning btn-lg">
+                    Userinfo
+                </button>
+            </a>
         </div>
     </h1>
     <form th:action="@{/clientForm}" method="post" th:object="${client}" class="container" id="needs-validation" style="align-content: center">
