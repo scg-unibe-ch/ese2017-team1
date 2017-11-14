@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -49,17 +50,24 @@ public class DriverController extends WebMvcConfigurerAdapter {
             if(productOrder.getDriver().getId() == user.getId()){
                 matches.add(productOrder);
             }
-
         }
-
-
         model.addAttribute("matches", matches);
-
 
         return "driverTours";
     }
 
 
+    @RequestMapping(value="/driverTours/{productOrderId}/{accOrRej}")
+    public String acceptedOrRejected(@PathVariable("productOrderId") Long productOrderId, @PathVariable("accOrRej") String accOrRej, Model model) {
+        ProductOrder productOrder = this.productOrderRepository.findOne(productOrderId);
+
+        productOrder.setAccOrRej(accOrRej);
+
+        this.productOrderRepository.save(productOrder);
+        model.addAttribute("productOrder", productOrder);
+
+        return "acceptedOrRejected";
+    }
 
 
 }

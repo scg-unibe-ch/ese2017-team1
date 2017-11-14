@@ -23,6 +23,17 @@ public class ProductOrder {
     private Client client;
     @ManyToOne
     private Driver driver;
+    private String accOrRej;
+
+    public String getAccOrRej() {
+        return accOrRej;
+    }
+
+    public void setAccOrRej(String accOrRej) {
+        this.accOrRej = accOrRej;
+    }
+
+
 
 
     public Long getId() {return id;}
