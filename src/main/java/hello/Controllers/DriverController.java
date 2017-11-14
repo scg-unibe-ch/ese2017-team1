@@ -50,12 +50,8 @@ public class DriverController extends WebMvcConfigurerAdapter {
             if(productOrder.getDriver().getId() == user.getId()){
                 matches.add(productOrder);
             }
-
         }
-
-
         model.addAttribute("matches", matches);
-
 
         return "driverTours";
     }
@@ -64,9 +60,10 @@ public class DriverController extends WebMvcConfigurerAdapter {
     @RequestMapping(value="/driverTours/{productOrderId}/{accOrRej}")
     public String acceptedOrRejected(@PathVariable("productOrderId") Long productOrderId, @PathVariable("accOrRej") String accOrRej, Model model) {
         ProductOrder productOrder = this.productOrderRepository.findOne(productOrderId);
-        productOrder.setAccOrRej(accOrRej);
-        this.productOrderRepository.save(productOrder);
 
+        productOrder.setAccOrRej(accOrRej);
+
+        this.productOrderRepository.save(productOrder);
         model.addAttribute("productOrder", productOrder);
 
         return "acceptedOrRejected";

@@ -44,12 +44,12 @@
         <td><li class="list-group-item list-group-item-warning" th:text="${match.amount}"/></td>
         <td><li class="list-group-item list-group-item-warning" th:text="${match.driver.firstName}"/></td>
         <td>
-            <a th:href="${'/driverTours/'+match.id+'/accepted'}">
+            <a th:href="${'/driverTours/'+match.id+'/akzeptiert'}">
                 <button type="button" class="btn btn-outline-warning btn-lg">
                     Akzeptiert
                 </button>
             </a>
-            <a th:href="${'/driverTours/'+match.id+'/rejected'}">
+            <a th:href="${'/driverTours/'+match.id+'/abgelehnt'}">
                 <button type="button" class="btn btn-outline-warning btn-lg">
                     Abgelehnt
                 </button>
