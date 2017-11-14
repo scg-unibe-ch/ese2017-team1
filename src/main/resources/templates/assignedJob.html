@@ -24,7 +24,7 @@
     </h1>
     <ul class="list-group">
         <li class="list-group-item list-group-item-warning" th:text="'AuftragsId: '+ ${productOrder.id}"/>
-        <li class="list-group-item list-group-item-warning" th:text="'Produktbeschreibung: ' + ${productOrder.product}"/>
+        <li class="list-group-item list-group-item-warning" th:text="'Produktbeschreibung: ' + ${productOrder.product.productName}"/>
         <li class="list-group-item list-group-item-warning" th:text="'Menge: ' + ${productOrder.amount}"/>
         <li class="list-group-item list-group-item-warning" th:text="'FahrerId: ' + ${driver.id}"/>
         <li class="list-group-item list-group-item-warning" th:text="'Fahrer: ' + ${driver.firstName} + ' ' + ${driver.lastName}"/>
