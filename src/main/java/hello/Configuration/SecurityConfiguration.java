@@ -1,5 +1,7 @@
 package hello.Configuration;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,21 +55,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.
                 authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/assignedJob").permitAll()
-                .antMatchers("/jobToDriver").permitAll()
+                .antMatchers("/assignedJob").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/jobToDriver").hasAuthority("ROLE_LOGISTICIAN")
                 .antMatchers("/login").permitAll()
                 .antMatchers("/registration").permitAll()
-                .antMatchers("/logistician").permitAll()
-                .antMatchers("/productOrder").permitAll()
-                .antMatchers("/clientForm").permitAll()
-                .antMatchers("/orderForm").permitAll()
-                .antMatchers("/addedClient").permitAll()
-                .antMatchers("/addedProduct").permitAll()
-                .antMatchers("/selectClient").permitAll()
-                .antMatchers("/searchClient").permitAll()
-                .antMatchers("/showJobs").permitAll()
-                //.antMatchers("/index").permitAll()
-                .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
+                .antMatchers("/logistician").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/productOrder").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/clientForm").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/orderForm").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/addedClient").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/addedProduct").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/selectClient").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/searchClient").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/showJobs").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/index").permitAll()
+                .antMatchers("/driver").hasAuthority("ROLE_DRIVER")
+                .antMatchers("/admin/**").hasAuthority("ROLE_ADMIN").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
                 .defaultSuccessUrl("/index")
@@ -78,6 +81,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/").and().exceptionHandling()
                 .accessDeniedPage("/access-denied");
     }
+
 
     @Override
     public void configure(WebSecurity web) throws Exception {

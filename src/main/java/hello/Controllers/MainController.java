@@ -5,6 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 @Controller
 public class MainController {
@@ -14,8 +16,14 @@ public class MainController {
      * First page is shown
      * @return index template
      */
-    @RequestMapping(value="/")
-    public String index(){
+    @RequestMapping(value="/index")
+    public String index(HttpServletRequest request){
+        if (request.isUserInRole("LOGISTICIAN")) {
+            return "logistician";
+        }
+        else if (request.isUserInRole("DRIVER")) {
+            return "driver";
+        }
         return "index";
     }
 

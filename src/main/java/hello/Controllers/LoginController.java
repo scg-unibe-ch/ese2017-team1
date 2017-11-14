@@ -1,5 +1,6 @@
 package hello.Controllers;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -60,13 +61,24 @@ public class LoginController {
     }
 
     @RequestMapping(value="/index", method = RequestMethod.GET)
-    public ModelAndView home(){
+    public ModelAndView home(HttpServletRequest request){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-        modelAndView.setViewName("index");
+
+
+        if (request.isUserInRole("LOGISTICIAN")) {
+            modelAndView.setViewName("logistician");
+        }
+        else if (request.isUserInRole("DRIVER")) {
+            modelAndView.setViewName("driver");
+        }
+        else if (request.isUserInRole("ADMIN")) {
+            modelAndView.setViewName("index");
+        }
+
         return modelAndView;
     }
 

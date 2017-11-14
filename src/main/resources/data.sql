@@ -1,7 +1,7 @@
 INSERT INTO `role` (`role`) VALUES
-  ('ADMIN'),
-  ('DRIVER'),
-  ('LOGISTICIAN');
+  ('ROLE_ADMIN'),
+  ('ROLE_DRIVER'),
+  ('ROLE_LOGISTICIAN');
 
 INSERT INTO `client` (`id`, `city`, `phone`, `email`, `land`, `name`, `street`) VALUES
   (1, '2770-123 Paço de Arcos', '(977) 828-9760', 'cyclops.motors@example.com', 'Portugal', 'Cyclops Motors', 'Praceta Rosa 1'),
