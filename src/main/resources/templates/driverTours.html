@@ -34,6 +34,7 @@
         <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
         <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
         <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrer'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Akzeptiert/Abgelehnt'"/></b></td>
     </tr>
     </thead>
     <tbody>
@@ -42,7 +43,8 @@
         <td><li class="list-group-item list-group-item-warning" th:text="${match.id}"/></td>
         <td><li class="list-group-item list-group-item-warning" th:text="${match.product.productName}"/></td>
         <td><li class="list-group-item list-group-item-warning" th:text="${match.amount}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${match.driver.firstName}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${match.driver.firstName} + ' ' + ${match.driver.lastName}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${match.accOrRej}"/></td>
         <td>
             <a th:href="${'/driverTours/'+match.id+'/akzeptiert'}">
                 <button type="button" class="btn btn-outline-warning btn-lg">
