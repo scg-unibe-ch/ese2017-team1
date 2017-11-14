@@ -23,7 +23,7 @@
             </button>
         </a>
     </div>
-    Aufträge
+    Touren
 </h1>
 <br/>
 <table style="width:100%">
@@ -44,9 +44,14 @@
         <td><li class="list-group-item list-group-item-warning" th:text="${match.amount}"/></td>
         <td><li class="list-group-item list-group-item-warning" th:text="${match.driver.firstName}"/></td>
         <td>
-            <a th:href="${'/driverTours/'+match.id}">
+            <a th:href="${'/driverTours/'+match.id+'/accepted'}">
                 <button type="button" class="btn btn-outline-warning btn-lg">
-                    Weiter
+                    Akzeptiert
+                </button>
+            </a>
+            <a th:href="${'/driverTours/'+match.id+'/rejected'}">
+                <button type="button" class="btn btn-outline-warning btn-lg">
+                    Abgelehnt
                 </button>
             </a>
         </td>
