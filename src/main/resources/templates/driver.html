@@ -26,46 +26,23 @@
                 </button>
             </a>
         </div>
-        Aktuelle Tour
 
     </h1>
 
 
-    <p th:text="'Work in Progress: Auf dieser Seite wird die aktuelle Tour des jeweiligen Fahrers in einer Tabelle aufgelistet. Es sollte später etwa so aussehen wie in der Beispiel-Tabelle (noch nicht mit den richtigen Aufträgen aus der Datenbank).'" />
-
-
-    <table style="width:100%">
-        <tr>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Auftragsnummer'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Lieferung'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Anzahl'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Adresse'"/></b></td>
-        </tr>
-        <tr>
-            <td><li class="list-group-item list-group-item-warning" th:text="63101100"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Chip Neon'"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="125"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Max Mustermann'"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Musterstrasse 23, 2455 Musterstadt, Musterland'"/></td>
-        </tr>
-        <tr>
-            <td><li class="list-group-item list-group-item-warning" th:text="3920000"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Chiperino'"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="300"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Maria Venedig'"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Mustern 13a, 2900 München, Deutschland'"/></td>
-        </tr>
-        <tr>
-            <td><li class="list-group-item list-group-item-warning" th:text="2730002"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Chip de luxe'"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="600"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Max Meyer'"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Bärenstrasse 13, 2455 Bern, Schweiz'"/></td>
-        </tr>
-    </table>
-
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <div class="text-center">
+                    <a href="/driverTours">
+                        <button type="button" class="btn btn-outline-warning btn-lg">
+                            Touren anzeigen
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

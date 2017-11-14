@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>showJobs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+</head>
+<body style="background-color: #87AFC7">
+<h1>
+    <div class="text-right">
+        <!-- Logout Button -->
+        <a href="/logout">
+            <button type="button" class="btn btn-outline-warning btn-lg">
+                Logout
+            </button>
+        </a>
+        <a href="/info/user">
+            <button type="button" class="btn btn-outline-warning btn-lg">
+                Userinfo
+            </button>
+        </a>
+    </div>
+    Aufträge
+</h1>
+<br/>
+<table style="width:100%">
+    <thead>
+    <tr>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'AuftragsId'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrer'"/></b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="match : ${matches}" >
+        <td><li class="list-group-item list-group-item-warning" th:text="${match.client.name}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${match.id}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${match.product.productName}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${match.amount}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${match.driver.firstName}"/></td>
+        <td>
+            <a th:href="${'/driverTours/'+match.id}">
+                <button type="button" class="btn btn-outline-warning btn-lg">
+                    Weiter
+                </button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+<input type="button" class="btn btn-outline-warning btn-lg" value="Zurück" onclick="javascript:history.back()"/>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+</html>
