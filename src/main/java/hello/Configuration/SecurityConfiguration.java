@@ -70,6 +70,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/showJobs").hasAuthority("ROLE_LOGISTICIAN")
                 .antMatchers("/index").permitAll()
                 .antMatchers("/driver").hasAuthority("ROLE_DRIVER")
+                .antMatchers("/acceptedOrRejected").hasAuthority("ROLE_DRIVER")
+                .antMatchers("/driverTours").hasAuthority("ROLE_DRIVER")
                 .antMatchers("/admin/**").hasAuthority("ROLE_ADMIN").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
