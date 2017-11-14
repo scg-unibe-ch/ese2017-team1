@@ -218,9 +218,9 @@ INSERT INTO `logistician` (`id`, `email`, `first_name`, `last_name`, `phone_numb
   (8, 'mcdaniel@example.com', 'Dallas', 'Mcdaniel', '031 843 71 20'),
   (9, 'patterson@example.com', 'Harry', 'Patterson', '031 843 71 21');
 
-INSERT INTO `product_order` (`id`, `amount`, `product`, `client_id`, `driver_id`) VALUES
-(1, '1', 'öpis', 28, NULL),
-(2, '4', 'no chli meh', 22, NULL);
+INSERT INTO `product_order` (`id`, `amount`, `product_id`, `client_id`, `driver_id`) VALUES
+(1, '1', 100, 28, NULL),
+(2, '4', 9, 22, NULL);
 
 -- All drivers (user_id 1 to 9) have password "driver"
 -- All logisticians (user_id 10 to 18) have password "logistician"

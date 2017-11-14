@@ -1,11 +1,11 @@
 package hello.Controllers;
 
 import hello.Client.Client;
-import hello.Driver.Driver;
-import hello.Repositories.ClientRepository;
+import hello.Product.Product;
 import hello.ProductOrders.ProductOrder;
-import hello.Repositories.DriverRepository;
+import hello.Repositories.ClientRepository;
 import hello.Repositories.ProductOrderRepository;
+import hello.Repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +25,9 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
     @Autowired
     private ClientRepository clientRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
 
     @RequestMapping("/showJobs")
     public String listJobs(@ModelAttribute("productOrder") ProductOrder productOrder, Model model) {
@@ -37,14 +40,19 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
     @GetMapping("/orderForm")
     public String productForm(Model model) {
         model.addAttribute("productOrder", new ProductOrder());
+        model.addAttribute("products", this.productRepository.findAll());
         return "orderForm";
     }
 
 
     @PostMapping("/orderForm")
-    public String productSubmit(@ModelAttribute("productOrder") ProductOrder productOrder, @RequestParam("id") Long id) {
-        Client client = this.clientRepository.findOne(id);
+    public String productSubmit(@ModelAttribute("productOrder") ProductOrder productOrder,@RequestParam("productId") Long productId, @RequestParam("id") Long clientId) {
+        Client client = this.clientRepository.findOne(clientId);
         productOrder.setClient(client);
+
+        Product product = this.productRepository.findOne(productId);
+        productOrder.setProduct(product);
+
         this.productOrderRepository.save(productOrder);
         return "addedProduct";
     }

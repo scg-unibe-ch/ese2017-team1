@@ -33,7 +33,7 @@
         <tr th:each="prod : ${products}" >
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.name}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.id}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.product}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
             <td>
                 <a th:href="${'/jobToDriver/'+prod.id}">

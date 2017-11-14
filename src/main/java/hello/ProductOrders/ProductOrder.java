@@ -6,6 +6,7 @@ package hello.ProductOrders;
 */
 import hello.Client.Client;
 import hello.Driver.Driver;
+import hello.Product.Product;
 
 import javax.persistence.*;
 
@@ -15,7 +16,8 @@ public class ProductOrder {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private String product;
+    @ManyToOne
+    private Product product;
     private String amount;
     @ManyToOne
     private Client client;
@@ -24,11 +26,9 @@ public class ProductOrder {
 
 
     public Long getId() {return id;}
-    public String getProduct() { return product;}
     public String getAmount() {return amount;}
 
     public void setId(Long id) {this.id = id;}
-    public void setProduct(String product) {this.product = product;}
     public void setAmount(String amount) {this.amount = amount;}
 
     public Client getClient() {
@@ -43,5 +43,13 @@ public class ProductOrder {
     }
     public void setDriver(Driver driver) {
         this.driver = driver;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

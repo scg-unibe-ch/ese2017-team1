@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html xmlns:th="http://www.thymeleaf.org">
+    <html xmlns:th="http://www.w3.org/1999/xhtml">
     <!-- his HTML file should first enter or check the client and then it should go
       to the productForm
       informations: name, adress, email,-->
@@ -27,13 +27,19 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="Produktbeschreibung" style="color: orange">Produktbeschreibung:</label>
-                <input type="text" th:field="*{product}" placeholder="Produkt" class="form-control" id="Produktbeschreibung" required="product"></input>
+                    <div class="input-group">
+                        <select class="form-control" id="Produktbeschreibung" name="productId">
+                            <option th:each="var:${products}" th:value="${var.id}" th:text="${var.productName}"></option>
+                        </select>
+                    </div>
+                </div>
             </div>
-        </div>
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="Menge" style="color: orange">Menge:</label>
-                <input type="number" th:field="*{amount}" placeholder="Menge" class="form-control" id="Menge" min="1" required="amount"></input>
+                    <div class="input-group">
+                        <input type="number" th:field="*{amount}" placeholder="Menge" class="form-control" id="Menge" min="1" required="amount"></input>
+                    </div>
             </div>
         </div>
         <button class="btn btn-outline-warning" type="submit">Bestellung Speichern</button>
