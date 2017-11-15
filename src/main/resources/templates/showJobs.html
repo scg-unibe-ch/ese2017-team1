@@ -29,6 +29,8 @@
     <thead>
         <tr>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Stadt'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Land'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'AuftragsId'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
@@ -38,6 +40,8 @@
     <tbody>
         <tr th:each="prod : ${products}" >
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.name}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.city}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.land}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.id}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>

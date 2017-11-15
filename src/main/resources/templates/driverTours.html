@@ -29,21 +29,25 @@
 <table style="width:100%">
     <thead>
     <tr>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
         <td><b><li class="list-group-item list-group-item-warning" th:text="'AuftragsId'"/></b></td>
         <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
         <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrer'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Akzeptiert/Abgelehnt'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Adresse'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Stadt'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Land'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Status'"/></b></td>
     </tr>
     </thead>
     <tbody>
     <tr th:each="match : ${matches}" >
-        <td><li class="list-group-item list-group-item-warning" th:text="${match.client.name}"/></td>
         <td><li class="list-group-item list-group-item-warning" th:text="${match.id}"/></td>
         <td><li class="list-group-item list-group-item-warning" th:text="${match.product.productName}"/></td>
         <td><li class="list-group-item list-group-item-warning" th:text="${match.amount}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${match.driver.firstName} + ' ' + ${match.driver.lastName}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${match.client.name}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${match.client.street}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${match.client.city}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${match.client.land}"/></td>
         <td><li class="list-group-item list-group-item-warning" th:text="${match.accOrRej}"/></td>
         <td>
             <a th:href="${'/driverTours/'+match.id+'/akzeptiert'}">
