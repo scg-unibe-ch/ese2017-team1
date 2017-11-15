@@ -1,7 +1,6 @@
 package hello.Controllers;
 
-import hello.Login.User;
-import hello.Product.Product;
+import hello.Users.User;
 import hello.ProductOrders.ProductOrder;
 import hello.Repositories.ProductOrderRepository;
 import hello.Services.UserService;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by angelakeller on 01.11.17.

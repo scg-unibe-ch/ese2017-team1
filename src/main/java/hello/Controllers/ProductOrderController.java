@@ -1,7 +1,7 @@
 package hello.Controllers;
 
 import hello.Client.Client;
-import hello.Driver.Driver;
+import hello.Users.Driver.Driver;
 import hello.Product.Product;
 import hello.ProductOrders.ProductOrder;
 import hello.Repositories.ClientRepository;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- * Created by angelakeller on 01.11.17.
+ * Controller for the orderForm and the showJobs
  */
 @Controller
 public class ProductOrderController extends WebMvcConfigurerAdapter {

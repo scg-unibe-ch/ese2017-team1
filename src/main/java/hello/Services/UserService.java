@@ -1,7 +1,7 @@
 package hello.Services;
 
 
-import hello.Login.User;
+import hello.Users.User;
 
 public interface UserService {
     public User findUserByEmail(String email);

@@ -1,4 +1,4 @@
-package hello.Login;
+package hello.LoginRole;
 
 import javax.persistence.*;
 

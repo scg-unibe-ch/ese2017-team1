@@ -1,6 +1,4 @@
-package hello.Logistician;
-
-import hello.Login.UserInterface;
+package hello.Users.Logistician;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

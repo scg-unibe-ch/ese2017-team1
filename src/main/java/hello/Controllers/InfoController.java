@@ -10,6 +10,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This Controller shows the current logged in user
+ * and the login date
+ */
 @Controller
 public class InfoController {
 
@@ -23,7 +27,6 @@ public class InfoController {
         info.put("jamLogin", formatTanggal.format(new Date()));
 
         return info;
-
     }
 
 }

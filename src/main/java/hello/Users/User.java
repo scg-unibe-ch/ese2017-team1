@@ -1,4 +1,4 @@
-package hello.Login;
+package hello.Users;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,7 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import hello.Login.Role;
+import hello.LoginRole.Role;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;

@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 
-
+/**
+ * In this controller we display the index page and set the right pages to the right role
+ */
 @Controller
 public class MainController {
 
@@ -29,7 +31,8 @@ public class MainController {
 
 
     @RequestMapping("/greeting")
-    public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
+    public String greeting(@RequestParam(value="name", required=false,
+            defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
         return "greeting";
     }

@@ -1,6 +1,6 @@
 package hello.Repositories;
 
-import hello.Driver.Driver;
+import hello.Users.Driver.Driver;
 import org.springframework.data.repository.CrudRepository;
 
 /**

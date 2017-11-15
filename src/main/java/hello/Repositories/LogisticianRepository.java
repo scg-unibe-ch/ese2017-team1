@@ -1,6 +1,6 @@
 package hello.Repositories;
 
-import hello.Logistician.Logistician;
+import hello.Users.Logistician.Logistician;
 import org.springframework.data.repository.CrudRepository;
 
 /**

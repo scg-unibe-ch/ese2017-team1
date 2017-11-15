@@ -1,4 +1,4 @@
-package hello.Driver;
+package hello.Users.Driver;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
