@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -7,7 +7,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body style="background-color: #87AFC7">
 <form th:action="@{/registration}" method="get">
     <button class="btn btn-md btn-warning btn-block" type="Submit">Go To Registration Page</button>
 </form>
@@ -33,6 +33,11 @@
         </a>
 
     </form>
+</div>
+<div class="container">
+    <p>
+    <img th:src="@{/static/FirmaESE.png}" class="img-responsive center block" height="300" width="300" alt="FirmaESE"/>
+    </p>
 </div>
 </body>
 </html>
