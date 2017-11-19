@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Tour {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     @ManyToOne
     private Driver driver;
     @ManyToOne
@@ -19,11 +19,11 @@ public class Tour {
     private Trailer trailer;
     private Integer freePalettes;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -37,8 +37,6 @@ public class Tour {
 
     public void setTrailer(Trailer trailer) {
         this.trailer = trailer;
-        trailer.setFree(trailer.getFree()+1);
-        freePalettes += trailer.getPalettesAmount();
     }
 
     public Trailer getTrailer() {
@@ -51,8 +49,6 @@ public class Tour {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
-        vehicle.setFree(vehicle.getFree()+1);
-        freePalettes += vehicle.getPalettesAmount();
     }
 
     public Integer getFreePalettes() {

@@ -25,11 +25,11 @@
                 </button>
             </a>
         </div>
-        Wählen Sie einen Fahrzeug für diese Tour aus:
+        Sie haben eine neue Tour erstellt.
     </h1>
 
     <br/>
-    <table style="width:100%">
+    <!--<table style="width:100%">
         <thead>
         <tr>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrzeugtyp'"/></b></td>
@@ -43,7 +43,7 @@
             <td><li class="list-group-item list-group-item-warning" th:text="${veh.model}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${veh.free}"/></td>
             <td>
-                <a th:href="${'/newTourTrailer/'+tour.id+'/'+veh.id}">
+                <a th:href="${'/newTourTruck/'+driver.id+'/'+veh.id}">
                     <button type="button" class="btn btn-outline-warning btn-lg">
                         Weiter
                     </button>
@@ -51,7 +51,7 @@
             </td>
         </tr>
         </tbody>
-    </table>
+    </table>-->
     <br/>
     <div class="col-md-3 mb-3">
         <div class="btn-group" role="group">
