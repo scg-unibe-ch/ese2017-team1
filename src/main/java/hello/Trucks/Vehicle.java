@@ -1,16 +1,10 @@
 package hello.Trucks;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-/**
- * Created by angelakeller on 10.11.17.
- */
 
 @Entity
-public class Trailer{
+public class Vehicle {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
@@ -19,6 +13,7 @@ public class Trailer{
     private Integer palettesAmount;
     private Integer freight;
     private Integer free;
+    private String type;
 
     public Integer getId() {
         return id;
@@ -28,13 +23,6 @@ public class Trailer{
         this.id = id;
     }
 
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
     public String getModel() {
         return model;
     }
@@ -59,6 +47,14 @@ public class Trailer{
         this.freight = freight;
     }
 
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
     public Integer getFree() {
         return free;
     }
@@ -66,4 +62,13 @@ public class Trailer{
     public void setFree(Integer free) {
         this.free = free;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }
+
