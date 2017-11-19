@@ -8,7 +8,7 @@ import javax.persistence.Id;
 /**
  * Created by angelakeller on 10.11.17.
  */
-/*
+
 @Entity
 public class Trailer{
     @Id
@@ -57,4 +57,4 @@ public class Trailer{
     public void setFreight(Integer freight) {
         this.freight = freight;
     }
-}*/
+}
