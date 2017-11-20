@@ -10,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 
 @Controller
 public class AssignJobController extends WebMvcConfigurerAdapter {
@@ -25,6 +28,20 @@ public class AssignJobController extends WebMvcConfigurerAdapter {
     public String list(@ModelAttribute("driver") Driver driver, Model model, @PathVariable("productOrderId") Long productOrderId) {
 
         Iterable<Driver> drivers = this.driverRepository.findAll();
+
+
+        /**
+         * Remove the "no driver" Driver so it can not be selected by the logistician
+         */
+        for (Iterator<Driver> iterator = drivers.iterator(); iterator.hasNext();) {
+            Driver driv = iterator.next();
+            if (driv.getEmail().equals("no@driver.com")) {
+                // Remove the current element from the iterator and the list.
+                iterator.remove();
+            }
+        }
+
+
         model.addAttribute("drivers", drivers);
         ProductOrder productOrder = this.productOrderRepository.findOne(productOrderId);
         model.addAttribute("productOrder", productOrder);
