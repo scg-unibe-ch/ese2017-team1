@@ -197,7 +197,7 @@ INSERT INTO `product` (`id`, `palettes`, `product_name`) VALUES
   (158, 3, 'ABE-ZZ-441');
 
 INSERT INTO `driver` (`id`, `email`, `first_name`, `last_name`, `phone_number`) VALUES
-  (10, 'no@driver.com', 'Kein Fahrer', 'No Driver', '000 000 00 00'),
+  (10, 'no@driver.com', 'Kein', 'Fahrer', '000 000 00 00'),
   (1, 'stokes@example.com', 'Celia', 'Stokes', '031 843 72 33'),
   (2, 'ball@example.com', 'Emma', 'Ball', '031 843 72 34'),
   (3, 'keller@example.com', 'Eloise', 'Keller', '031 843 72 35'),

@@ -45,7 +45,7 @@
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.id}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.driver.firstName}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.driver.firstName} + ' ' + ${prod.driver.lastName}"/></td>
             <td>
                 <a th:href="${'/jobToDriver/'+prod.id}">
                     <button type="button" class="btn btn-outline-warning btn-lg">
