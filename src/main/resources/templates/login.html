@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:mvc="http://www.springframework.org/schema/mvc">
 <head>
     <title>Login Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -36,7 +36,9 @@
 </div>
 <div class="container">
     <p>
-        <img src="../static/FirmaESE.png" height="540" width="720" class="img-responsive center-block"/>
+
+        <img th:src="@{../static/FirmaESE.png}" height="540" width="720" class="img-responsive center-block"/>
+
     </p>
 </div>
 </body>
