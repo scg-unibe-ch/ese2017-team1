@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Neuer Auftrag</title>
+    <title>Show Tour</title>
     <!-- Required meta tags -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -25,35 +25,31 @@
                 </button>
             </a>
         </div>
-        Diesen Auftrag einem Fahrer zuordnen:
+        Tourenübersicht
     </h1>
-<!--    <table style="width:100%">
-        <tr>
-            <td><li class="list-group-item list-group-item-warning" th:text="'AuftragsId: '+ ${productOrder.id}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Produktbeschreibung: ' + ${productOrder.product}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Menge: ' + ${productOrder.amount}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Kunde: ' + ${productOrder.client.id}"/></td>
-        </tr>
-    </table>-->
 
     <br/>
     <table style="width:100%">
         <thead>
         <tr>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'FahrerId'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Vorname'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Nachname'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Tour Id'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrer'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrzeug'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Anhänger'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Freie Paletten'"/></b></td>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="driver : ${drivers}" >
-            <td><li class="list-group-item list-group-item-warning" th:text="${driver.id}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${driver.firstName}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${driver.lastName}"/></td>
+        <tr th:each="tour : ${tours}" >
+            <td><li class="list-group-item list-group-item-warning" th:text="${tour.id}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${tour.driver.firstName}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${tour.vehicle.model}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${tour.trailer.model}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${tour.freePalettes}"/></td>
             <td>
-                <a th:href="${'/jobToDriver/'+productOrder.id+'/'+driver.id}">
+                <a th:href="${'/newTourProductOrders/'+tour.id}">
                     <button type="button" class="btn btn-outline-warning btn-lg">
-                        Weiter
+                        Bearbeiten
                     </button>
                 </a>
             </td>
@@ -63,12 +59,7 @@
     <br/>
     <div class="col-md-3 mb-3">
         <div class="btn-group" role="group">
-<!--            <a href="/orderForm">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Weitere Produkte hinzufügen
-                </button>
-            </a>-->
-            <a href="/showJobs">
+            <a href="/logistician">
                 <button type="button" class="btn btn-outline-warning btn-lg">
                     Zurück zur Übersicht
                 </button>

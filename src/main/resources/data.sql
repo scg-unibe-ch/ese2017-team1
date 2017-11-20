@@ -267,3 +267,25 @@ INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
 (17, 3),
 (18, 3),
 (19, 1);
+
+INSERT INTO `van` (`id`, `amount`, `freight`, `model`, `palettes_amount`) VALUES
+(1, '7', '1', 'VW Transporter T1', '1');
+
+INSERT INTO `boxes` (`id`, `amount`, `freight`, `model`, `palettes_amount`) VALUES
+(1, '4', '12', 'Scania S 450 B6x4NB', '18');
+
+INSERT INTO `tractor_machine` (`id`, `amount`, `model`) VALUES
+(1, 12, 'Scania S 450 B6x4NA'),
+(2, 5, 'DAF XF EURO 6'),
+(3, 2, 'Mercedes-Benz Actros');
+
+INSERT INTO `trailer` (`id`, `amount`, `freight`, `model`, `palettes_amount`, `free`) VALUES
+(1, 13, 25, 'Schmitz-Cargobull S.PR+', 34, 13),
+(2, 8, 25, 'Koegel XT.3', 32, 8),
+(3, 2, 25, 'Schwarzmüller 34P', 34, 2);
+
+INSERT INTO `vehicle` (`id`, `amount`, `freight`, `free`, `model`, `palettes_amount`, `type`) VALUES
+(1, 12, 0, 12, 'Scania S 450 B6x4NA', 0, 'Tractor Machine'),
+(2, 5, 0, 5, 'DAF XF EURO 6', 0, 'Tractor Machine'),
+(3, 2, 0, 2, 'Mercedes-Benz Actros', 0, 'Tractor Machine'),
+(4, '7', '1', 7, 'VW Transporter T1', '1', 'Van');
