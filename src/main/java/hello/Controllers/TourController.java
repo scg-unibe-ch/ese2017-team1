@@ -67,8 +67,8 @@ public class TourController extends WebMvcConfigurerAdapter {
 
     @RequestMapping(value="/newTourProductOrders/{tourId}/{trailerId}")
     public String tourTrailer(@PathVariable("tourId") Long tourId, @PathVariable("trailerId") Long trailerId, Model model) {
-        Iterable<ProductOrder> productOrders = this.productOrderRepository.findAll();
-        model.addAttribute("productOrders", productOrders);
+        Iterable<ProductOrder> products = this.productOrderRepository.findAll();
+        model.addAttribute("products", products);
         Tour tour = this.tourRepository.findOne(tourId);
         Trailer trailer = this.trailerRepository.findOne(trailerId);
         trailer.setFree(trailer.getFree() - 1);
@@ -80,6 +80,19 @@ public class TourController extends WebMvcConfigurerAdapter {
         model.addAttribute("trailer", trailer);
         model.addAttribute("tour", tour);
         return "newTourProductOrders";
+    }
+
+    @RequestMapping(value="/newTourAddedProduct/{tourId}/{prodId}")
+    public String tourProduct(@PathVariable("tourId") Long tourId, @PathVariable("prodId") Long prodId, Model model) {
+        Tour tour = this.tourRepository.findOne(tourId);
+        ProductOrder product = this.productOrderRepository.findOne(prodId);
+        product.setTour(tour);
+        tour.setFreePalettes(tour.getFreePalettes()-product.getProduct().getPalettes());
+        this.productOrderRepository.save(product);
+        this.tourRepository.save(tour);
+        model.addAttribute("product", product);
+        model.addAttribute("tour", tour);
+        return "newTourAddedProduct";
     }
 
 }

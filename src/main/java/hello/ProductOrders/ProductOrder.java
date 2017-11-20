@@ -5,6 +5,7 @@ package hello.ProductOrders;
  * This class provides the product.html and saves the order details
 */
 import hello.Client.Client;
+import hello.Tour.Tour;
 import hello.Users.Driver.Driver;
 import hello.Product.Product;
 
@@ -24,6 +25,8 @@ public class ProductOrder {
     @ManyToOne
     private Driver driver;
     private String accOrRej;
+    @ManyToOne
+    private Tour tour;
 
     public String getAccOrRej() {
         return accOrRej;
@@ -63,5 +66,13 @@ public class ProductOrder {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public Tour getTour() {
+        return tour;
+    }
+
+    public void setTour(Tour tour) {
+        this.tour = tour;
     }
 }
