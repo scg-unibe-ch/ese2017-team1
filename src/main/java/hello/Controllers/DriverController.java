@@ -36,7 +36,7 @@ public class DriverController extends WebMvcConfigurerAdapter {
     public String driverTours(Model model) {
 
         ArrayList<ProductOrder> matches = new ArrayList<>();
-
+        ArrayList<String> addresses = new ArrayList<>();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
 
@@ -47,9 +47,12 @@ public class DriverController extends WebMvcConfigurerAdapter {
 
             if(productOrder.getDriver().getId() == user.getId()){
                 matches.add(productOrder);
+                addresses.add(productOrder.getClient().getStreet() +"," +productOrder.getClient().getCity() + ","+productOrder.getClient().getLand());
             }
         }
         model.addAttribute("matches", matches);
+        model.addAttribute("addresses", addresses.toArray());
+
 
         return "driverTours";
     }
