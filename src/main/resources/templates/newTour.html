@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Neuer Auftrag</title>
+    <title>Neue Tour</title>
     <!-- Required meta tags -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -25,16 +25,8 @@
                 </button>
             </a>
         </div>
-        Diesen Auftrag einem Fahrer zuordnen:
+        Wählen Sie einen Fahrer für diese Tour aus:
     </h1>
-<!--    <table style="width:100%">
-        <tr>
-            <td><li class="list-group-item list-group-item-warning" th:text="'AuftragsId: '+ ${productOrder.id}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Produktbeschreibung: ' + ${productOrder.product}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Menge: ' + ${productOrder.amount}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="'Kunde: ' + ${productOrder.client.id}"/></td>
-        </tr>
-    </table>-->
 
     <br/>
     <table style="width:100%">
@@ -51,7 +43,7 @@
             <td><li class="list-group-item list-group-item-warning" th:text="${driver.firstName}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${driver.lastName}"/></td>
             <td>
-                <a th:href="${'/jobToDriver/'+productOrder.id+'/'+driver.id}">
+                <a th:href="${'/newTourTruck/'+driver.id}">
                     <button type="button" class="btn btn-outline-warning btn-lg">
                         Weiter
                     </button>
@@ -63,12 +55,7 @@
     <br/>
     <div class="col-md-3 mb-3">
         <div class="btn-group" role="group">
-<!--            <a href="/orderForm">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Weitere Produkte hinzufügen
-                </button>
-            </a>-->
-            <a href="/showJobs">
+            <a href="/logistician">
                 <button type="button" class="btn btn-outline-warning btn-lg">
                     Zurück zur Übersicht
                 </button>
