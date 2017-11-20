@@ -43,7 +43,7 @@
             <td><li class="list-group-item list-group-item-warning" th:text="${driver.firstName}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${driver.lastName}"/></td>
             <td>
-                <a th:href="${'/newTourTruck/'+driver.id}">
+                <a th:href="${'/newTourTruck/'+tour.id+'/'+driver.id}">
                     <button type="button" class="btn btn-outline-warning btn-lg">
                         Weiter
                     </button>

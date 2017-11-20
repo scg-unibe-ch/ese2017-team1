@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Neue Tour</title>
+    <title>Show Tour</title>
     <!-- Required meta tags -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -25,27 +25,31 @@
                 </button>
             </a>
         </div>
-        Wählen Sie einen Fahrzeug für diese Tour aus:
+        Tourenübersicht
     </h1>
 
     <br/>
     <table style="width:100%">
         <thead>
         <tr>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrzeugtyp'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Modell'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Anz. freie Fahrzeuge'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Tour Id'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrer'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrzeug'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Anhänger'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Freie Paletten'"/></b></td>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="veh : ${vehicles}" >
-            <td><li class="list-group-item list-group-item-warning" th:text="${veh.type}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${veh.model}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${veh.free}"/></td>
+        <tr th:each="tour : ${tours}" >
+            <td><li class="list-group-item list-group-item-warning" th:text="${tour.id}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${tour.driver.firstName}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${tour.vehicle.model}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${tour.trailer.model}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${tour.freePalettes}"/></td>
             <td>
-                <a th:href="${'/newTourTrailer/'+tour.id+'/'+veh.id}">
+                <a th:href="${'/newTourProductOrders/'+tour.id}">
                     <button type="button" class="btn btn-outline-warning btn-lg">
-                        Weiter
+                        Bearbeiten
                     </button>
                 </a>
             </td>
@@ -53,8 +57,15 @@
         </tbody>
     </table>
     <br/>
-    <input type="button" class="btn btn-outline-warning btn-lg" value="Zurück" onclick="javascript:history.back()"/>
-
+    <div class="col-md-3 mb-3">
+        <div class="btn-group" role="group">
+            <a href="/logistician">
+                <button type="button" class="btn btn-outline-warning btn-lg">
+                    Zurück zur Übersicht
+                </button>
+            </a>
+        </div>
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
