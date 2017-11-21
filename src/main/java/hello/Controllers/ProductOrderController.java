@@ -44,14 +44,28 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
 
     @GetMapping("/orderForm")
     public String productForm(Model model) {
-        model.addAttribute("productOrder", new ProductOrder());
+
+        ProductOrder productOrder = new ProductOrder();
+
+        /**
+         * Sets ID of new ProductOrder equal to the highest already existing ID + 1
+         * (should have done this in HTML File but it did not work)
+         */
+        Long i = Long.valueOf(1);
+        while(this.productOrderRepository.findOne(i)!=null){
+
+            i++;
+        }
+        productOrder.setId(i);
+
+        model.addAttribute("productOrder", productOrder);
         model.addAttribute("products", this.productRepository.findAll());
         return "orderForm";
     }
 
 
     @PostMapping("/orderForm")
-    public String productSubmit(@ModelAttribute("productOrder") ProductOrder productOrder,@RequestParam("productId") Long productId, @RequestParam("id") Long clientId) {
+    public String productSubmit(@ModelAttribute("productOrder") ProductOrder productOrder, @RequestParam("id") Long clientId, @RequestParam("productId") Long productId) {
         Client client = this.clientRepository.findOne(clientId);
         productOrder.setClient(client);
 
@@ -62,6 +76,18 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
         productOrder.setDriver(driver);
 
         productOrder.setAccOrRej("keine Angabe");
+
+
+        /**
+         * Sets ID of new ProductOrder equal to the highest already existing ID + 1
+         * (should have done this in HTML File but it did not work)
+         */
+        Long i = Long.valueOf(1);
+        while (this.productOrderRepository.findOne(i) != null && this.productOrderRepository.findOne(i) != productOrder) {
+
+            i++;
+        }
+        productOrder.setId(i);
 
         this.productOrderRepository.save(productOrder);
         return "addedProduct";
