@@ -35,25 +35,37 @@ public class TourController extends WebMvcConfigurerAdapter {
     public String listTours(@ModelAttribute("tour") Tour tour, Model model){
         Iterable<Tour> allTours = this.tourRepository.findAll();
         ArrayList<Tour> tours = new ArrayList<>();
+        ArrayList<Tour> incompTours = new ArrayList<>();
         for (Tour tour1 : allTours){
             if(tour1.getDriver() != null && tour1.getVehicle()!= null && tour1.getTrailer()!= null){
                 tours.add(tour1);
             }
+            else{
+                incompTours.add(tour1);
+            }
         }
         model.addAttribute("tours", tours);
+        model.addAttribute("incompTours", incompTours);
         return "showTours";
     }
 
-    @RequestMapping(value="/newTour")
-    public String list(@ModelAttribute("driver") Driver driver, Model model){
-        Iterable<Driver> drivers = this.driverRepository.findAll();
-        model.addAttribute("drivers", drivers);
+    @RequestMapping(value="/newTourCreate")
+    public String newTour(@ModelAttribute("driver") Driver driver, Model model){
         Tour tour = new Tour();
         this.tourRepository.save(tour);
         model.addAttribute("tour", tour);
-        return "newTour";
+        return "newTourCreate";
     }
 
+
+    @RequestMapping(value="/newTour/{tourId}")
+    public String Driver(@PathVariable("tourId") Long tourId, @ModelAttribute("driver") Driver driver, Model model){
+        Iterable<Driver> drivers = this.driverRepository.findAll();
+        model.addAttribute("drivers", drivers);
+        Tour tour = this.tourRepository.findOne(tourId);
+        model.addAttribute("tour", tour);
+        return "newTour";
+    }
 
     @RequestMapping(value="/newTourTruck/{tourId}/{driverId}")
     public String tourDriver(@PathVariable("tourId") Long tourId, @PathVariable("driverId") Long driverId, Model model) {
