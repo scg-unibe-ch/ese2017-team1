@@ -47,7 +47,7 @@ public class DriverTourController extends WebMvcConfigurerAdapter {
         return "showToursDriver";
     }
 
-    @RequestMapping("/driverTours/{tourId}")
+    @RequestMapping(value="/driverTours/{tourId}")
     public String driverTours(@PathVariable("tourId") Long tourId, Model model) {
 
         ArrayList<ProductOrder> matches = new ArrayList<>();
@@ -57,9 +57,11 @@ public class DriverTourController extends WebMvcConfigurerAdapter {
         Iterable<ProductOrder> productOrders = this.productOrderRepository.findAll();
 
         for(ProductOrder productOrder : productOrders){
-            if(productOrder.getTour().getId() == tourId){
-                matches.add(productOrder);
-                addresses.add(productOrder.getClient().getStreet() +"," +productOrder.getClient().getCity() + ","+productOrder.getClient().getLand());
+            if(productOrder.getTour() != null){
+                if(productOrder.getTour().getId() == tourId){
+                    matches.add(productOrder);
+                    addresses.add(productOrder.getClient().getStreet() +"," +productOrder.getClient().getCity() + ","+productOrder.getClient().getLand());
+                }
             }
         }
         model.addAttribute("tour", tour);
