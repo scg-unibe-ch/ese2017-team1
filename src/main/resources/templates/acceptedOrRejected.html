@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
 </head>
-<body>
+<body style="background-color: #87AFC7">
 <div class="container">
     <h1>
         <div class="text-right">
@@ -33,15 +33,7 @@
         <li class="list-group-item list-group-item-warning" th:text="'Menge: ' + ${productOrder.amount}"/>
         <li class="list-group-item list-group-item-warning" th:text="'Die Lieferung wurde: ' + ${productOrder.accOrRej}"/>
     </ul>
-    <div class="col-md-3 mb-3">
-        <div class="btn-group" role="group">
-            <a href="/driverTours">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Zurück zur Übersicht
-                </button>
-            </a>
-        </div>
-    </div>
+    <input type="button" class="btn btn-outline-warning btn-lg" value="Zurück" onclick="javascript:history.back()"/>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
