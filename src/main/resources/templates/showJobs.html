@@ -34,7 +34,6 @@
             <td><b><li class="list-group-item list-group-item-warning" th:text="'AuftragsId'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
-            <!--  <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrer'"/></b></td>-->
          </tr>
      </thead>
      <tbody>
@@ -45,15 +44,32 @@
              <td><li class="list-group-item list-group-item-warning" th:text="${prod.id}"/></td>
              <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
              <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
-             <!--  <td><li class="list-group-item list-group-item-warning" th:text="${prod.driver.firstName} + ' ' + ${prod.driver.lastName}"/></td>
-              <td>
-                  <a th:href="${'/jobToDriver/'+prod.id}">
-                      <button type="button" class="btn btn-outline-warning btn-lg">
-                          Weiter
-                      </button>
-                  </a>
-              </td>-->
         </tr>
+    </tbody>
+</table>
+<br/>
+Bereits akzeptierte Aufträge:
+<br/>
+<table style="width:100%">
+    <thead>
+    <tr>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Stadt'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Land'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'AuftragsId'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
+        <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="prod : ${accProducts}" >
+        <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.name}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.city}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.land}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${prod.id}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
+        <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
+    </tr>
     </tbody>
 </table>
 <br/>

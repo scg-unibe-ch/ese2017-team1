@@ -1,5 +1,7 @@
 package hello.Controllers;
 
+import hello.Repositories.TourRepository;
+import hello.Tour.Tour;
 import hello.Users.User;
 import hello.ProductOrders.ProductOrder;
 import hello.Repositories.ProductOrderRepository;
@@ -31,32 +33,50 @@ public class DriverController extends WebMvcConfigurerAdapter {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private TourRepository tourRepository;
 
-    @RequestMapping("/driverTours")
+    @RequestMapping("/showToursDriver")
     public String driverTours(Model model) {
 
-        ArrayList<ProductOrder> matches = new ArrayList<>();
-        ArrayList<String> addresses = new ArrayList<>();
+        ArrayList<Tour> matches = new ArrayList<>();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
 
+        Iterable<Tour> tours = this.tourRepository.findAll();
 
-        Iterable<ProductOrder> productOrders = this.productOrderRepository.findAll();
-
-        for(ProductOrder productOrder : productOrders){
-
-            if(productOrder.getDriver().getId() == user.getId()){
-                matches.add(productOrder);
-                addresses.add(productOrder.getClient().getStreet() +"," +productOrder.getClient().getCity() + ","+productOrder.getClient().getLand());
+        for(Tour tour : tours){
+            if(tour.getDriver().getId() == user.getId()){
+                matches.add(tour);
             }
         }
         model.addAttribute("matches", matches);
-        model.addAttribute("addresses", addresses.toArray());
+        return "showToursDriver";
+    }
 
+    @RequestMapping(value="/driverTours/{tourId}")
+    public String driverTours(@PathVariable("tourId") Long tourId, Model model) {
+
+        ArrayList<ProductOrder> matches = new ArrayList<>();
+        ArrayList<String> addresses = new ArrayList<>();
+
+        Tour tour = tourRepository.findOne(tourId);
+        Iterable<ProductOrder> productOrders = this.productOrderRepository.findAll();
+
+        for(ProductOrder productOrder : productOrders){
+            if(productOrder.getTour() != null){
+                if(productOrder.getTour().getId() == tourId){
+                    matches.add(productOrder);
+                    addresses.add(productOrder.getClient().getStreet() +"," +productOrder.getClient().getCity() + ","+productOrder.getClient().getLand());
+                }
+            }
+        }
+        model.addAttribute("tour", tour);
+        model.addAttribute("matches", matches);
+        model.addAttribute("addresses", addresses.toArray());
 
         return "driverTours";
     }
-
 
     @RequestMapping(value="/driverTours/{productOrderId}/{accOrRej}")
     public String acceptedOrRejected(@PathVariable("productOrderId") Long productOrderId, @PathVariable("accOrRej") String accOrRej, Model model) {

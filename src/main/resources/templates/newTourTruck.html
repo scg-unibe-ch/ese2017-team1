@@ -25,7 +25,7 @@
                 </button>
             </a>
         </div>
-        Wählen Sie einen Fahrzeug für diese Tour aus:
+        Wählen Sie ein Fahrzeug für diese Tour aus:
     </h1>
 
     <br/>
@@ -49,6 +49,23 @@
                     </button>
                 </a>
             </td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    Nicht mehr verfügbare Fahrzeuge:
+    <br/>
+    <table style="width:66%">
+        <thead>
+        <tr>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrzeugtyp'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Modell'"/></b></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="veh : ${usedVehicles}" >
+            <td><li class="list-group-item list-group-item-warning" th:text="${veh.type}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${veh.model}"/></td>
         </tr>
         </tbody>
     </table>

@@ -69,8 +69,18 @@ public class TourController extends WebMvcConfigurerAdapter {
 
     @RequestMapping(value="/newTourTruck/{tourId}/{driverId}")
     public String tourDriver(@PathVariable("tourId") Long tourId, @PathVariable("driverId") Long driverId, Model model) {
-        Iterable<Vehicle> vehicles = this.vehicleRepository.findAll();
+        Iterable<Vehicle> allVehicles = this.vehicleRepository.findAll();
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        ArrayList<Vehicle> usedVehicles = new ArrayList<>();
+        for (Vehicle vehicle : allVehicles) {
+            if (vehicle.getFree() > 0) {
+                vehicles.add(vehicle);
+            } else {
+                usedVehicles.add(vehicle);
+            }
+        }
         model.addAttribute("vehicles", vehicles);
+        model.addAttribute("usedVehicles", usedVehicles);
         Driver driver = this.driverRepository.findOne(driverId);
         model.addAttribute("driver", driver);
         Tour tour = this.tourRepository.findOne(tourId);
@@ -82,8 +92,18 @@ public class TourController extends WebMvcConfigurerAdapter {
 
     @RequestMapping(value="/newTourTrailer/{tourId}/{vehId}")
     public String tourTruck(@PathVariable("tourId") Long tourId, @PathVariable("vehId") Long vehId, Model model) {
-        Iterable<Trailer> trailers = this.trailerRepository.findAll();
+        Iterable<Trailer> allTrailers = this.trailerRepository.findAll();
+        ArrayList<Trailer> trailers = new ArrayList<>();
+        ArrayList<Trailer> usedTrailers = new ArrayList<>();
+        for (Trailer trailer : allTrailers) {
+            if (trailer.getFree() > 0) {
+                trailers.add(trailer);
+            } else {
+                usedTrailers.add(trailer);
+            }
+        }
         model.addAttribute("trailers", trailers);
+        model.addAttribute("usedTrailers", usedTrailers);
         Tour tour = this.tourRepository.findOne(tourId);
         Vehicle vehicle = this.vehicleRepository.findOne(vehId);
         vehicle.setFree(vehicle.getFree() - 1);
