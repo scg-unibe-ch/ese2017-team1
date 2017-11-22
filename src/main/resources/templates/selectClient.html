@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Kundenauswahl</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -25,26 +25,35 @@
     </div>
 </h1>
 <div class="container">
-    <h1>Bitte wählen Sie den Kunden aus</h1>
-    <div class="col-md-3 mb-3">
-        <div class="btn-group" role="group">
+    <div align="center">
+        <h1>Bitte wählen Sie den Kunden aus</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mb-3">
             <a href="/searchClient">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-outline-warning btn-lg btn-block">
                     Suche nach Kunden im System
                 </button>
             </a>
+        </div>
+        <div class="col-md-4 mb-3">
             <a href="/clientForm">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-outline-warning btn-lg btn-block">
                     Neuer Kunde erstellen
                 </button>
             </a>
+        </div>
+        <div class="col-md-4 mb-3">
             <a href="/logistician">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-outline-warning btn-lg btn-block">
                     Zurück zur Übersicht
                 </button>
             </a>
         </div>
     </div>
+</div>
+<div class="container">
+    <img th:src="@{/images/FirmaESE.png}" class="mx-auto d-block"/>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
