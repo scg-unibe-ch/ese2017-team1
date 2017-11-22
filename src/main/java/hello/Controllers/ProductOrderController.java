@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import java.util.ArrayList;
+
 /**
  * Controller for the orderForm and the showJobs
  */
@@ -37,8 +39,19 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
     @RequestMapping("/showJobs")
     public String listJobs(@ModelAttribute("productOrder") ProductOrder productOrder, Model model) {
 
-        Iterable<ProductOrder> products = this.productOrderRepository.findAll();
+        Iterable<ProductOrder> allProductOrders = this.productOrderRepository.findAll();
+        ArrayList<ProductOrder> products = new ArrayList<>();
+        ArrayList<ProductOrder> accProducts = new ArrayList<>();
+        for(ProductOrder product : allProductOrders){
+            if(product.getAccOrRej().equalsIgnoreCase("akzeptiert")){
+                accProducts.add(product);
+            }
+            else{
+                products.add(product);
+            }
+        }
         model.addAttribute("products", products);
+        model.addAttribute("accProducts", accProducts);
         return "showJobs";
     }
 

@@ -25,7 +25,7 @@
                 </button>
             </a>
         </div>
-        Wählen Sie einen Anhänger aus:
+        Wählen Sie einen verfügbaren Anhänger aus:
     </h1>
 
     <br/>
@@ -49,6 +49,23 @@
                     </button>
                 </a>
             </td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    Nicht mehr verfügbare Anhänger:
+    <br/>
+    <table style="width:66%">
+        <thead>
+        <tr>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Modell'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Anz. Paletten'"/></b></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="trailer : ${usedTrailers}" >
+            <td><li class="list-group-item list-group-item-warning" th:text="${trailer.model}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${trailer.palettesAmount}"/></td>
         </tr>
         </tbody>
     </table>
