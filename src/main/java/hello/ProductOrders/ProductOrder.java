@@ -22,8 +22,6 @@ public class ProductOrder {
     private String amount;
     @ManyToOne
     private Client client;
-    @ManyToOne
-    private Driver driver;
     private String accOrRej;
     @ManyToOne
     private Tour tour;
@@ -50,14 +48,6 @@ public class ProductOrder {
 
     public void setClient(Client client) {
         this.client = client;
-    }
-
-    public Driver getDriver() {
-        return driver;
-    }
-
-    public void setDriver(Driver driver) {
-        this.driver = driver;
     }
 
     public Product getProduct() {

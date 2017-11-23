@@ -197,7 +197,6 @@ INSERT INTO `product` (`id`, `palettes`, `product_name`) VALUES
   (158, 3, 'ABE-ZZ-441');
 
 INSERT INTO `driver` (`id`, `email`, `first_name`, `last_name`, `phone_number`) VALUES
-  (10, 'no@driver.com', 'Kein', 'Fahrer', '000 000 00 00'),
   (1, 'stokes@example.com', 'Celia', 'Stokes', '031 843 72 33'),
   (2, 'ball@example.com', 'Emma', 'Ball', '031 843 72 34'),
   (3, 'keller@example.com', 'Eloise', 'Keller', '031 843 72 35'),
@@ -219,9 +218,9 @@ INSERT INTO `logistician` (`id`, `email`, `first_name`, `last_name`, `phone_numb
   (8, 'mcdaniel@example.com', 'Dallas', 'Mcdaniel', '031 843 71 20'),
   (9, 'patterson@example.com', 'Harry', 'Patterson', '031 843 71 21');
 
-INSERT INTO `product_order` (`id`, `amount`, `product_id`, `client_id`, `driver_id`, `acc_or_rej`) VALUES
-(1, '1', 100, 28, 10, 'keine Angabe'),
-(2, '4', 9, 22, 10, 'keine Angabe');
+INSERT INTO `product_order` (`id`, `amount`, `product_id`, `client_id`, `acc_or_rej`) VALUES
+(1, '1', 100, 28, 'keine Angabe'),
+(2, '4', 9, 22, 'keine Angabe');
 
 -- All drivers (user_id 1 to 9) have password "driver"
 -- All logisticians (user_id 10 to 18) have password "logistician"

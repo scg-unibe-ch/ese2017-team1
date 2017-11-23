@@ -85,9 +85,6 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
         Product product = this.productRepository.findOne(productId);
         productOrder.setProduct(product);
 
-        Driver driver = this.driverRepository.findOne((long) 10);
-        productOrder.setDriver(driver);
-
         productOrder.setAccOrRej("keine Angabe");
 
 
