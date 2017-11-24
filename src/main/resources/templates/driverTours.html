@@ -72,7 +72,6 @@
     </tbody>
 </table>
 <br/>
-<input type="button" class="btn btn-outline-warning btn-lg" value="Zurück" onclick="javascript:history.back()"/>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -168,6 +167,23 @@
     }
     /*]]>*/
 </script>
+
+<br/>
+
+<div class="col-md-3 mb-3">
+    <div class="btn-group" role="group">
+        <a>
+            <button type="button" class="btn btn-outline-warning btn-lg" onclick="javascript:history.back()">
+                Zurück
+            </button>
+        </a>
+        <a th:href="${'/endTour/'+tour.id}">
+            <button type="button" class="btn btn-outline-warning btn-lg">
+                Tour abschliessen
+            </button>
+        </a>
+    </div>
+</div>
 
 <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvRi8WcVAqTsx-TC7Xi_spt2wCNTuolyc&amp;callback=initMap"></script>
 

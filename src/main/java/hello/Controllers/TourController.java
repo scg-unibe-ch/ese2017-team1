@@ -36,16 +36,21 @@ public class TourController extends WebMvcConfigurerAdapter {
         Iterable<Tour> allTours = this.tourRepository.findAll();
         ArrayList<Tour> tours = new ArrayList<>();
         ArrayList<Tour> incompTours = new ArrayList<>();
-        for (Tour tour1 : allTours){
-            if(tour1.getDriver() != null && tour1.getVehicle()!= null && tour1.getTrailer()!= null){
-                tours.add(tour1);
-            }
-            else{
-                incompTours.add(tour1);
+        ArrayList<Tour> finishedTours = new ArrayList<>();
+        for (Tour tour1 : allTours) {
+            if (tour1.getFinished() == null) {
+                if (tour1.getDriver() != null && tour1.getVehicle() != null && tour1.getTrailer() != null) {
+                    tours.add(tour1);
+                } else {
+                    incompTours.add(tour1);
+                }
+            } else {
+                finishedTours.add(tour1);
             }
         }
         model.addAttribute("tours", tours);
         model.addAttribute("incompTours", incompTours);
+        model.addAttribute("finishedTours", finishedTours);
         return "showTours";
     }
 
@@ -123,8 +128,11 @@ public class TourController extends WebMvcConfigurerAdapter {
 
         ArrayList<ProductOrder> products = new ArrayList<>();
         for(ProductOrder productOrder : productOrders){
-            if(productOrder.getTour() == null){
-                products.add(productOrder);
+            if(productOrder.getAccOrRej().equalsIgnoreCase("akzeptiert")) {}
+            else {
+                if(productOrder.getTour() == null){
+                    products.add(productOrder);
+                }
             }
         }
         model.addAttribute("products", products);
@@ -157,8 +165,11 @@ public class TourController extends WebMvcConfigurerAdapter {
 
         ArrayList<ProductOrder> products = new ArrayList<>();
         for(ProductOrder productOrder : productOrders){
-            if(productOrder.getTour() == null){
-                products.add(productOrder);
+            if(productOrder.getAccOrRej().equalsIgnoreCase("akzeptiert")) {}
+            else {
+                if(productOrder.getTour() == null){
+                    products.add(productOrder);
+                }
             }
         }
         model.addAttribute("products", products);
@@ -203,8 +214,11 @@ public class TourController extends WebMvcConfigurerAdapter {
 
         ArrayList<ProductOrder> products = new ArrayList<>();
         for(ProductOrder productOrder : productOrders){
-            if(productOrder.getTour() == null){
-                products.add(productOrder);
+            if(productOrder.getAccOrRej().equalsIgnoreCase("akzeptiert")) {}
+            else {
+                if(productOrder.getTour() == null){
+                    products.add(productOrder);
+                }
             }
         }
         model.addAttribute("products", products);

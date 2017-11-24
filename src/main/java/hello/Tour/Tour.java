@@ -18,6 +18,7 @@ public class Tour {
     @ManyToOne
     private Trailer trailer;
     private Integer freePalettes;
+    private Integer finished;
 
     public Long getId() {
         return id;
@@ -57,5 +58,13 @@ public class Tour {
 
     public void setFreePalettes(Integer freePalettes) {
         this.freePalettes = freePalettes;
+    }
+
+    public Integer getFinished() {
+        return finished;
+    }
+
+    public void setFinished(Integer finished) {
+        this.finished = finished;
     }
 }
