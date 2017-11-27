@@ -103,4 +103,12 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
         return "addedProduct";
     }
 
+    @RequestMapping("/deleteJob/{prodId}")
+    public String deleteJob(@ModelAttribute("productOrder") ProductOrder productOrder, @PathVariable("prodId") Long prodId, Model model) {
+        ProductOrder prod = productOrderRepository.findOne(prodId);
+        this.productOrderRepository.delete(prod);
+        model.addAttribute("prod", prod);
+        return "deleteJob";
+    }
+
 }

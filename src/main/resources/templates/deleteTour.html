@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Show Tour</title>
+    <title>Delete Tour</title>
     <!-- Required meta tags -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -14,9 +14,7 @@
     <h1>
         <div align="left">
             <p>
-
                 <img th:src="@{/images/FirmaESE.png}" style="position: absolute; top:0; left: 0px;" height="108" width="144"/>
-
             </p>
         </div>
         <div class="text-right">
@@ -32,11 +30,8 @@
                 </button>
             </a>
         </div>
+        Folgende Tour wurde gelöscht:
     </h1>
-    <div align="center">
-       <h1>Tourenübersicht</h1>
-    </div>
-    <br/>
     <table style="width:100%">
         <thead>
         <tr>
@@ -48,58 +43,44 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="tour : ${tours}" >
+        <tr>
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.id}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.driver.firstName}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.vehicle.model}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.trailer.model}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.freePalettes}"/></td>
-            <td>
-                <a th:href="${'/newTourProductOrders/'+tour.id}">
-                    <button type="button" class="btn btn-outline-warning btn-lg">
-                        Bearbeiten
-                    </button>
-                </a>
-            </td>
         </tr>
         </tbody>
     </table>
     <br/>
-    Unvollständige Touren:
+    Ihre Tour enthielt folgende Aufträge:
     <br/>
-    <table style="width:25%">
+    <table style="width:100%">
         <thead>
         <tr>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Tour Id'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Stadt'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Land'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Anz. Paletten'"/></b></td>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="tour : ${incompTours}" >
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.id}"/></td>
-            <td>
-                <a th:href="${'/newTour/'+tour.id}">
-                    <button type="button" class="btn btn-outline-warning btn-lg">
-                        Bearbeiten
-                    </button>
-                </a>
-            </td>
+        <tr th:each="prod : ${products}" >
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.name}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.city}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.land}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.palettes}"/></td>
         </tr>
         </tbody>
     </table>
     <br/>
     <div class="col-md-3 mb-3">
         <div class="btn-group" role="group">
-            <a href="/newTourCreate">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Neue Tour erstellen
-                </button>
-            </a>
-            <a href="/showToursOld">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Abgeschlossene Touren
-                </button>
-            </a>
-            <a href="/logistician">
+            <a href="/showTours">
                 <button type="button" class="btn btn-outline-warning btn-lg">
                     Zurück zur Übersicht
                 </button>

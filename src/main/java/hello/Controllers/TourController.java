@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.ArrayList;
-
+import java.sql.*;
 
 @Controller
 public class TourController extends WebMvcConfigurerAdapter {
@@ -36,7 +36,6 @@ public class TourController extends WebMvcConfigurerAdapter {
         Iterable<Tour> allTours = this.tourRepository.findAll();
         ArrayList<Tour> tours = new ArrayList<>();
         ArrayList<Tour> incompTours = new ArrayList<>();
-        ArrayList<Tour> finishedTours = new ArrayList<>();
         for (Tour tour1 : allTours) {
             if (tour1.getFinished() == null) {
                 if (tour1.getDriver() != null && tour1.getVehicle() != null && tour1.getTrailer() != null) {
@@ -44,14 +43,24 @@ public class TourController extends WebMvcConfigurerAdapter {
                 } else {
                     incompTours.add(tour1);
                 }
-            } else {
-                finishedTours.add(tour1);
             }
         }
         model.addAttribute("tours", tours);
         model.addAttribute("incompTours", incompTours);
-        model.addAttribute("finishedTours", finishedTours);
         return "showTours";
+    }
+
+    @RequestMapping(value="/showToursOld")
+    public String listToursOld(@ModelAttribute("tour") Tour tour, Model model){
+        Iterable<Tour> allTours = this.tourRepository.findAll();
+        ArrayList<Tour> tours = new ArrayList<>();
+        for (Tour tour1 : allTours) {
+            if (tour1.getFinished() != null) {
+                tours.add(tour1);
+            }
+        }
+        model.addAttribute("tours", tours);
+        return "showToursOld";
     }
 
     @RequestMapping(value="/newTourCreate")
@@ -231,6 +240,31 @@ public class TourController extends WebMvcConfigurerAdapter {
         }
         model.addAttribute("tourProducts", tourProducts);
         return "newTourProductOrders";
+    }
+
+    @RequestMapping(value="/deleteTour/{tourId}")
+    public String deleteTour(@PathVariable("tourId") Long tourId, Model model) {
+        Tour tour = this.tourRepository.findOne(tourId);
+        Iterable<ProductOrder> allProductOrders = productOrderRepository.findAll();
+        ArrayList<ProductOrder> products = new ArrayList<>();
+        for(ProductOrder product : allProductOrders){
+            if(product.getTour()==tour){
+                products.add(product);
+                product.setTour(null);
+                this.productOrderRepository.save(product);
+            }
+        }
+        Trailer trailer = tour.getTrailer();
+        trailer.setFree(trailer.getFree()+1);
+        this.trailerRepository.save(trailer);
+        Vehicle vehicle = tour.getVehicle();
+        vehicle.setFree(vehicle.getFree()+1);
+        this.vehicleRepository.save(vehicle);
+        
+        this.tourRepository.delete(tour);
+        model.addAttribute("products", products);
+        model.addAttribute("tour", tour);
+        return "deleteTour";
     }
 
 }
