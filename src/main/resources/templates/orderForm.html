@@ -16,9 +16,7 @@
     <h1>
         <div align="left">
             <p>
-
                 <img th:src="@{/images/FirmaESE.png}" style="position: absolute; top:0; left: 0px;" height="108" width="144"/>
-
             </p>
         </div>
         <div class="text-right">
@@ -35,6 +33,7 @@
             </a>
         </div>
     </h1>
+    <br/>
     <form th:action="@{/orderForm(id=${param.id})}" method="post" th:object="${productOrder}" class="container" id="needs-validation" style="align-content: center">
         <div class="row">
             <div class="col-md-6 mb-3">

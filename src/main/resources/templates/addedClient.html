@@ -14,9 +14,7 @@
         <h1>
             <div align="left">
                 <p>
-
                     <img th:src="@{/images/FirmaESE.png}" style="position: absolute; top:0; left: 0px;" height="108" width="144"/>
-
                 </p>
             </div>
             <div class="text-right">
@@ -32,8 +30,12 @@
                     </button>
                 </a>
             </div>
-            Dieser Kunde wurde erstellt
         </h1>
+            <br/>
+            <div align="center">
+                <h1>Dieser Kunde wurde erstellt</h1>
+            </div>
+
         <ul class="list-group">
             <li class="list-group-item list-group-item-warning" th:text="'Kunden Id: '+ ${client.id}"/>
             <li class="list-group-item list-group-item-warning" th:text="'Name: ' + ${client.name}"/>
@@ -43,6 +45,7 @@
             <li class="list-group-item list-group-item-warning" th:text="'Telefon: ' + ${client.phone}"/>
             <li class="list-group-item list-group-item-warning" th:text="'Email: ' + ${client.email}"/>
         </ul>
+        <br/>
         <div class="col-md-3 mb-3">
             <div class="btn-group" role="group">
                 <a href="/clientForm">

@@ -8,13 +8,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
 </head>
 <body style="background-color: #87AFC7">
-<h1>
     <div class="container">
         <div align="left">
             <p>
-
                 <img th:src="@{/images/FirmaESE.png}" style="position: absolute; top:0; left: 0;" height="108" width="144"/>
-
             </p>
         </div>
     <div class="text-right">
@@ -23,22 +20,56 @@
             <button type="button" class="btn btn-outline-warning btn-lg">
                 Logout
             </button>
-        </a>
-        <a href="/info/user">
-            <button type="button" class="btn btn-outline-warning btn-lg">
-                Userinfo
-            </button>
-        </a>
+            </a>
+                <a href="/info/user">
+                    <button type="button" class="btn btn-outline-warning btn-lg">
+                        Userinfo
+                    </button>
+            </a>
+        </div>
     </div>
-    </div>
-</h1>
 <div align="center">
     <h1>Aufträge</h1>
 </div>
 
 <br/>
-<table style="width:100%">
-    <thead>
+    <div class="container">
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
+                <td><b><li class="list-group-item list-group-item-warning" th:text="'Stadt'"/></b></td>
+                <td><b><li class="list-group-item list-group-item-warning" th:text="'Land'"/></b></td>
+                <td><b><li class="list-group-item list-group-item-warning" th:text="'AuftragsId'"/></b></td>
+                <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
+                <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="prod : ${products}" >
+                <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.name}"/></td>
+                <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.city}"/></td>
+                <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.land}"/></td>
+                <td><li class="list-group-item list-group-item-warning" th:text="${prod.id}"/></td>
+                <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
+                <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
+                <td>
+                    <a th:href="${'/deleteJob/'+prod.id}">
+                        <button type="button" class="btn btn-outline-warning btn-lg">
+                             Auftrag löschen
+                         </button>
+                     </a>
+                 </td>
+            </tr>
+        </tbody>
+    </table>
+<br/>
+        <div align="center">
+            <h1>Bereits akzeptierte Aufträge</h1>
+        </div>
+<br/>
+    <table style="width:100%">
+        <thead>
         <tr>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Stadt'"/></b></td>
@@ -46,58 +77,27 @@
             <td><b><li class="list-group-item list-group-item-warning" th:text="'AuftragsId'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
-         </tr>
-     </thead>
-     <tbody>
-         <tr th:each="prod : ${products}" >
-             <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.name}"/></td>
-             <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.city}"/></td>
-             <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.land}"/></td>
-             <td><li class="list-group-item list-group-item-warning" th:text="${prod.id}"/></td>
-             <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
-             <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
-             <td>
-                 <a th:href="${'/deleteJob/'+prod.id}">
-                     <button type="button" class="btn btn-outline-warning btn-lg">
-                         Auftrag löschen
-                     </button>
-                 </a>
-             </td>
         </tr>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        <tr th:each="prod : ${accProducts}" >
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.name}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.city}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.land}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.id}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
+        </tr>
+        </tbody>
+    </table>
 <br/>
-Bereits akzeptierte Aufträge:
-<br/>
-<table style="width:100%">
-    <thead>
-    <tr>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Stadt'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Land'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'AuftragsId'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="prod : ${accProducts}" >
-        <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.name}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.city}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.land}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${prod.id}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
-    </tr>
-    </tbody>
-</table>
-<br/>
-<a href="/logistician">
-    <button type="button" class="btn btn-outline-warning btn-lg">
-        Zurück
-    </button>
-</a>
 
+    <a href="/logistician">
+        <button type="button" class="btn btn-outline-warning btn-lg">
+            Zurück
+        </button>
+    </a>
+    </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
