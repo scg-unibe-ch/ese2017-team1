@@ -103,6 +103,13 @@ public class ProductOrderController extends WebMvcConfigurerAdapter {
         return "addedProduct";
     }
 
+    @RequestMapping("/deleteJobCheck/{prodId}")
+    public String checkDeleteJob(@ModelAttribute("productOrder") ProductOrder productOrder, @PathVariable("prodId") Long prodId, Model model) {
+        ProductOrder prod = productOrderRepository.findOne(prodId);
+        model.addAttribute("prod", prod);
+        return "deleteJobCheck";
+    }
+
     @RequestMapping("/deleteJob/{prodId}")
     public String deleteJob(@ModelAttribute("productOrder") ProductOrder productOrder, @PathVariable("prodId") Long prodId, Model model) {
         ProductOrder prod = productOrderRepository.findOne(prodId);

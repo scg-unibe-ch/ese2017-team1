@@ -242,6 +242,21 @@ public class TourController extends WebMvcConfigurerAdapter {
         return "newTourProductOrders";
     }
 
+    @RequestMapping(value="/deleteTourCheck/{tourId}")
+    public String checkDeleteTour(@PathVariable("tourId") Long tourId, Model model) {
+        Tour tour = this.tourRepository.findOne(tourId);
+        Iterable<ProductOrder> allProductOrders = productOrderRepository.findAll();
+        ArrayList<ProductOrder> products = new ArrayList<>();
+        for(ProductOrder product : allProductOrders){
+            if(product.getTour()==tour) {
+                products.add(product);
+            }
+        }
+        model.addAttribute("products", products);
+        model.addAttribute("tour", tour);
+        return "deleteTourCheck";
+    }
+
     @RequestMapping(value="/deleteTour/{tourId}")
     public String deleteTour(@PathVariable("tourId") Long tourId, Model model) {
         Tour tour = this.tourRepository.findOne(tourId);

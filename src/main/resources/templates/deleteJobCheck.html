@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Delete Tour</title>
+    <title>Delete Job</title>
     <!-- Required meta tags -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -30,29 +30,8 @@
                 </button>
             </a>
         </div>
-        Folgende Tour wurde gelöscht:
+        Möchten Sie diesen Auftrag wirklich löschen?
     </h1>
-    <table style="width:100%">
-        <thead>
-        <tr>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Tour Id'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrer'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrzeug'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Anhänger'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Freie Paletten'"/></b></td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.id}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.driver.firstName}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.vehicle.model}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.trailer.model}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.freePalettes}"/></td>
-        </tr>
-        </tbody>
-    </table>
-    <br/>
     <table style="width:100%">
         <thead>
         <tr>
@@ -65,7 +44,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="prod : ${products}" >
+        <tr>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.name}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.city}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.land}"/></td>
@@ -78,9 +57,14 @@
     <br/>
     <div class="col-md-3 mb-3">
         <div class="btn-group" role="group">
-            <a href="/showTours">
+            <a>
+                <button type="button" class="btn btn-outline-warning btn-lg" onclick="javascript:history.back()">
+                    Zurück
+                </button>
+            </a>
+            <a th:href="${'/deleteJob/'+prod.id}">
                 <button type="button" class="btn btn-outline-warning btn-lg">
-                    Zurück zur Übersicht
+                    Auftrag definitiv löschen!
                 </button>
             </a>
         </div>

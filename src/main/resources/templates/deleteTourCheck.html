@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Neue Tour</title>
+    <title>Delete Tour</title>
     <!-- Required meta tags -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -14,9 +14,7 @@
     <h1>
         <div align="left">
             <p>
-
                 <img th:src="@{/images/FirmaESE.png}" style="position: absolute; top:0; left: 0px;" height="108" width="144"/>
-
             </p>
         </div>
         <div class="text-right">
@@ -32,12 +30,8 @@
                 </button>
             </a>
         </div>
+        Möchten Sie folgende Tour wirklich löschen?
     </h1>
-    <br/>
-    <div align="center">
-        <h1>Tour</h1>
-    </div>
-    <br/>
     <table style="width:100%">
         <thead>
         <tr>
@@ -55,50 +49,9 @@
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.vehicle.model}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.trailer.model}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.freePalettes}"/></td>
-            <td>
-                <a th:href="${'/deleteTourCheck/'+tour.id}">
-                    <button type="button" class="btn btn-outline-warning btn-lg">
-                        Tour löschen
-                    </button>
-                </a>
-            </td>
         </tr>
         </tbody>
     </table>
-    <br/>
-        Ihre Tour enthält folgende Aufträge
-    <br/>
-    <table style="width:100%">
-        <thead>
-        <tr>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Stadt'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Land'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Anz. Paletten'"/></b></td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="prod : ${tourProducts}" >
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.name}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.city}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.land}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.palettes}"/></td>
-            <td>
-                <a th:href="${'/newTourProductOrders/'+tour.id+'/'+prod.id+'/'+(-1)}">
-                    <button type="button" class="btn btn-outline-warning btn-lg">
-                        -
-                    </button>
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <br/>
-        Diese Aufträge wurden noch keiner Tour zugeordnet
     <br/>
     <table style="width:100%">
         <thead>
@@ -119,22 +72,20 @@
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.palettes}"/></td>
-            <td>
-                <a th:href="${'/newTourProductOrders/'+tour.id+'/'+prod.id+'/'+1}">
-                    <button type="button" class="btn btn-outline-warning btn-lg">
-                        +
-                    </button>
-                </a>
-            </td>
         </tr>
         </tbody>
     </table>
     <br/>
     <div class="col-md-3 mb-3">
         <div class="btn-group" role="group">
-            <a href="/showTours">
+            <a>
+                <button type="button" class="btn btn-outline-warning btn-lg" onclick="javascript:history.back()">
+                    Zurück
+                </button>
+            </a>
+            <a th:href="${'/deleteTour/'+tour.id}">
                 <button type="button" class="btn btn-outline-warning btn-lg">
-                    Zurück zur Übersicht
+                    Tour definitiv löschen!
                 </button>
             </a>
         </div>
