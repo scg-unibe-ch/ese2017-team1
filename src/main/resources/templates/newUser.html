@@ -13,9 +13,9 @@
 <body style = "background-color: #87AFC7">
 <h1>
     <div align="left">
-        <p>
-            <img th:src="@{/images/FirmaESE.png}" style="position: absolute; top:0; left: 0px;" height="108" width="144"/>
-        </p>
+        <a href="/logistician">
+            <img th:src="@{/images/FirmaESE.png}" style="position: absolute; top:0; left: 0;" height="108" width="144"/>
+        </a>
     </div>
     <div class="text-right">
         <!-- Logout Button -->
@@ -31,6 +31,7 @@
         </a>
     </div>
 </h1>
+<br/>
 <form th:action="@{/newUser}" method="post" th:object="${user}" class="container" id="needs-validation" style="align-content: center">
     <div class="row">
         <div class="col-md-6 mb-3">
@@ -67,9 +68,13 @@
         </div>
     </div>
     <div class="btn-group" role="group">
-        <button class="btn btn-outline-warning btn-lg" type="submit">User Speichern</button>
+        <div align="left">
+            <a href="/logistician">
+                <img th:src="@{/images/FirmaESE.png}" style="position: absolute; top:0; left: 0;" height="108" width="144"/>
+            </a>
+        </div>
         <button class="btn btn-outline-warning btn-lg" type="reset">Reset</button>
-        <button class="btn btn-outline-warning btn-lg" type="button" onclick="history.back()">Zurück</button>
+        <button class="btn btn-outline-warning btn-lg" type="submit">User Speichern</button>
     </div>
 </form>
 
