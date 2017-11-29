@@ -107,8 +107,11 @@ public class DriverController extends WebMvcConfigurerAdapter {
      */
     @RequestMapping(value="/driverTours/{productOrderId}/{accOrRej}")
     public String acceptedOrRejected(@PathVariable("productOrderId") Long productOrderId, @PathVariable("accOrRej") String accOrRej, Model model) {
+
+        // find ProductOrder by ID from param productOrderId given to the method
         ProductOrder productOrder = this.productOrderRepository.findOne(productOrderId);
 
+        // sets status AccOrRej to the param accOrRej given to the method
         productOrder.setAccOrRej(accOrRej);
 
         this.productOrderRepository.save(productOrder);
@@ -117,6 +120,17 @@ public class DriverController extends WebMvcConfigurerAdapter {
         return "acceptedOrRejected";
     }
 
+    /**
+     * Driver can finish Tour but only when every productOrder in the Tour is either set to "akzepiert" or "abgelehnt".
+     * The default status of AccOrRej of a ProductOrder is "keine Angabe".
+     * After this method Driver is asked whether he really wants to finish that tour (endTourCheck)
+     * before tour is really marked as finished.
+     *
+     *
+     * @param tourId TourID of the current Tour which should be marked as finished
+     * @return endTourFailed if not every ProductOrder in the Tour is marked as "akzeptiert" or "abgelehnt"
+     *         endTourCheck otherwise
+     */
     @RequestMapping(value="/endTourCheck/{tourId}")
     public String endTourCheck(@PathVariable("tourId") Long tourId, Model model) {
         Tour tour = tourRepository.findOne(tourId);
@@ -138,6 +152,12 @@ public class DriverController extends WebMvcConfigurerAdapter {
         return "endTourCheck";
     }
 
+    /**
+     * Sets tour status to finished and sets TourID of each ProductOrder which was in that tour to null.
+     * Which means that the ProductOrders are now no longer assigned to a tour.
+     *
+     * @param tourId TourID of tour which is to be marked as finished
+     */
     @RequestMapping(value="/endTour/{tourId}")
     public String endTour(@PathVariable("tourId") Long tourId, Model model) {
         Tour tour = tourRepository.findOne(tourId);
@@ -153,6 +173,8 @@ public class DriverController extends WebMvcConfigurerAdapter {
                 }
             }
         }
+
+        // sets tour status to finished and saves it
         tour.setFinished(1);
         this.tourRepository.save(tour);
 
