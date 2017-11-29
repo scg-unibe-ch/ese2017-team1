@@ -53,25 +53,48 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.
                 authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/assignedJob").hasAuthority("ROLE_LOGISTICIAN")
-                .antMatchers("/jobToDriver").hasAuthority("ROLE_LOGISTICIAN")
                 .antMatchers("/login").permitAll()
                 .antMatchers("/mapView").permitAll()
                 .antMatchers("/registration").permitAll()
+                .antMatchers("/index").permitAll()
+
+                .antMatchers("/assignedJob").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/jobToDriver").hasAuthority("ROLE_LOGISTICIAN")
                 .antMatchers("/logistician").hasAuthority("ROLE_LOGISTICIAN")
                 .antMatchers("/productOrder").hasAuthority("ROLE_LOGISTICIAN")
                 .antMatchers("/clientForm").hasAuthority("ROLE_LOGISTICIAN")
-                .antMatchers("/orderForm").hasAuthority("ROLE_LOGISTICIAN")
+
                 .antMatchers("/addedClient").hasAuthority("ROLE_LOGISTICIAN")
                 .antMatchers("/addedProduct").hasAuthority("ROLE_LOGISTICIAN")
+
                 .antMatchers("/selectClient").hasAuthority("ROLE_LOGISTICIAN")
                 .antMatchers("/searchClient").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/orderForm").hasAuthority("ROLE_LOGISTICIAN")
+
+                .antMatchers("/showUsers").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/newUser").hasAuthority("ROLE_LOGISTICIAN")
+
                 .antMatchers("/showJobs").hasAuthority("ROLE_LOGISTICIAN")
-                .antMatchers("/index").permitAll()
+                .antMatchers("/deleteJobCheck/**").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/deleteJob/**").hasAuthority("ROLE_LOGISTICIAN")
+
+                .antMatchers("/showTours").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/newTourCreate").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/newTour/**").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/newTourTruck/**").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/newTourTrailer/**").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/newTourProductOrders/**").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/deleteTourCheck/**").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/deleteTour/**").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/showToursOld").hasAuthority("ROLE_LOGISTICIAN")
+
                 .antMatchers("/driver").hasAuthority("ROLE_DRIVER")
+                .antMatchers("/showToursDriver").hasAuthority("ROLE_DRIVER")
                 .antMatchers("/acceptedOrRejected").hasAuthority("ROLE_DRIVER")
                 .antMatchers("/driverTours").hasAuthority("ROLE_DRIVER")
+
                 .antMatchers("/admin/**").hasAuthority("ROLE_ADMIN").anyRequest()
+
                 .authenticated().and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
                 .defaultSuccessUrl("/index")
