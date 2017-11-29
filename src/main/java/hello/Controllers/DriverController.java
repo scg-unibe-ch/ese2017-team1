@@ -26,16 +26,24 @@ public class DriverController extends WebMvcConfigurerAdapter {
     @Autowired
     private ProductOrderRepository productOrderRepository;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private TourRepository tourRepository;
+
+    /**
+     * "Hopepage" of Driver
+     * Possibility to go to tours planned for that driver
+     */
     @RequestMapping("/driver")
     public String driver() {
         return "driver";
     }
 
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private TourRepository tourRepository;
-
+    /**
+     * Shows Tours that the logged in Driver should work on
+     */
     @RequestMapping("/showToursDriver")
     public String driverTours(Model model) {
 
@@ -45,6 +53,10 @@ public class DriverController extends WebMvcConfigurerAdapter {
 
         Iterable<Tour> tours = this.tourRepository.findAll();
 
+        /**
+         * adds tours to the List that are not done yet
+         * and are supposed to be executed by the driver logged in
+         */
         for(Tour tour : tours){
             if (tour.getFinished() == null) {
                 if(tour.getDriver().getId() == user.getId()){
@@ -56,6 +68,10 @@ public class DriverController extends WebMvcConfigurerAdapter {
         return "showToursDriver";
     }
 
+    /**
+     * Shows the tour that was selected by the logged in Driver to display.
+     * @param tourId TourID from the tour that was selected in the previous page
+     */
     @RequestMapping(value="/driverTours/{tourId}")
     public String driverTours(@PathVariable("tourId") Long tourId, Model model) {
 
@@ -80,6 +96,15 @@ public class DriverController extends WebMvcConfigurerAdapter {
         return "driverTours";
     }
 
+    /**
+     * This page allows the logged in Driver to set a ProductOrder to "accepted" or "rejected"
+     * The status of the ProductOrder which is given by the ID as a param is set to either "akzepiert" or "abgelehnt"
+     * which is also given as a param to the method.
+     * The two parameters depend on the selection on the last page.
+     * The user selects either "akzeptiert" or "abgelehnt" at the row of a specific ProductOrder.
+     * @param productOrderId the productOrder from the tour that was selected
+     * @param accOrRej the value selected for the productOrder ("akzeptiert" or "abgelehnt")
+     */
     @RequestMapping(value="/driverTours/{productOrderId}/{accOrRej}")
     public String acceptedOrRejected(@PathVariable("productOrderId") Long productOrderId, @PathVariable("accOrRej") String accOrRej, Model model) {
         ProductOrder productOrder = this.productOrderRepository.findOne(productOrderId);
