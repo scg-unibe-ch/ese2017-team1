@@ -18,7 +18,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import java.util.ArrayList;
 
 /**
- * Created by angelakeller on 01.11.17.
+ * Controller which is responsible for the interaction of a Driver with the programm.
+ * A Driver can display the tours he is assigned to, set the productOrders in that tour to either "akzeptiert"
+ * or "abgelehnt" and finish a tour.
  */
 @Controller
 public class DriverController extends WebMvcConfigurerAdapter {
