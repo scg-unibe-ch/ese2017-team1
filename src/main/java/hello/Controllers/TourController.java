@@ -1,14 +1,7 @@
 package hello.Controllers;
 
-import hello.ProductOrders.ProductOrder;
-import hello.Repositories.ProductOrderRepository;
-import hello.Repositories.TourRepository;
-import hello.Repositories.TrailerRepository;
-import hello.Repositories.VehicleRepository;
 import hello.Services.*;
 import hello.Tour.Tour;
-import hello.Trucks.Trailer;
-import hello.Trucks.Vehicle;
 import hello.Users.Driver.Driver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import java.util.ArrayList;
 
 /**
  * Controller that is responsible for handling tours.
@@ -37,14 +29,6 @@ public class TourController extends WebMvcConfigurerAdapter {
     @Autowired
     private ProductOrderService productOrderService;
 
-    @Autowired
-    private TourRepository tourRepository;
-    @Autowired
-    private ProductOrderRepository productOrderRepository;
-    @Autowired
-    private TrailerRepository trailerRepository;
-    @Autowired
-    private VehicleRepository vehicleRepository;
 
     /**
      * Lists all the tours that are already planned or in the process of planning.
@@ -156,76 +140,43 @@ public class TourController extends WebMvcConfigurerAdapter {
         return "newTourProductOrders";
     }
 
+    /**
+     * Lists all productOrders in your tour and the ones that are not assigned to a tour yet, so logistician
+     * can set/change productOrders in the tour.
+     * Adds or deletes productOrder to/from tour.
+     * @param tourId Id of tour the logistician is currently creating or editing
+     * @param prodId Id of productOrder that is added or deleted
+     * @param add 1 if productOrder is added to tour, -1 if productOrder is deleted from tour
+     */
     @RequestMapping(value="/newTourProductOrders/{tourId}/{prodId}/{add}")
     public String tourProduct(@PathVariable("tourId") Long tourId, @PathVariable("prodId") Long prodId, @PathVariable ("add") Long add, Model model) {
         tourService.addProduct(tourId, prodId, add);
-
-        Tour tour = tourService.findTour(tourId);
-        ProductOrder product = productOrderService.findProductOrder(prodId);
-
-        model.addAttribute("product", product);
-        model.addAttribute("tour", tour);
-
-        Iterable<ProductOrder> productOrders = this.productOrderRepository.findAll();
-
-        ArrayList<ProductOrder> products = new ArrayList<>();
-        for(ProductOrder productOrder : productOrders){
-            if(productOrder.getAccOrRej().equalsIgnoreCase("akzeptiert")) {}
-            else {
-                if(productOrder.getTour() == null){
-                    products.add(productOrder);
-                }
-            }
-        }
-        model.addAttribute("products", products);
-
-        ArrayList<ProductOrder> tourProducts = new ArrayList<>();
-        for (ProductOrder productOrder : productOrders){
-            if(productOrder.getTour() == tour){
-                tourProducts.add(productOrder);
-            }
-        }
-        model.addAttribute("tourProducts", tourProducts);
+        model.addAttribute("tour", tourService.findTour(tourId));
+        model.addAttribute("products", productOrderService.listNotAccNoTourProductOrders());
+        model.addAttribute("tourProducts", productOrderService.listTourProductOrders(tourId));
         return "newTourProductOrders";
     }
 
+    /**
+     * Asks again if user really wants to delete tour.
+     * @param tourId Id of tour that would be deleted
+     */
     @RequestMapping(value="/deleteTourCheck/{tourId}")
     public String checkDeleteTour(@PathVariable("tourId") Long tourId, Model model) {
-        Tour tour = this.tourRepository.findOne(tourId);
-        Iterable<ProductOrder> allProductOrders = productOrderRepository.findAll();
-        ArrayList<ProductOrder> products = new ArrayList<>();
-        for(ProductOrder product : allProductOrders){
-            if(product.getTour()==tour) {
-                products.add(product);
-            }
-        }
-        model.addAttribute("products", products);
-        model.addAttribute("tour", tour);
+        model.addAttribute("products", productOrderService.listTourProductOrders(tourId));
+        model.addAttribute("tour", tourService.findTour(tourId));
         return "deleteTourCheck";
     }
 
+    /**
+     * Deletes tour and shows tour that has been deleted.
+     * @param tourId Id of tour that would be deleted
+     */
     @RequestMapping(value="/deleteTour/{tourId}")
     public String deleteTour(@PathVariable("tourId") Long tourId, Model model) {
-        Tour tour = this.tourRepository.findOne(tourId);
-        Iterable<ProductOrder> allProductOrders = productOrderRepository.findAll();
-        ArrayList<ProductOrder> products = new ArrayList<>();
-        for(ProductOrder product : allProductOrders){
-            if(product.getTour()==tour){
-                products.add(product);
-                product.setTour(null);
-                this.productOrderRepository.save(product);
-            }
-        }
-        Trailer trailer = tour.getTrailer();
-        trailer.setFree(trailer.getFree()+1);
-        this.trailerRepository.save(trailer);
-        Vehicle vehicle = tour.getVehicle();
-        vehicle.setFree(vehicle.getFree()+1);
-        this.vehicleRepository.save(vehicle);
-        
-        this.tourRepository.delete(tour);
-        model.addAttribute("products", products);
-        model.addAttribute("tour", tour);
+        model.addAttribute("products", productOrderService.listTourProductOrders(tourId));
+        model.addAttribute("tour", tourService.findTour(tourId));
+        tourService.deleteTour(tourId);
         return "deleteTour";
     }
 

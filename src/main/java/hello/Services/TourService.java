@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ */
 @Service("tourService")
 public class TourService {
 
@@ -69,14 +72,19 @@ public class TourService {
 
     public Tour findTour(Long tourId) { return this.tourRepository.findOne(tourId); }
 
-
     public void assignVehicle(Long tourId, Long vehId) {
         Tour tour = findTour(tourId);
         Vehicle vehicle = vehicleService.findVehicle(vehId);
         vehicle.setFree(vehicle.getFree() - 1);
         tour.setVehicle(vehicle);
 
-        Integer palettes = tour.getVehicle().getPalettesAmount() + tour.getTrailer().getPalettesAmount();
+        Integer palettes = 0;
+        if(tour.getVehicle() != null){
+            palettes += tour.getVehicle().getPalettesAmount();
+        }
+        if(tour.getTrailer() != null){
+            palettes += tour.getTrailer().getPalettesAmount();
+        }
         tour.setFreePalettes(palettes);
 
         save(tour);
@@ -89,7 +97,13 @@ public class TourService {
         trailer.setFree(trailer.getFree() - 1);
         tour.setTrailer(trailer);
 
-        Integer palettes = tour.getVehicle().getPalettesAmount() + tour.getTrailer().getPalettesAmount();
+        Integer palettes = 0;
+        if(tour.getVehicle() != null){
+            palettes += tour.getVehicle().getPalettesAmount();
+        }
+        if(tour.getTrailer() != null){
+            palettes += tour.getTrailer().getPalettesAmount();
+        }
         tour.setFreePalettes(palettes);
 
         save(tour);
@@ -118,5 +132,22 @@ public class TourService {
         }
         productOrderService.save(product);
         save(tour);
+    }
+
+    public void deleteTour(Long tourId) {
+        for(ProductOrder product : productOrderService.listTourProductOrders(tourId)){
+            product.setTour(null);
+            productOrderService.save(product);
+        }
+
+        Tour tour = findTour(tourId);
+        Trailer trailer = tour.getTrailer();
+        trailer.setFree(trailer.getFree()+1);
+        trailerService.save(trailer);
+        Vehicle vehicle = tour.getVehicle();
+        vehicle.setFree(vehicle.getFree()+1);
+        vehicleService.save(vehicle);
+
+        this.tourRepository.delete(tour);
     }
 }
