@@ -2,6 +2,7 @@ package hello.Controllers;
 
 import hello.ProductOrders.ProductOrder;
 import hello.Repositories.*;
+import hello.Services.*;
 import hello.Tour.Tour;
 import hello.Trucks.Trailer;
 import hello.Trucks.Vehicle;
@@ -15,147 +16,143 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import java.util.ArrayList;
 import java.sql.*;
 
+/**
+ * Controller that is responsible for handling tours.
+ * A tour is a set of Driver, Vehicle, Trailer and some Productorders that need to be delivered.
+ * Every Logistician can create, edit or delete Tours.
+ */
 @Controller
 public class TourController extends WebMvcConfigurerAdapter {
 
+    @Autowired
+    private TourService tourService;
+    @Autowired
+    private DriverService driverService;
+    @Autowired
+    private VehicleService vehicleService;
+    @Autowired
+    private TrailerService trailerService;
+    @Autowired
+    private ProductOrderService productOrderService;
 
-    @Autowired
-    private DriverRepository driverRepository;
-    @Autowired
-    private VehicleRepository vehicleRepository;
     @Autowired
     private TourRepository tourRepository;
     @Autowired
+    private ProductOrderRepository productOrderRepository;
+    @Autowired
     private TrailerRepository trailerRepository;
     @Autowired
-    private ProductOrderRepository productOrderRepository;
+    private VehicleRepository vehicleRepository;
 
-
+    /**
+     * Lists all the tours that are already planned or in the process of planning.
+     */
     @RequestMapping(value="/showTours")
-    public String listTours(@ModelAttribute("tour") Tour tour, Model model){
-        Iterable<Tour> allTours = this.tourRepository.findAll();
-        ArrayList<Tour> tours = new ArrayList<>();
-        ArrayList<Tour> incompTours = new ArrayList<>();
-        for (Tour tour1 : allTours) {
-            if (tour1.getFinished() == null) {
-                if (tour1.getDriver() != null && tour1.getVehicle() != null && tour1.getTrailer() != null) {
-                    tours.add(tour1);
-                } else {
-                    incompTours.add(tour1);
-                }
-            }
-        }
-        model.addAttribute("tours", tours);
-        model.addAttribute("incompTours", incompTours);
+    public String tours(@ModelAttribute("tour") Tour tour, Model model){
+        model.addAttribute("tours", tourService.listTours());
+        model.addAttribute("incompTours", tourService.listIncompTours());
         return "showTours";
     }
 
+    /**
+     * Lists all the tours that are already finished.
+     * A driver can put a tour on "finished" if he has delivered all the productOrders within that tour
+     * successfully or unsuccessfully.
+     */
     @RequestMapping(value="/showToursOld")
     public String listToursOld(@ModelAttribute("tour") Tour tour, Model model){
-        Iterable<Tour> allTours = this.tourRepository.findAll();
-        ArrayList<Tour> tours = new ArrayList<>();
-        for (Tour tour1 : allTours) {
-            if (tour1.getFinished() != null) {
-                tours.add(tour1);
-            }
-        }
-        model.addAttribute("tours", tours);
+        model.addAttribute("tours", tourService.listFinishedTours());
         return "showToursOld";
     }
 
+    /**
+     * Create a new tour
+     */
     @RequestMapping(value="/newTourCreate")
     public String newTour(@ModelAttribute("driver") Driver driver, Model model){
         Tour tour = new Tour();
-        this.tourRepository.save(tour);
+        tourService.save(tour);
         model.addAttribute("tour", tour);
         return "newTourCreate";
     }
 
-
+    /**
+     * The logistician can choose a driver he/she wants to assign the tour to.
+     * @param tourId Id of tour the logistician is currently creating or editing.
+     */
     @RequestMapping(value="/newTour/{tourId}")
     public String Driver(@PathVariable("tourId") Long tourId, @ModelAttribute("driver") Driver driver, Model model){
-        Iterable<Driver> drivers = this.driverRepository.findAll();
-        model.addAttribute("drivers", drivers);
-        Tour tour = this.tourRepository.findOne(tourId);
-        model.addAttribute("tour", tour);
+        model.addAttribute("drivers", driverService.listDrivers());
+        model.addAttribute("tour", tourService.findTour(tourId));
         return "newTour";
     }
 
+    /**
+     * Choose a vehicle for the tour. Driver chosen in newTour is assigned to tour.
+     * @param tourId Id of tour the logistician is currently creating or editing
+     * @param driverId Id of driver chosen in newTour
+     */
     @RequestMapping(value="/newTourTruck/{tourId}/{driverId}")
     public String tourDriver(@PathVariable("tourId") Long tourId, @PathVariable("driverId") Long driverId, Model model) {
-        Iterable<Vehicle> allVehicles = this.vehicleRepository.findAll();
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
-        ArrayList<Vehicle> usedVehicles = new ArrayList<>();
-        for (Vehicle vehicle : allVehicles) {
-            if (vehicle.getFree() > 0) {
-                vehicles.add(vehicle);
-            } else {
-                usedVehicles.add(vehicle);
-            }
-        }
-        model.addAttribute("vehicles", vehicles);
-        model.addAttribute("usedVehicles", usedVehicles);
-        Driver driver = this.driverRepository.findOne(driverId);
+
+        model.addAttribute("vehicles", vehicleService.listVehicles());
+        model.addAttribute("usedVehicles", vehicleService.listUsedVehicles());
+
+        // Assigns driver to tour
+        Driver driver = driverService.findDriver(driverId);
         model.addAttribute("driver", driver);
-        Tour tour = this.tourRepository.findOne(tourId);
+        Tour tour = tourService.findTour(tourId);
         tour.setDriver(driver);
-        this.tourRepository.save(tour);
+        tourService.save(tour);
         model.addAttribute("tour", tour);
         return "newTourTruck";
     }
 
+    /**
+     * Choose a trailer for the tour. Vehicle chosen in newTourTruck is assigned to tour.
+     * @param tourId Id of tour the logistician is currently creating or editing
+     * @param vehId Id of vehicle chosen in newTourTruck
+     */
     @RequestMapping(value="/newTourTrailer/{tourId}/{vehId}")
     public String tourTruck(@PathVariable("tourId") Long tourId, @PathVariable("vehId") Long vehId, Model model) {
-        Iterable<Trailer> allTrailers = this.trailerRepository.findAll();
-        ArrayList<Trailer> trailers = new ArrayList<>();
-        ArrayList<Trailer> usedTrailers = new ArrayList<>();
-        for (Trailer trailer : allTrailers) {
-            if (trailer.getFree() > 0) {
-                trailers.add(trailer);
-            } else {
-                usedTrailers.add(trailer);
-            }
-        }
-        model.addAttribute("trailers", trailers);
-        model.addAttribute("usedTrailers", usedTrailers);
-        Tour tour = this.tourRepository.findOne(tourId);
-        Vehicle vehicle = this.vehicleRepository.findOne(vehId);
+        model.addAttribute("trailers", trailerService.listTrailers());
+        model.addAttribute("usedTrailers", trailerService.listUsedTrailers());
+
+        // Assigns vehicle to tour
+        Tour tour = tourService.findTour(tourId);
+        Vehicle vehicle = vehicleService.findVehicle(vehId);
         vehicle.setFree(vehicle.getFree() - 1);
         tour.setVehicle(vehicle);
-        this.tourRepository.save(tour);
-        this.vehicleRepository.save(vehicle);
+        tourService.save(tour);
+        vehicleService.save(vehicle);
         model.addAttribute("vehicle", vehicle);
         model.addAttribute("tour", tour);
         return "newTourTrailer";
     }
 
+    /**
+     * Edit tour: Lists all productOrders in your tour and the ones that are not assigned to a tour yet, so logistician
+     * can change productOrders in the tour.
+     * @param tourId Id of tour the logistician is currently editing
+     */
     @RequestMapping(value="/newTourProductOrders/{tourId}")
     public String tourProducts(@PathVariable("tourId") Long tourId, Model model) {
-        Tour tour = this.tourRepository.findOne(tourId);
+        Tour tour = tourService.findTour(tourId);
         model.addAttribute("tour",tour);
-        Iterable<ProductOrder> productOrders = this.productOrderRepository.findAll();
 
-        ArrayList<ProductOrder> products = new ArrayList<>();
-        for(ProductOrder productOrder : productOrders){
-            if(productOrder.getAccOrRej().equalsIgnoreCase("akzeptiert")) {}
-            else {
-                if(productOrder.getTour() == null){
-                    products.add(productOrder);
-                }
-            }
-        }
-        model.addAttribute("products", products);
+        model.addAttribute("products", productOrderService.listNotAccNoTourProductOrders());
 
-        ArrayList<ProductOrder> tourProducts = new ArrayList<>();
-        for (ProductOrder productOrder : productOrders){
-            if(productOrder.getTour() == tour){
-                tourProducts.add(productOrder);
-            }
-        }
-        model.addAttribute("tourProducts", tourProducts);
+        model.addAttribute("tourProducts", productOrderService.listTourProductOrders(tourId));
         return "newTourProductOrders";
     }
 
+    /**
+     * Lists all productOrders in your tour and the ones that are not assigned to a tour yet, so logistician
+     * can set/change productOrders in the tour.
+     * Trailer chosen in newTourTrailer is assigned to tour.
+     * @param tourId Id of tour the logistician is currently creating or editing
+     * @param trailerId Id of trailer chosen in newTourTrailer
+     */
     @RequestMapping(value="/newTourProductOrders/{tourId}/{trailerId}")
     public String tourTrailer(@PathVariable("tourId") Long tourId, @PathVariable("trailerId") Long trailerId, Model model) {
         Tour tour = this.tourRepository.findOne(tourId);
