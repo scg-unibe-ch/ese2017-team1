@@ -1,8 +1,10 @@
 package hello.Services;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import hello.Users.Driver.Driver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,8 @@ public class UserServiceImpl implements UserService{
     private RoleRepository roleRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private DriverService driverService;
 
     @Override
     public User findUserByEmail(String email) {
@@ -28,12 +32,48 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void saveUser(User user) {
+    public void saveUser(User user, Long roleId) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
-        Role userRole = roleRepository.findByRole("ADMIN");
+        Role userRole = roleRepository.findOne(roleId);
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
+
+        // Falls User ein Driver ist, wird noch ein neuer Driver erstellt
+        if(roleId == 2){
+            Driver driver = new Driver();
+            driver.setId(user.getId());
+            driver.setEmail(user.getEmail());
+            driver.setFirstName(user.getName());
+            driver.setLastName(user.getLastName());
+            driverService.save(driver);
+        }
+    }
+
+    @Override
+    public Iterable<User> listAllUsers(){ return this.userRepository.findAll(); }
+
+
+    @Override
+    public Iterable<User> listLogisticians(){
+        ArrayList<User> logisticians = new ArrayList<>();
+        for(User user1 : listAllUsers()){
+            if(user1.getRoles().contains(roleRepository.findByRole("ROLE_LOGISTICIAN"))){
+                logisticians.add(user1);
+            }
+        }
+        return logisticians;
+    }
+
+    @Override
+    public Iterable<User> listDrivers(){
+        ArrayList<User> drivers = new ArrayList<>();
+        for(User user1 : listAllUsers()){
+            if(user1.getRoles().contains(roleRepository.findByRole("ROLE_DRIVER"))){
+                drivers.add(user1);
+            }
+        }
+        return drivers;
     }
 
 }

@@ -29,33 +29,10 @@
         </div>
     </div>
 <div align="center">
-    <h1>Admin</h1>
+    <h1>Logistician</h1>
 </div>
 <br/>
     <div class="container">
-        <table style="width:100%">
-            <thead>
-                <tr>
-                    <td><b><li class="list-group-item list-group-item-warning" th:text="'UserId'"/></b></td>
-                    <td><b><li class="list-group-item list-group-item-warning" th:text="'Vorname'"/></b></td>
-                    <td><b><li class="list-group-item list-group-item-warning" th:text="'Nachname'"/></b></td>
-                    <td><b><li class="list-group-item list-group-item-warning" th:text="'Email'"/></b></td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="user : ${admins}" >
-                    <td><li class="list-group-item list-group-item-warning" th:text="${user.id}"/></td>
-                    <td><li class="list-group-item list-group-item-warning" th:text="${user.name}"/></td>
-                    <td><li class="list-group-item list-group-item-warning" th:text="${user.lastName}"/></td>
-                    <td><li class="list-group-item list-group-item-warning" th:text="${user.email}"/></td>
-                </tr>
-            </tbody>
-        </table>
-        <br/>
-        <div align="center">
-            <h1>Logistiker</h1>
-        </div>
-        <br/>
         <table style="width:100%">
             <thead>
             <tr>

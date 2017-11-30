@@ -17,4 +17,6 @@ public class DriverService {
     }
 
     public Driver findDriver(Long driverId) { return this.driverRepository.findOne(driverId); }
+
+    public void save(Driver driver) { driverRepository.save(driver); }
 }
