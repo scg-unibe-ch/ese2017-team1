@@ -42,4 +42,7 @@ public class TrailerService {
         return usedTrailers;
     }
 
+    public Trailer findTrailer(Long trailerId) { return trailerRepository.findOne(trailerId); }
+
+    public void save(Trailer trailer) { trailerRepository.save(trailer); }
 }

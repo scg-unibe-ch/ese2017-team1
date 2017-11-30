@@ -1,7 +1,10 @@
 package hello.Services;
 
+import hello.ProductOrders.ProductOrder;
 import hello.Repositories.TourRepository;
 import hello.Tour.Tour;
+import hello.Trucks.Trailer;
+import hello.Trucks.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +15,12 @@ public class TourService {
 
     @Autowired
     private TourRepository tourRepository;
+    @Autowired
+    private VehicleService vehicleService;
+    @Autowired
+    private TrailerService trailerService;
+    @Autowired
+    private ProductOrderService productOrderService;
 
 
     public Iterable<Tour> listAllTours(){return this.tourRepository.findAll();}
@@ -61,4 +70,53 @@ public class TourService {
     public Tour findTour(Long tourId) { return this.tourRepository.findOne(tourId); }
 
 
+    public void assignVehicle(Long tourId, Long vehId) {
+        Tour tour = findTour(tourId);
+        Vehicle vehicle = vehicleService.findVehicle(vehId);
+        vehicle.setFree(vehicle.getFree() - 1);
+        tour.setVehicle(vehicle);
+
+        Integer palettes = tour.getVehicle().getPalettesAmount() + tour.getTrailer().getPalettesAmount();
+        tour.setFreePalettes(palettes);
+
+        save(tour);
+        vehicleService.save(vehicle);
+    }
+
+    public void assignTrailer(Long tourId, Long trailerId) {
+        Tour tour = findTour(tourId);
+        Trailer trailer = trailerService.findTrailer(trailerId);
+        trailer.setFree(trailer.getFree() - 1);
+        tour.setTrailer(trailer);
+
+        Integer palettes = tour.getVehicle().getPalettesAmount() + tour.getTrailer().getPalettesAmount();
+        tour.setFreePalettes(palettes);
+
+        save(tour);
+        trailerService.save(trailer);
+    }
+
+    public void addProduct(Long tourId, Long prodId, Long add) {
+        Tour tour = findTour(tourId);
+        ProductOrder product = productOrderService.findProductOrder(prodId);
+        if(add==1){
+            if(product.getTour()==null){
+                Integer free = tour.getFreePalettes()-(product.getProduct().getPalettes()*Integer.parseInt(product.getAmount()));
+                if(free >= 0){
+                    product.setTour(tour);
+                    tour.setFreePalettes(free);
+                }
+            }
+        }
+        if(add==(-1)){
+            if(product.getTour()!=null){
+                if(product.getTour().getId()==tourId){
+                    product.setTour(null);
+                    tour.setFreePalettes(tour.getFreePalettes()+(product.getProduct().getPalettes()*Integer.parseInt(product.getAmount())));
+                }
+            }
+        }
+        productOrderService.save(product);
+        save(tour);
+    }
 }

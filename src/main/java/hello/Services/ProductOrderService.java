@@ -39,6 +39,8 @@ public class ProductOrderService {
     public ArrayList<ProductOrder> listTourProductOrders(Long tourId) {
         Tour tour = tourService.findTour(tourId);
         ArrayList<ProductOrder> tourProducts = new ArrayList<>();
+
+        // Checks if a productOrder is in this tour and if yes adds it to tourProducts
         for (ProductOrder productOrder : listAllProductOrders()){
             if(productOrder.getTour() == tour){
                 tourProducts.add(productOrder);
@@ -46,4 +48,8 @@ public class ProductOrderService {
         }
         return tourProducts;
     }
+
+    public ProductOrder findProductOrder(Long prodId) { return productOrderRepository.findOne(prodId); }
+
+    public void save(ProductOrder product) { productOrderRepository.save(product); }
 }
