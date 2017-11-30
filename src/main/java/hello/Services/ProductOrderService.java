@@ -5,7 +5,6 @@ import hello.Product.Product;
 import hello.ProductOrders.ProductOrder;
 import hello.Repositories.ProductOrderRepository;
 import hello.Tour.Tour;
-import hello.Trucks.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

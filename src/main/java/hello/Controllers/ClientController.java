@@ -2,6 +2,7 @@ package hello.Controllers;
 
 import hello.Client.Client;
 import hello.Repositories.ClientRepository;
+import hello.Services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +22,7 @@ import java.util.List;
 public class ClientController extends WebMvcConfigurerAdapter {
 
     @Autowired
-    private ClientRepository clientRepository;
-    private Client client;
+    private ClientService clientService;
 
     @RequestMapping(value="/selectClient")
     public String selectClient(){
@@ -32,9 +32,7 @@ public class ClientController extends WebMvcConfigurerAdapter {
 
     @RequestMapping("/searchClient")
     public String list(@ModelAttribute("client") Client client, Model model) {
-
-        Iterable<Client> clients = this.clientRepository.findAll();
-        model.addAttribute("clients", clients);
+        model.addAttribute("clients", clientService.listClients());
         return "searchClient";
     }
 
@@ -47,7 +45,7 @@ public class ClientController extends WebMvcConfigurerAdapter {
 
     @PostMapping("/clientForm")
     public String clientSubmit(@ModelAttribute("client") Client client) {
-        this.clientRepository.save(client);
+        clientService.save(client);
         return "addedClient";
     }
 
