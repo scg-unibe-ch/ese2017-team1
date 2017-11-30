@@ -1,5 +1,7 @@
 package hello.Services;
 
+import hello.Client.Client;
+import hello.Product.Product;
 import hello.ProductOrders.ProductOrder;
 import hello.Repositories.ProductOrderRepository;
 import hello.Tour.Tour;
@@ -16,20 +18,46 @@ public class ProductOrderService {
     private ProductOrderRepository productOrderRepository;
     @Autowired
     private TourService tourService;
+    @Autowired
+    private ClientService clientService;
+    @Autowired
+    private ProductService productService;
 
 
     public Iterable<ProductOrder> listAllProductOrders(){ return this.productOrderRepository.findAll(); }
 
-    public ArrayList<ProductOrder> listNotAccNoTourProductOrders() {
+    public Iterable<ProductOrder> listAccProductOrders(){
         ArrayList<ProductOrder> products = new ArrayList<>();
 
-        // Checks if a productOrder is already "akzeptiert" and assigned to a tour if not it's added to products
+        // Checks if a productOrder is already "akzeptiert" if yes it's added to products
+        for(ProductOrder productOrder : listAllProductOrders()){
+            if(productOrder.getAccOrRej().equalsIgnoreCase("akzeptiert")) {
+                products.add(productOrder);
+            }
+        }
+        return products;
+    }
+
+    public Iterable<ProductOrder> listNotAccProductOrders(){
+        ArrayList<ProductOrder> products = new ArrayList<>();
+
+        // Checks if a productOrder is already "akzeptiert" if not it's added to products
         for(ProductOrder productOrder : listAllProductOrders()){
             if(productOrder.getAccOrRej().equalsIgnoreCase("akzeptiert")) {}
             else {
-                if(productOrder.getTour() == null){
-                    products.add(productOrder);
-                }
+                products.add(productOrder);
+            }
+        }
+        return products;
+    }
+
+    public ArrayList<ProductOrder> listNotAccNoTourProductOrders() {
+        ArrayList<ProductOrder> products = new ArrayList<>();
+
+        // Checks if a productOrder is already assigned to a tour if not it's added to products
+        for(ProductOrder productOrder : listNotAccProductOrders()){
+            if(productOrder.getTour() == null){
+                products.add(productOrder);
             }
         }
         return products;
@@ -51,4 +79,33 @@ public class ProductOrderService {
     public ProductOrder findProductOrder(Long prodId) { return productOrderRepository.findOne(prodId); }
 
     public void save(ProductOrder product) { productOrderRepository.save(product); }
+
+    /**
+     * Sets ID of new ProductOrder equal to the highest already existing ID + 1
+     * (should have done this in HTML File but it did not work)
+     */
+    public ProductOrder checkId(ProductOrder productOrder) {
+
+        Long i = Long.valueOf(1);
+        while(findProductOrder(i)!=null && findProductOrder(i) != productOrder){
+            i++;
+        }
+        productOrder.setId(i);
+        return productOrder;
+    }
+
+    public void assignClient(ProductOrder productOrder, Long clientId) {
+        Client client = clientService.findClient(clientId);
+        productOrder.setClient(client);
+    }
+
+    public void assignProduct(ProductOrder productOrder, Long productId) {
+        Product product = productService.findProduct(productId);
+        productOrder.setProduct(product);
+        productOrder.setAccOrRej("keine Angabe");
+        productOrder = checkId(productOrder);
+        save(productOrder);
+    }
+
+    public void delete(ProductOrder prod) { this.productOrderRepository.delete(prod); }
 }
