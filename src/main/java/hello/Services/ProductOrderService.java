@@ -121,4 +121,12 @@ public class ProductOrderService {
         }
         return addresses;
     }
+
+    public void accOrRej(Long productOrderId, String accOrRej) {
+        // find ProductOrder by ID from param productOrderId given to the method
+        ProductOrder productOrder = findProductOrder(productOrderId);
+        // sets status AccOrRej to the param accOrRej given to the method
+        productOrder.setAccOrRej(accOrRej);
+        save(productOrder);
+    }
 }

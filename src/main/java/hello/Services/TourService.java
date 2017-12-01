@@ -148,7 +148,7 @@ public class TourService {
         save(tour);
     }
 
-    public void deleteTour(Long tourId) {
+    public void cleanTour(Long tourId){
         for(ProductOrder product : productOrderService.listTourProductOrders(tourId)){
             product.setTour(null);
             productOrderService.save(product);
@@ -161,7 +161,18 @@ public class TourService {
         Vehicle vehicle = tour.getVehicle();
         vehicle.setFree(vehicle.getFree()+1);
         vehicleService.save(vehicle);
+    }
 
-        this.tourRepository.delete(tour);
+    public void deleteTour(Long tourId) {
+        cleanTour(tourId);
+        this.tourRepository.delete(findTour(tourId));
+    }
+
+    public void finishTour(Long tourId) {
+        cleanTour(tourId);
+        Tour tour = findTour(tourId);
+        // sets tour status to finished and saves it
+        tour.setFinished(1);
+        this.tourRepository.save(tour);
     }
 }

@@ -87,16 +87,8 @@ public class DriverController extends WebMvcConfigurerAdapter {
      */
     @RequestMapping(value="/driverTours/{productOrderId}/{accOrRej}")
     public String acceptedOrRejected(@PathVariable("productOrderId") Long productOrderId, @PathVariable("accOrRej") String accOrRej, Model model) {
-
-        // find ProductOrder by ID from param productOrderId given to the method
-        ProductOrder productOrder = this.productOrderRepository.findOne(productOrderId);
-
-        // sets status AccOrRej to the param accOrRej given to the method
-        productOrder.setAccOrRej(accOrRej);
-
-        this.productOrderRepository.save(productOrder);
-        model.addAttribute("productOrder", productOrder);
-
+        productOrderService.accOrRej(productOrderId, accOrRej);
+        model.addAttribute("productOrder", productOrderService.findProductOrder(productOrderId));
         return "acceptedOrRejected";
     }
 
@@ -113,21 +105,13 @@ public class DriverController extends WebMvcConfigurerAdapter {
      */
     @RequestMapping(value="/endTourCheck/{tourId}")
     public String endTourCheck(@PathVariable("tourId") Long tourId, Model model) {
-        Tour tour = tourRepository.findOne(tourId);
-        Iterable<ProductOrder> allProductOrders = this.productOrderRepository.findAll();
-
-        ArrayList<ProductOrder> productOrders = new ArrayList<>();
-        for(ProductOrder productOrder : allProductOrders){
-            if(productOrder.getTour() != null){
-                if(productOrder.getTour().getId() == tourId){
-                    if(productOrder.getAccOrRej().equalsIgnoreCase("keine Angabe")){
-                        return "endTourFailed";
-                    }
-                    productOrders.add(productOrder);
-                }
+        ArrayList<ProductOrder> productOrders = productOrderService.listTourProductOrders(tourId);
+        for(ProductOrder productOrder : productOrders){
+            if(productOrder.getAccOrRej().equalsIgnoreCase("keine Angabe")){
+                return "endTourFailed";
             }
         }
-        model.addAttribute("tour", tour);
+        model.addAttribute("tour", tourService.findTour(tourId));
         model.addAttribute("productOrders", productOrders);
         return "endTourCheck";
     }
@@ -140,26 +124,10 @@ public class DriverController extends WebMvcConfigurerAdapter {
      */
     @RequestMapping(value="/endTour/{tourId}")
     public String endTour(@PathVariable("tourId") Long tourId, Model model) {
-        Tour tour = tourRepository.findOne(tourId);
-        Iterable<ProductOrder> allProductOrders = this.productOrderRepository.findAll();
+        model.addAttribute("tour", tourService.findTour(tourId));
+        model.addAttribute("productOrders", productOrderService.listTourProductOrders(tourId));
 
-        ArrayList<ProductOrder> productOrders = new ArrayList<>();
-        for(ProductOrder productOrder : allProductOrders){
-            if(productOrder.getTour() != null){
-                if(productOrder.getTour().getId() == tourId){
-                    productOrders.add(productOrder);
-                    productOrder.setTour(null);
-                    this.productOrderRepository.save(productOrder);
-                }
-            }
-        }
-
-        // sets tour status to finished and saves it
-        tour.setFinished(1);
-        this.tourRepository.save(tour);
-
-        model.addAttribute("tour", tour);
-        model.addAttribute("productOrders", productOrders);
+        tourService.finishTour(tourId);
 
         return "endTour";
     }
