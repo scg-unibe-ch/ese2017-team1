@@ -1,6 +1,8 @@
 package hello.Controllers;
 
 import hello.Repositories.TourRepository;
+import hello.Services.ProductOrderService;
+import hello.Services.TourService;
 import hello.Tour.Tour;
 import hello.Users.User;
 import hello.ProductOrders.ProductOrder;
@@ -26,11 +28,14 @@ import java.util.ArrayList;
 public class DriverController extends WebMvcConfigurerAdapter {
 
     @Autowired
-    private ProductOrderRepository productOrderRepository;
-
+    private ProductOrderService productOrderService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private TourService tourService;
 
+    @Autowired
+    private ProductOrderRepository productOrderRepository;
     @Autowired
     private TourRepository tourRepository;
 
@@ -49,24 +54,10 @@ public class DriverController extends WebMvcConfigurerAdapter {
     @RequestMapping("/showToursDriver")
     public String driverTours(Model model) {
 
-        ArrayList<Tour> matches = new ArrayList<>();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
 
-        Iterable<Tour> tours = this.tourRepository.findAll();
-
-        /**
-         * adds tours to the List that are not done yet
-         * and are supposed to be executed by the driver logged in
-         */
-        for(Tour tour : tours){
-            if (tour.getFinished() == null) {
-                if(tour.getDriver().getId() == user.getId()){
-                    matches.add(tour);
-                }
-            }
-        }
-        model.addAttribute("matches", matches);
+        model.addAttribute("matches", tourService.listDriverTours(user));
         return "showToursDriver";
     }
 
@@ -76,23 +67,10 @@ public class DriverController extends WebMvcConfigurerAdapter {
      */
     @RequestMapping(value="/driverTours/{tourId}")
     public String driverTours(@PathVariable("tourId") Long tourId, Model model) {
+        ArrayList<String> addresses = productOrderService.addresses(tourId);
 
-        ArrayList<ProductOrder> matches = new ArrayList<>();
-        ArrayList<String> addresses = new ArrayList<>();
-
-        Tour tour = tourRepository.findOne(tourId);
-        Iterable<ProductOrder> productOrders = this.productOrderRepository.findAll();
-
-        for(ProductOrder productOrder : productOrders){
-            if(productOrder.getTour() != null){
-                if(productOrder.getTour().getId() == tourId){
-                    matches.add(productOrder);
-                    addresses.add(productOrder.getClient().getStreet() +"," +productOrder.getClient().getCity() + ","+productOrder.getClient().getLand());
-                }
-            }
-        }
-        model.addAttribute("tour", tour);
-        model.addAttribute("matches", matches);
+        model.addAttribute("tour", tourService.findTour(tourId));
+        model.addAttribute("matches", productOrderService.listTourProductOrders(tourId));
         model.addAttribute("addresses", addresses.toArray());
 
         return "driverTours";

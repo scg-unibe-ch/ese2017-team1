@@ -107,4 +107,18 @@ public class ProductOrderService {
     }
 
     public void delete(ProductOrder prod) { this.productOrderRepository.delete(prod); }
+
+    public ArrayList<String> addresses(Long tourId) {
+        ArrayList<String> addresses = new ArrayList<>();
+
+        for(ProductOrder productOrder : listAllProductOrders()){
+            if(productOrder.getTour() != null){
+                if(productOrder.getTour().getId() == tourId){
+                    addresses.add(productOrder.getClient().getStreet() + "," + productOrder.getClient().getCity()
+                            + "," + productOrder.getClient().getLand());
+                }
+            }
+        }
+        return addresses;
+    }
 }

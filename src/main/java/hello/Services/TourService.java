@@ -5,6 +5,8 @@ import hello.Repositories.TourRepository;
 import hello.Tour.Tour;
 import hello.Trucks.Trailer;
 import hello.Trucks.Vehicle;
+import hello.Users.Driver.Driver;
+import hello.Users.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +39,18 @@ public class TourService {
                 if (tour1.getDriver() != null && tour1.getVehicle() != null && tour1.getTrailer() != null) {
                     tours.add(tour1);
                 }
+            }
+        }
+        return tours;
+    }
+
+    public ArrayList<Tour> listDriverTours(User user){
+        ArrayList<Tour> tours = new ArrayList<>();
+
+        // Checks if a tour has driver as its driver
+        for (Tour tour1 : listTours()) {
+            if (tour1.getDriver().getId() == user.getId()) {
+                tours.add(tour1);
             }
         }
         return tours;
