@@ -1,12 +1,9 @@
 package hello.Controllers;
 
-import hello.Repositories.TourRepository;
 import hello.Services.ProductOrderService;
 import hello.Services.TourService;
-import hello.Tour.Tour;
 import hello.Users.User;
 import hello.ProductOrders.ProductOrder;
-import hello.Repositories.ProductOrderRepository;
 import hello.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -33,11 +30,6 @@ public class DriverController extends WebMvcConfigurerAdapter {
     private UserService userService;
     @Autowired
     private TourService tourService;
-
-    @Autowired
-    private ProductOrderRepository productOrderRepository;
-    @Autowired
-    private TourRepository tourRepository;
 
     /**
      * "Hopepage" of Driver

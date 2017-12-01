@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+/**
+ * Service responsible for handling requests concerning vehicles
+ */
 @Service("vehicleService")
 public class VehicleService {
 
@@ -14,6 +17,9 @@ public class VehicleService {
     private VehicleRepository vehicleRepository;
 
 
+    /**
+     * @return Iterable of all Vehicles in vehicleRepository
+     */
     public Iterable<Vehicle> listAllVehicles(){ return this.vehicleRepository.findAll(); }
 
     public ArrayList<Vehicle> listVehicles() {
@@ -40,7 +46,13 @@ public class VehicleService {
         return usedVehicles;
     }
 
+    /**
+     * returns vehicle with Id vehId
+     */
     public Vehicle findVehicle(Long vehId) { return vehicleRepository.findOne(vehId); }
 
+    /**
+     * saves vehicle in vehicleRepository
+     */
     public void save(Vehicle vehicle) { vehicleRepository.save(vehicle); }
 }

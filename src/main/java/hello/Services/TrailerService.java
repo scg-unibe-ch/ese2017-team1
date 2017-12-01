@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+/**
+ * Service responsible for handling requests concerning trailers
+ */
 @Service("trailerService")
 public class TrailerService {
 
@@ -16,6 +19,9 @@ public class TrailerService {
     private TrailerRepository trailerRepository;
 
 
+    /**
+     * @return Iterable of all Trailers in trailerRepository
+     */
     public Iterable<Trailer> listAllTrailers(){ return this.trailerRepository.findAll(); }
 
     public ArrayList<Trailer> listTrailers() {
@@ -42,7 +48,13 @@ public class TrailerService {
         return usedTrailers;
     }
 
+    /**
+     * returns trailer with Id trailerId
+     */
     public Trailer findTrailer(Long trailerId) { return trailerRepository.findOne(trailerId); }
 
+    /**
+     * saves trailer in trailerRepository
+     */
     public void save(Trailer trailer) { trailerRepository.save(trailer); }
 }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 /**
- *
+ * Service responsible for handling requests concerning tours
  */
 @Service("tourService")
 public class TourService {
@@ -28,6 +28,9 @@ public class TourService {
     private ProductOrderService productOrderService;
 
 
+    /**
+     * @return Iterable of all Tours in tourRepository
+     */
     public Iterable<Tour> listAllTours(){return this.tourRepository.findAll();}
 
     public ArrayList<Tour> listTours(){
@@ -82,8 +85,14 @@ public class TourService {
         return tours;
     }
 
+    /**
+     * saves tour in tourRepository
+     */
     public void save(Tour tour) {this.tourRepository.save(tour);}
 
+    /**
+     * returns tour with Id tourId
+     */
     public Tour findTour(Long tourId) { return this.tourRepository.findOne(tourId); }
 
     public void assignVehicle(Long tourId, Long vehId) {

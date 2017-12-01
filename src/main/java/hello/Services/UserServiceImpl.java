@@ -14,6 +14,9 @@ import hello.Users.User;
 import hello.Repositories.RoleRepository;
 import hello.Repositories.UserRepository;
 
+/**
+ * Service responsible for handling requests concerning users
+ */
 @Service("userService")
 public class UserServiceImpl implements UserService{
 
@@ -26,11 +29,19 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private DriverService driverService;
 
+
+    /**
+     * returns User with Email email
+     */
     @Override
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
+    /**
+     * saves user in userRepository, encodes its password, sets user active and sets the role of the user
+     * @param roleId Role that user has
+     */
     @Override
     public void saveUser(User user, Long roleId) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -50,6 +61,9 @@ public class UserServiceImpl implements UserService{
         }
     }
 
+    /**
+     * @return Iterable of all Users in userRepository
+     */
     @Override
     public Iterable<User> listAllUsers(){ return this.userRepository.findAll(); }
 
