@@ -39,6 +39,14 @@ public class UserServiceImpl implements UserService{
     }
 
     /**
+     * returns User with Id userId
+     */
+    @Override
+    public User findUser(Long userId) {
+        return userRepository.findOne(userId);
+    }
+
+    /**
      * saves user in userRepository, encodes its password, sets user active and sets the role of the user
      * @param roleId Role that user has
      */
@@ -59,6 +67,16 @@ public class UserServiceImpl implements UserService{
             driver.setLastName(user.getLastName());
             driverService.save(driver);
         }
+    }
+
+    /**
+     * deletes user in userRepository
+     */
+    public void deleteUser(Long userId) {
+        User user = findUser(userId);
+        // Kann user nicht löschen, da userRole davon abhängig, weiss nicht wie lösen.... Da bei User eigentlich
+        // cascadeType.all, sollte es funktionieren!?
+        this.userRepository.delete(user);
     }
 
     /**

@@ -73,6 +73,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/showUsers").hasAuthority("ROLE_LOGISTICIAN")
                 .antMatchers("/newUser").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/deleteUserCheck/**").hasAuthority("ROLE_LOGISTICIAN")
+                .antMatchers("/deleteUser/**").hasAuthority("ROLE_LOGISTICIAN")
 
                 .antMatchers("/showJobs").hasAuthority("ROLE_LOGISTICIAN")
                 .antMatchers("/deleteJobCheck/**").hasAuthority("ROLE_LOGISTICIAN")

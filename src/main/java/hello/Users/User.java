@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import hello.LoginRole.Role;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;

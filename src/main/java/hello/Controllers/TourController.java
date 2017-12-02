@@ -158,7 +158,7 @@ public class TourController extends WebMvcConfigurerAdapter {
     }
 
     /**
-     * Asks again if user really wants to delete tour.
+     * Asks again if logistician really wants to delete tour.
      * @param tourId Id of tour that would be deleted
      */
     @RequestMapping(value="/deleteTourCheck/{tourId}")
@@ -170,7 +170,7 @@ public class TourController extends WebMvcConfigurerAdapter {
 
     /**
      * Deletes tour and shows tour that has been deleted.
-     * @param tourId Id of tour that would be deleted
+     * @param tourId Id of tour that has been deleted
      */
     @RequestMapping(value="/deleteTour/{tourId}")
     public String deleteTour(@PathVariable("tourId") Long tourId, Model model) {

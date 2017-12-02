@@ -48,6 +48,13 @@
                 <td><li class="list-group-item list-group-item-warning" th:text="${user.name}"/></td>
                 <td><li class="list-group-item list-group-item-warning" th:text="${user.lastName}"/></td>
                 <td><li class="list-group-item list-group-item-warning" th:text="${user.email}"/></td>
+                <td>
+                    <a th:href="${'/deleteUserCheck/'+user.id}">
+                        <button type="button" class="btn btn-outline-warning btn-lg">
+                            User löschen
+                        </button>
+                    </a>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -71,6 +78,13 @@
                 <td><li class="list-group-item list-group-item-warning" th:text="${user.name}"/></td>
                 <td><li class="list-group-item list-group-item-warning" th:text="${user.lastName}"/></td>
                 <td><li class="list-group-item list-group-item-warning" th:text="${user.email}"/></td>
+                <td>
+                    <a th:href="${'/deleteUserCheck/'+user.id}">
+                        <button type="button" class="btn btn-outline-warning btn-lg">
+                            User löschen
+                        </button>
+                    </a>
+                </td>
             </tr>
             </tbody>
         </table>

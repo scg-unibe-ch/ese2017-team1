@@ -40,4 +40,25 @@ public class UserController extends WebMvcConfigurerAdapter {
         model.addAttribute("userRole", roleService.findRole(roleId));
         return "addedUser";
     }
+
+    /**
+     * Double checks if logistician really wants to delete user.
+     * @param userId Id of user that would be deleted
+     */
+    @RequestMapping(value = "/deleteUserCheck/{userId}")
+    public String deleteUserCheck(@PathVariable("userId") Long userId, Model model){
+        model.addAttribute("user", userService.findUser(userId));
+        return "deleteUserCheck";
+    }
+
+    /**
+     * Deletes user and shows user that has been deleted.
+     * @param userId Id of user that has been deleted
+     */
+    @RequestMapping(value = "/deleteUser/{userId}")
+    public String deleteTour(@PathVariable("userId") Long userId, Model model) {
+        model.addAttribute("user", userService.findUser(userId));
+        userService.deleteUser(userId);
+        return "deleteTour";
+    }
 }
