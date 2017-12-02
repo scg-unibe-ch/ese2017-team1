@@ -67,7 +67,9 @@ public class UserServiceImpl implements UserService{
     @Override
     public Iterable<User> listAllUsers(){ return this.userRepository.findAll(); }
 
-
+    /**
+     * returns an Iterable of all Users that are logisticians
+     */
     @Override
     public Iterable<User> listLogisticians(){
         ArrayList<User> logisticians = new ArrayList<>();
@@ -79,6 +81,9 @@ public class UserServiceImpl implements UserService{
         return logisticians;
     }
 
+    /**
+     * returns an Iterable of all Users that are drivers
+     */
     @Override
     public Iterable<User> listDrivers(){
         ArrayList<User> drivers = new ArrayList<>();

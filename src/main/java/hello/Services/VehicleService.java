@@ -22,6 +22,9 @@ public class VehicleService {
      */
     public Iterable<Vehicle> listAllVehicles(){ return this.vehicleRepository.findAll(); }
 
+    /**
+     * returns an ArrayList of Vehicles that are still available
+     */
     public ArrayList<Vehicle> listVehicles() {
         ArrayList<Vehicle> vehicles = new ArrayList<>();
 
@@ -34,6 +37,9 @@ public class VehicleService {
         return vehicles;
     }
 
+    /**
+     * returns an ArrayList of Vehicles that are already used (all Vehicles of that type are assigned to a tour)
+     */
     public ArrayList<Vehicle> listUsedVehicles() {
         ArrayList<Vehicle> usedVehicles = new ArrayList<>();
 

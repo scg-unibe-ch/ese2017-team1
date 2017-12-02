@@ -5,7 +5,6 @@ import hello.Repositories.TourRepository;
 import hello.Tour.Tour;
 import hello.Trucks.Trailer;
 import hello.Trucks.Vehicle;
-import hello.Users.Driver.Driver;
 import hello.Users.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +32,9 @@ public class TourService {
      */
     public Iterable<Tour> listAllTours(){return this.tourRepository.findAll();}
 
+    /**
+     * returns an ArrayList of Tours that are not yet finished
+     */
     public ArrayList<Tour> listTours(){
         ArrayList<Tour> tours = new ArrayList<>();
 
@@ -47,6 +49,9 @@ public class TourService {
         return tours;
     }
 
+    /**
+     * returns an ArrayList of Tours where user is the Driver
+     */
     public ArrayList<Tour> listDriverTours(User user){
         ArrayList<Tour> tours = new ArrayList<>();
 
@@ -59,6 +64,9 @@ public class TourService {
         return tours;
     }
 
+    /**
+     * returns an ArrayList of Tours which are not complete, so they have no driver, no vehicle or no trailer assigned
+     */
     public ArrayList<Tour> listIncompTours(){
         ArrayList<Tour> incompTours = new ArrayList<>();
 
@@ -73,6 +81,9 @@ public class TourService {
         return incompTours;
     }
 
+    /**
+     * returns an ArrayList of Tours that are already finished
+     */
     public ArrayList<Tour> listFinishedTours(){
         ArrayList<Tour> tours = new ArrayList<>();
 
@@ -95,12 +106,10 @@ public class TourService {
      */
     public Tour findTour(Long tourId) { return this.tourRepository.findOne(tourId); }
 
-    public void assignVehicle(Long tourId, Long vehId) {
-        Tour tour = findTour(tourId);
-        Vehicle vehicle = vehicleService.findVehicle(vehId);
-        vehicle.setFree(vehicle.getFree() - 1);
-        tour.setVehicle(vehicle);
-
+    /**
+     * updates number of free Palettes of tour
+     */
+    public void freePalettes(Tour tour){
         Integer palettes = 0;
         if(tour.getVehicle() != null){
             palettes += tour.getVehicle().getPalettesAmount();
@@ -109,27 +118,41 @@ public class TourService {
             palettes += tour.getTrailer().getPalettesAmount();
         }
         tour.setFreePalettes(palettes);
-
         save(tour);
+    }
+
+    /**
+     * Assigns a Vehicle to a Tour
+     * @param tourId Id of Tour that the Vehicle is assigned to
+     * @param vehId Id of Vehicle that is assigned to a Tour
+     */
+    public void assignVehicle(Long tourId, Long vehId) {
+        assert tourId != null && vehId != null;
+        assert vehicleService.findVehicle(vehId).getFree() >= 1;
+
+        Tour tour = findTour(tourId);
+        Vehicle vehicle = vehicleService.findVehicle(vehId);
+
+        // one more vehicle of that type is now used, so there's one less in vehicle.free
+        vehicle.setFree(vehicle.getFree() - 1);
+        tour.setVehicle(vehicle);
+
+        freePalettes(tour);
         vehicleService.save(vehicle);
     }
 
     public void assignTrailer(Long tourId, Long trailerId) {
+        assert tourId != null && trailerId != null;
+        assert trailerService.findTrailer(trailerId).getFree() >= 1;
+
         Tour tour = findTour(tourId);
         Trailer trailer = trailerService.findTrailer(trailerId);
+
+        // one more trailer of that type is now used, so there's one less in trailer.free
         trailer.setFree(trailer.getFree() - 1);
         tour.setTrailer(trailer);
 
-        Integer palettes = 0;
-        if(tour.getVehicle() != null){
-            palettes += tour.getVehicle().getPalettesAmount();
-        }
-        if(tour.getTrailer() != null){
-            palettes += tour.getTrailer().getPalettesAmount();
-        }
-        tour.setFreePalettes(palettes);
-
-        save(tour);
+        freePalettes(tour);
         trailerService.save(trailer);
     }
 

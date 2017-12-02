@@ -24,6 +24,9 @@ public class TrailerService {
      */
     public Iterable<Trailer> listAllTrailers(){ return this.trailerRepository.findAll(); }
 
+    /**
+     * returns an ArrayList of Trailers that are still available
+     */
     public ArrayList<Trailer> listTrailers() {
         ArrayList<Trailer> trailers = new ArrayList<>();
 
@@ -36,6 +39,9 @@ public class TrailerService {
         return trailers;
     }
 
+    /**
+     * returns an ArrayList of Trailers that are already used (all Trailers of that type are assigned to a tour)
+     */
     public ArrayList<Trailer> listUsedTrailers() {
         ArrayList<Trailer> usedTrailers = new ArrayList<>();
 
