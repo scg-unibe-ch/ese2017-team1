@@ -39,41 +39,23 @@
     <thead>
     <tr>
         <td><b><li class="list-group-item list-group-item-warning" th:text="'AuftragsId'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
         <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Adresse'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Stadt'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Land'"/></b></td>
-        <td><b><li class="list-group-item list-group-item-warning" th:text="'Status'"/></b></td>
     </tr>
     </thead>
     <tbody>
     <tr th:each="match : ${matches}" id="test">
         <td><li class="list-group-item list-group-item-warning" th:text="${match.id}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${match.product.productName}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${match.amount}"/></td>
         <td><li class="list-group-item list-group-item-warning" th:text="${match.client.name}"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${match.client.street}" id="address"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${match.client.city}" id="city"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${match.client.land}" id="land"/></td>
-        <td><li class="list-group-item list-group-item-warning" th:text="${match.accOrRej}"/></td>
         <td>
-            <a th:href="${'/driverTours/'+match.id+'/akzeptiert'}">
+            <a th:href="${'/driverProductOrder/'+tour.id+'/'+match.id}">
                 <button type="button" class="btn btn-outline-warning btn-lg">
-                    Akzeptiert
-                </button>
-            </a>
-            <a th:href="${'/driverTours/'+match.id+'/abgelehnt'}">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Abgelehnt
+                    mehr
                 </button>
             </a>
         </td>
     </tr>
     </tbody>
 </table>
-</div>
 <br/>
 
 <!-- Optional JavaScript -->
@@ -86,7 +68,7 @@
 <style>
     #map {
         height: 400px;
-        width: 50%;
+        width: 100%;
     }
 </style>
 
@@ -137,7 +119,7 @@
                 }
             });
         }
-        // dini mueter
+
         function calcRoute() {
             var waypts = [];
 
@@ -187,6 +169,7 @@
             </button>
         </a>
     </div>
+</div>
 </div>
 
 <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvRi8WcVAqTsx-TC7Xi_spt2wCNTuolyc&amp;callback=initMap"></script>

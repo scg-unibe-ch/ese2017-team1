@@ -37,20 +37,16 @@
     <table style="width:100%">
         <thead>
         <tr>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Tour Id'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrer'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'TourId'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrzeug'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Anhänger'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Freie Paletten'"/></b></td>
         </tr>
         </thead>
         <tbody>
         <tr>
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.id}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.driver.firstName}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.vehicle.model}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.trailer.model}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.freePalettes}"/></td>
         </tr>
         </tbody>
     </table>
@@ -60,11 +56,7 @@
         <tr>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'AuftragsId'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Adresse'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Stadt'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Land'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Status'"/></b></td>
         </tr>
         </thead>
@@ -72,11 +64,7 @@
         <tr th:each="prod : ${productOrders}">
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.id}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.name}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.street}" id="address"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.city}" id="city"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.land}" id="land"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.accOrRej}"/></td>
         </tr>
         </tbody>

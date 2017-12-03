@@ -38,19 +38,15 @@
         <thead>
         <tr>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Tour Id'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrer'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrzeug'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Anhänger'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Freie Paletten'"/></b></td>
         </tr>
         </thead>
         <tbody>
         <tr th:each="tour : ${matches}" >
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.id}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.driver.firstName}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.vehicle.model}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.trailer.model}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.freePalettes}"/></td>
             <td>
                 <a th:href="${'/driverTours/'+tour.id}">
                     <button type="button" class="btn btn-outline-warning btn-lg">

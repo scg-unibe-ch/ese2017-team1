@@ -68,19 +68,27 @@ public class DriverController extends WebMvcConfigurerAdapter {
         return "driverTours";
     }
 
+    @RequestMapping(value="/driverProductOrder/{tourId}/{prodId}")
+    public String driverProductOrder(@PathVariable("tourId") Long tourId, @PathVariable("prodId") Long prodId, Model model) {
+        model.addAttribute("tour", tourService.findTour(tourId));
+        model.addAttribute("prod", productOrderService.findProductOrder(prodId));
+        return "driverProductOrder";
+    }
+
     /**
      * This page allows the logged in Driver to set a ProductOrder to "accepted" or "rejected"
      * The status of the ProductOrder which is given by the ID as a param is set to either "akzepiert" or "abgelehnt"
      * which is also given as a param to the method.
      * The two parameters depend on the selection on the last page.
      * The user selects either "akzeptiert" or "abgelehnt" at the row of a specific ProductOrder.
-     * @param productOrderId the productOrder from the tour that was selected
+     * @param prodId the productOrder from the tour that was selected
      * @param accOrRej the value selected for the productOrder ("akzeptiert" or "abgelehnt")
      */
-    @RequestMapping(value="/driverTours/{productOrderId}/{accOrRej}")
-    public String acceptedOrRejected(@PathVariable("productOrderId") Long productOrderId, @PathVariable("accOrRej") String accOrRej, Model model) {
-        productOrderService.accOrRej(productOrderId, accOrRej);
-        model.addAttribute("productOrder", productOrderService.findProductOrder(productOrderId));
+    @RequestMapping(value="/driverProductOrder/{tourId}/{prodId}/{accOrRej}")
+    public String acceptedOrRejected(@PathVariable("tourId") Long tourId, @PathVariable("prodId") Long prodId, @PathVariable("accOrRej") String accOrRej, Model model) {
+        productOrderService.accOrRej(prodId, accOrRej);
+        model.addAttribute("tour", tourService.findTour(tourId));
+        model.addAttribute("productOrder", productOrderService.findProductOrder(prodId));
         return "acceptedOrRejected";
     }
 
