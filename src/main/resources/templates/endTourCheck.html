@@ -39,14 +39,12 @@
         <tr>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'TourId'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrzeug'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Anhänger'"/></b></td>
         </tr>
         </thead>
         <tbody>
         <tr>
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.id}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.vehicle.model}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.trailer.model}"/></td>
         </tr>
         </tbody>
     </table>
@@ -54,8 +52,7 @@
     <table style="width:100%">
         <thead>
         <tr>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'AuftragsId'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Id'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Status'"/></b></td>
         </tr>
@@ -63,7 +60,6 @@
         <tbody>
         <tr th:each="prod : ${productOrders}">
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.id}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.name}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.accOrRej}"/></td>
         </tr>
