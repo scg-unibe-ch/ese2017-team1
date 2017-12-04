@@ -1,5 +1,7 @@
 package hello.Controllers;
 
+import hello.Product.Product;
+import hello.ProductOrders.ProductOrder;
 import hello.Services.*;
 import hello.Tour.Tour;
 import hello.Users.Driver.Driver;
@@ -150,8 +152,14 @@ public class TourController extends WebMvcConfigurerAdapter {
      */
     @RequestMapping(value="/newTourProductOrders/{tourId}/{prodId}/{add}")
     public String tourProduct(@PathVariable("tourId") Long tourId, @PathVariable("prodId") Long prodId, @PathVariable ("add") Long add, Model model) {
+        Tour tour = tourService.findTour(tourId);
+        ProductOrder product = productOrderService.findProductOrder(prodId);
+        Integer free = tour.getFreePalettes() - (product.getProduct().getPalettes()*Integer.parseInt(product.getAmount()));
+        if(free < 0){
+            model.addAttribute("error", true);
+        }
         tourService.addProduct(tourId, prodId, add);
-        model.addAttribute("tour", tourService.findTour(tourId));
+        model.addAttribute("tour", tour);
         model.addAttribute("products", productOrderService.listNotAccNoTourProductOrders());
         model.addAttribute("tourProducts", productOrderService.listTourProductOrders(tourId));
         return "newTourProductOrders";
