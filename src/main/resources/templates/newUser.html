@@ -63,6 +63,12 @@
     </div>
     <div class="row">
         <div class="col-md-6 mb-3">
+            <label for="Telefon" style="color: orange">Telefon:</label>
+            <input type="text" th:field="*{phone}" class="form-control" id="Telefon" placeholder="Telefon" required="phone"></input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
             <label for="Passwort" style="color: orange">Passwort (mind. 5 Zeichen):</label>
             <input type="password" th:field="*{password}" class="form-control" id="Passwort" placeholder="Passwort" required="password" minlength="5"></input>
         </div>

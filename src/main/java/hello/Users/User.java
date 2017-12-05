@@ -43,6 +43,8 @@ public class User {
     @Column(name = "last_name")
     @NotEmpty(message = "*Please provide your last name")
     private String lastName;
+    @Column(name = "phone")
+    private String phone;
     @Column(name = "active")
     private int active;
     @ManyToMany(cascade = CascadeType.ALL)
@@ -105,4 +107,11 @@ public class User {
         this.roles = roles;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }

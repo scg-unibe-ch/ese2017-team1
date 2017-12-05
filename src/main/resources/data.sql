@@ -225,26 +225,25 @@ INSERT INTO `product_order` (`id`, `amount`, `product_id`, `client_id`, `acc_or_
 -- All drivers (user_id 1 to 9) have password "driver"
 -- All logisticians (user_id 10 to 18) have password "logistician"
 -- ADMIN has password "admin"
-INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password`) VALUES
-(1, 1, 'stokes@example.com', 'Stokes', 'Celia', '$2a$10$K/2nhMGmH29GdiExDUtwPeWQNzHux.xFhMe4RzLM.mUG7WgrUhL.y'),
-(2, 1, 'ball@example.com', 'Ball', 'Emma', '$2a$10$Ap/4eeOUC5AsLqKrTIL3j.tjB6dG0g5yxj24/rURhxojBcZgFG02i'),
-(3, 1, 'keller@example.com', 'Keller', 'Eloise', '$2a$10$Kxl61etWij1KgzJaclL2/OL1xEYmx8fKv56PTWl9jRueDs1clMahG'),
-(4, 1, 'stone@example.com', 'Stone', 'Guadalupe', '$2a$10$LJ3GLJJpbHCvi4nlD8aagugX7oNk5wbLQ9mPhesyZ3cqKndOkrhxG'),
-(5, 1, 'clarke@example.com', 'Clarke', 'Isaac', '$2a$10$t0lHEn/NWL88QLnqw5bhQuLFx/6zOy6kE36H/PPH31joKXdTdb2Qe'),
-(6, 1, 'miller@example.com', 'Miller', 'Candice', '$2a$10$xxBtpkjjF1nF2pFzo1mToODlX6gGa9wou24mIxmCwq2vQUlLoIiV.'),
-(7, 1, 'harmon@example.com', 'Harmon', 'Ben', '$2a$10$rJZziDrgkLcXFPEMIx3zZeJrdSnqqwE7kWHGwnFg0BAxjFQLZoED.'),
-(8, 1, 'curry@example.com', 'Curry', 'Jason', '$2a$10$1P4dksyxv6d8eDylBdg8VOgja7tkNI6XU9G8dHUmctb66/IkagSt2'),
-(9, 1, 'mitchell@example.com', 'Mitchell', 'Eunice', '$2a$10$fdM4JlQKYFT4Y3RMf4r.ZOQGztL5j/l1zLygF/8H9omWTD5q1eCS2'),
-(10, 1, 'warner@example.com', 'Warner', 'Devin', '$2a$10$KRGj0sgrhNkcPd72HWpY3.mXFRfrbuJcgVsuqTe3q49KyMvqRXMUW'),
-(11, 1, 'brock@example.com', 'Brock', 'Debra', '$2a$10$ebHrVgcY3C4Vty022WqV5OD8HqFppEqLIy50b5MwF.k4BWKSwLWDe'),
-(12, 1, 'mckenzie@example.com', 'Mckenzie', 'Daryl', '$2a$10$DUi7mVvbr1q/vLWX7OYFY.yy5lyLyU6l35FemShdGqenVtvVaggtC'),
-(13, 1, 'greer@example.com', 'Greer', 'Dixie', '$2a$10$eovIcMPedl7E958144d/7utnpAWp1F7AavOOGmWFnf5Tsf0unZozG'),
-(14, 1, 'oliver@example.com', 'Oliver', 'Clarence', '$2a$10$M9w5iMhm6uM6VoGwJiUhguSa1Rxo1IFVZ1R5fSeqqHg6LQCKwDhIK'),
-(15, 1, 'riley@example.com', 'Riley', 'Ignacio', '$2a$10$S6N7jzHX.xZ1l6tNIPjQ5ecb8X8tZmoiwV1cJrRc1vgGTwZAKW8zC'),
-(16, 1, 'gutierrez@example.com', 'Gutierrez', 'Wendy', '$2a$10$e86Iglr6miyfgzzhwYlyvOzKHtoxV2NfXXnuesVnphsilp/M/VdSy'),
-(17, 1, 'mcdaniel@example.com', 'Mcdaniel', 'Dallas', '$2a$10$w4GOkciv0yy.HazmQqVpBuxB7o11urimSOmgO/d6Ntn8WlKi/7jFu'),
-(18, 1, 'patterson@example.com', 'Patterson', 'Harry', '$2a$10$za6sQ8GEzZxpyP1.x.BTiOZssTLxjaVqVq9tz/Dw/YwVFgJeoJ/xO'),
-(19, 1, 'user@admin.com', 'USER', 'ADMIN', '$2a$10$bjV5fmzO1lPmhZsk0WJ6eO9MCEUzOh9cB5YCvJ6hsli4yZmXtFgcG');
+INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `phone`, `password`) VALUES
+(1, 1, 'stokes@example.com', 'Stokes', 'Celia','031 843 72 33', '$2a$10$K/2nhMGmH29GdiExDUtwPeWQNzHux.xFhMe4RzLM.mUG7WgrUhL.y'),
+(2, 1, 'ball@example.com', 'Ball', 'Emma', '031 843 72 34', '$2a$10$Ap/4eeOUC5AsLqKrTIL3j.tjB6dG0g5yxj24/rURhxojBcZgFG02i'),
+(3, 1, 'keller@example.com', 'Keller', 'Eloise', '031 843 72 35', '$2a$10$Kxl61etWij1KgzJaclL2/OL1xEYmx8fKv56PTWl9jRueDs1clMahG'),
+(4, 1, 'stone@example.com', 'Stone', 'Guadalupe', '031 843 72 36', '$2a$10$LJ3GLJJpbHCvi4nlD8aagugX7oNk5wbLQ9mPhesyZ3cqKndOkrhxG'),
+(5, 1, 'clarke@example.com', 'Clarke', 'Isaac', '031 843 72 37', '$2a$10$t0lHEn/NWL88QLnqw5bhQuLFx/6zOy6kE36H/PPH31joKXdTdb2Qe'),
+(6, 1, 'miller@example.com', 'Miller', 'Candice', '031 843 72 38', '$2a$10$xxBtpkjjF1nF2pFzo1mToODlX6gGa9wou24mIxmCwq2vQUlLoIiV.'),
+(7, 1, 'harmon@example.com', 'Harmon', 'Ben', '031 843 72 39', '$2a$10$rJZziDrgkLcXFPEMIx3zZeJrdSnqqwE7kWHGwnFg0BAxjFQLZoED.'),
+(8, 1, 'curry@example.com', 'Curry', 'Jason', '031 843 72 40', '$2a$10$1P4dksyxv6d8eDylBdg8VOgja7tkNI6XU9G8dHUmctb66/IkagSt2'),
+(9, 1, 'mitchell@example.com', 'Mitchell', 'Eunice', '031 843 72 41', '$2a$10$fdM4JlQKYFT4Y3RMf4r.ZOQGztL5j/l1zLygF/8H9omWTD5q1eCS2'),
+(10, 1, 'warner@example.com', 'Warner', 'Devin', '031 843 71 13', '$2a$10$KRGj0sgrhNkcPd72HWpY3.mXFRfrbuJcgVsuqTe3q49KyMvqRXMUW'),
+(11, 1, 'brock@example.com', 'Brock', 'Debra', '031 843 71 14', '$2a$10$ebHrVgcY3C4Vty022WqV5OD8HqFppEqLIy50b5MwF.k4BWKSwLWDe'),
+(12, 1, 'mckenzie@example.com', 'Mckenzie', 'Daryl', '031 843 71 15', '$2a$10$DUi7mVvbr1q/vLWX7OYFY.yy5lyLyU6l35FemShdGqenVtvVaggtC'),
+(13, 1, 'greer@example.com', 'Greer', 'Dixie', '031 843 71 16', '$2a$10$eovIcMPedl7E958144d/7utnpAWp1F7AavOOGmWFnf5Tsf0unZozG'),
+(14, 1, 'oliver@example.com', 'Oliver', 'Clarence', '031 843 71 17', '$2a$10$M9w5iMhm6uM6VoGwJiUhguSa1Rxo1IFVZ1R5fSeqqHg6LQCKwDhIK'),
+(15, 1, 'riley@example.com', 'Riley', 'Ignacio', '031 843 71 18', '$2a$10$S6N7jzHX.xZ1l6tNIPjQ5ecb8X8tZmoiwV1cJrRc1vgGTwZAKW8zC'),
+(16, 1, 'gutierrez@example.com', 'Gutierrez', 'Wendy', '031 843 71 19', '$2a$10$e86Iglr6miyfgzzhwYlyvOzKHtoxV2NfXXnuesVnphsilp/M/VdSy'),
+(17, 1, 'mcdaniel@example.com', 'Mcdaniel', 'Dallas', '031 843 71 20', '$2a$10$w4GOkciv0yy.HazmQqVpBuxB7o11urimSOmgO/d6Ntn8WlKi/7jFu'),
+(18, 1, 'patterson@example.com', 'Patterson', 'Harry', '031 843 71 21', '$2a$10$za6sQ8GEzZxpyP1.x.BTiOZssTLxjaVqVq9tz/Dw/YwVFgJeoJ/xO');
 
 INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
 (1, 2),
@@ -264,8 +263,7 @@ INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
 (15, 3),
 (16, 3),
 (17, 3),
-(18, 3),
-(19, 1);
+(18, 3);
 
 INSERT INTO `van` (`id`, `amount`, `freight`, `model`, `palettes_amount`) VALUES
 (1, '7', '1', 'VW Transporter T1', '1');
