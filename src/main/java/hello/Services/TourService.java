@@ -57,7 +57,7 @@ public class TourService {
 
         // Checks if a tour has driver as its driver
         for (Tour tour1 : listTours()) {
-            if (tour1.getDriver().getId() == user.getId()) {
+            if (tour1.getDriver().getUserId() == user.getId()) {
                 tours.add(tour1);
             }
         }

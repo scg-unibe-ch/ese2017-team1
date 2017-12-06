@@ -62,11 +62,11 @@ public class UserServiceImpl implements UserService{
         // Falls User ein Driver ist, wird noch ein neuer Driver erstellt
         if(roleId == 2){
             Driver driver = new Driver();
-            driver.setId(user.getId());
             driver.setEmail(user.getEmail());
             driver.setFirstName(user.getName());
             driver.setLastName(user.getLastName());
             driver.setPhoneNumber(user.getPhone());
+            driver.setUserId(user.getId());
             driverService.save(driver);
         }
     }
