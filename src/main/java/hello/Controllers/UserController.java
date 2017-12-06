@@ -30,7 +30,7 @@ public class UserController extends WebMvcConfigurerAdapter {
 
     @GetMapping("/newUser")
     public String newUser(Model model) {
-        model.addAttribute("roles", roleService.listAll());
+        model.addAttribute("roles", roleService.list());
         model.addAttribute("user", new User());
         return "newUser";
     }
