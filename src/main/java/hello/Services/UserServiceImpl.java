@@ -6,6 +6,7 @@ import java.util.HashSet;
 
 import hello.Users.Driver.Driver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -65,6 +66,7 @@ public class UserServiceImpl implements UserService{
             driver.setEmail(user.getEmail());
             driver.setFirstName(user.getName());
             driver.setLastName(user.getLastName());
+            driver.setPhoneNumber(user.getPhone());
             driverService.save(driver);
         }
     }
@@ -76,7 +78,7 @@ public class UserServiceImpl implements UserService{
         User user = findUser(userId);
         // Kann user nicht löschen, da userRole davon abhängig, weiss nicht wie lösen.... Da bei User eigentlich
         // cascadeType.all, sollte es funktionieren!?
-        this.userRepository.delete(user);
+        userRepository.delete(user);
     }
 
     /**
@@ -111,6 +113,16 @@ public class UserServiceImpl implements UserService{
             }
         }
         return drivers;
+    }
+
+    @Override
+    public User currentUser(){ return findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());}
+
+    @Override
+    public void changePassword(String password){
+        User user = currentUser();
+        user.setPassword(bCryptPasswordEncoder.encode(password));
+        userRepository.save(user);
     }
 
 }

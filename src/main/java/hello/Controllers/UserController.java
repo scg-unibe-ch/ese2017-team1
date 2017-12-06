@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import hello.Users.Password;
 
 
 @Controller
@@ -39,6 +40,19 @@ public class UserController extends WebMvcConfigurerAdapter {
         userService.saveUser(user, roleId);
         model.addAttribute("userRole", roleService.findRole(roleId));
         return "addedUser";
+    }
+
+    @GetMapping("/changePassword")
+    public String newPassword(Model model) {
+        model.addAttribute("password", new Password());
+        return "changePassword";
+    }
+
+    @PostMapping(value = "/changePassword")
+    public String passwordSubmit( @ModelAttribute("password") Password password, Model model) {
+        userService.changePassword(password.getPassword());
+        model.addAttribute("changed", true);
+        return "changePassword";
     }
 
     /**
