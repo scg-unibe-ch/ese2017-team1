@@ -31,8 +31,10 @@
             </a>
         </div>
         <br/>
-        Möchten Sie diesen User wirklich löschen?
     </h1>
+    <div align="center">
+        <h1> Möchten Sie diesen User wirklich löschen?</h1>
+    </div>
     <table style="width:100%">
         <thead>
         <tr>
@@ -52,19 +54,13 @@
         </tbody>
     </table>
     <br/>
-    <div class="col-md-3 mb-3">
-        <div class="btn-group" role="group">
-            <a href="/showUsers">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Zurück
-                </button>
-            </a>
-            <a th:href="${'/deleteUser/'+user.id}">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    User definitiv löschen!
-                </button>
-            </a>
-        </div>
+    <button class="btn btn-outline-warning btn-lg" type="button" onclick="history.back()">Zurück</button>
+    <div class="btn-group" role="group" style="float: right">
+        <a th:href="${'/deleteUser/'+user.id}">
+            <button type="button" class="btn btn-outline-warning btn-lg">
+                User definitiv löschen!
+            </button>
+        </a>
     </div>
 </div>
 
