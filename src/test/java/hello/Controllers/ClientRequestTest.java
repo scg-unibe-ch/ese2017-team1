@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(DriverController.class)
-public class DriverRequestTest {
+public class ClientRequestTest {
 
     private MockMvc mockMvc;
 
@@ -57,7 +57,7 @@ public class DriverRequestTest {
         viewResolver.setPrefix("/WEB-INF/jsp/view/");
         viewResolver.setSuffix(".html");
 
-        mockMvc = MockMvcBuilders.standaloneSetup(new DriverController())
+        mockMvc = MockMvcBuilders.standaloneSetup(new ClientController())
                 .setViewResolvers(viewResolver)
                 .build();
     }
@@ -65,17 +65,11 @@ public class DriverRequestTest {
 
     @Test
     public void getDriver() throws Exception {
-        this.mockMvc.perform(get("/driver"))
+        this.mockMvc.perform(get("/selectClient"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("driver"));
+                .andExpect(view().name("selectClient"));
     }
 
-    // does not work since it needs id of user logged in
-    /*@Test
-    public void getShowToursDriver() throws Exception {
-        this.mockMvc.perform(get("/showToursDriver"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("showToursDriver"));
-    }*/
 
 }
+
