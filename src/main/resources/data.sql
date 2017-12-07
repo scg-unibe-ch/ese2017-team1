@@ -1,3 +1,25 @@
+/* cannot drop foreign key because it does not exist (yet)
+https://stackoverflow.com/questions/1571581/how-to-add-on-delete-cascade-in-alter-table-statement
+https://stackoverflow.com/questions/12994919/can-not-create-table-in-workbench-errno-121
+https://www.w3schools.com/sql/sql_foreignkey.asp
+ */
+
+/*ALTER TABLE `user_role`
+    DROP FOREIGN KEY `user_id`,
+    DROP FOREIGN KEY `role_id`;
+
+
+ALTER TABLE `role`
+  DROP FOREIGN KEY `role`;
+
+
+ALTER TABLE `role`
+  ADD CONSTRAINT `fk_role`
+  FOREIGN KEY (`role_id`)
+  REFERENCES `user`(`user_id`)
+  ON DELETE CASCADE;*/
+
+
 INSERT INTO `role` (`role`) VALUES
   ('ROLE_ADMIN'),
   ('ROLE_DRIVER'),
