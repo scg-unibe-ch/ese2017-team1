@@ -32,10 +32,11 @@
             </div>
         </h1>
             <br/>
+            <br/>
             <div align="center">
                 <h1>Dieser Kunde wurde erstellt</h1>
             </div>
-
+        <br/>
         <ul class="list-group">
             <li class="list-group-item list-group-item-warning" th:text="'Kunden Id: '+ ${client.id}"/>
             <li class="list-group-item list-group-item-warning" th:text="'Name: ' + ${client.name}"/>
@@ -46,24 +47,24 @@
             <li class="list-group-item list-group-item-warning" th:text="'Email: ' + ${client.email}"/>
         </ul>
         <br/>
-        <div class="col-md-3 mb-3">
-            <div class="btn-group" role="group">
-                <a href="/clientForm">
-                    <button type="button" class="btn btn-outline-warning btn-lg">
-                        Weitere Kunden hinzufügen
-                    </button>
-                </a>
-                <a th:href="@{/orderForm(id=${client.id})}">
-                    <button type="button" class="btn btn-outline-warning btn-lg">
-                        Diesem Kunden einen Auftrag zuordnen
-                    </button>
-                </a>
-                <a href="/selectClient">
-                    <button type="button" class="btn btn-outline-warning btn-lg">
-                        Zurück zur Übersicht
-                    </button>
-                </a>
-            </div>
+        <div>
+            <a href="/selectClient">
+                <button type="button" class="btn btn-outline-warning btn-lg">
+                    Zurück
+                </button>
+            </a>
+        </div>
+        <div class="btn-group" role="group" style="float: right">
+            <a href="/clientForm">
+                <button type="button" class="btn btn-outline-warning btn-lg">
+                    Kunden hinzufügen
+                </button>
+            </a>
+            <a th:href="@{/orderForm(id=${client.id})}">
+                <button type="button" class="btn btn-outline-warning btn-lg">
+                    Auftrag zuordnen
+                </button>
+            </a>
         </div>
     </div>
 

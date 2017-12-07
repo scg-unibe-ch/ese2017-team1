@@ -30,8 +30,13 @@
                 </button>
             </a>
         </div>
-        Möchten Sie folgende Tour wirklich löschen?
     </h1>
+        <br/>
+        <br/>
+        <div align="center">
+            <h1>Möchten Sie folgende Tour wirklich löschen?</h1>
+        </div>
+        <br/>
     <table style="width:100%">
         <thead>
         <tr>
@@ -76,19 +81,13 @@
         </tbody>
     </table>
     <br/>
-    <div class="col-md-3 mb-3">
-        <div class="btn-group" role="group">
-            <a>
-                <button type="button" class="btn btn-outline-warning btn-lg" onclick="javascript:history.back()">
-                    Zurück
-                </button>
-            </a>
-            <a th:href="${'/deleteTour/'+tour.id}">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Tour definitiv löschen!
-                </button>
-            </a>
-        </div>
+    <button class="btn btn-outline-warning btn-lg" type="button" onclick="history.back()">Zurück</button>
+    <div class="btn-group" role="group" style="float: right">
+        <a th:href="${'/deleteTour/'+tour.id}">
+            <button type="button" class="btn btn-outline-warning btn-lg">
+                Tour definitiv löschen!
+            </button>
+        </a>
     </div>
 </div>
 
