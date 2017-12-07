@@ -20,12 +20,12 @@
         <div class="text-right">
             <!-- Logout Button -->
             <a href="/logout">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-warning btn-lg">
                     Logout
                 </button>
             </a>
             <a href="/info/user">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-warning btn-lg">
                     Userinfo
                 </button>
             </a>
@@ -56,7 +56,7 @@
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.freePalettes}"/></td>
             <td>
                 <a th:href="${'/deleteTourCheck/'+tour.id}">
-                    <button type="button" class="btn btn-outline-warning btn-lg">
+                    <button type="button" class="btn btn-warning btn-lg">
                         Tour löschen
                     </button>
                 </a>
@@ -88,7 +88,7 @@
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.palettes}"/></td>
             <td>
                 <a th:href="${'/newTourProductOrders/'+tour.id+'/'+prod.id+'/'+(-1)}">
-                    <button type="button" class="btn btn-outline-warning btn-lg">
+                    <button type="button" class="btn btn-warning btn-lg">
                         -
                     </button>
                 </a>
@@ -120,7 +120,7 @@
             <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.palettes}"/></td>
             <td>
                 <a th:href="${'/newTourProductOrders/'+tour.id+'/'+prod.id+'/'+1}">
-                    <button type="button" class="btn btn-outline-warning btn-lg">
+                    <button type="button" class="btn btn-warning btn-lg">
                         +
                     </button>
                 </a>
@@ -233,7 +233,7 @@
     <div class="col-md-3 mb-3">
         <div class="btn-group" role="group">
             <a href="/showTours">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-warning btn-lg">
                     Zurück zur Übersicht
                 </button>
             </a>

@@ -18,12 +18,12 @@
     <div class="text-right">
         <!-- Logout Button -->
         <a href="/logout">
-            <button type="button" class="btn btn-outline-warning btn-lg">
+            <button type="button" class="btn btn-warning btn-lg">
                 Logout
             </button>
         </a>
         <a href="/info/user">
-            <button type="button" class="btn btn-outline-warning btn-lg">
+            <button type="button" class="btn btn-warning btn-lg">
                 Userinfo
             </button>
         </a>
@@ -48,15 +48,15 @@
     </ul>
 </div>
 <br/>
-<button class="btn btn-outline-warning btn-lg" type="button" onclick="history.back()">Zurück</button>
+<button class="btn btn-warning btn-lg" type="button" onclick="history.back()">Zurück</button>
 <div class="btn-group" role="group" style="float: right">
     <a th:href="${'/driverProductOrder/'+tour.id+'/'+prod.id+'/abgelehnt'}">
-        <button type="button" class="btn btn-outline-warning btn-lg">
+        <button type="button" class="btn btn-warning btn-lg">
             Abgelehnt
         </button>
     </a>
     <a th:href="${'/driverProductOrder/'+tour.id+'/'+prod.id+'/akzeptiert'}">
-        <button type="button" class="btn btn-outline-warning btn-lg">
+        <button type="button" class="btn btn-warning btn-lg">
             Akzeptiert
         </button>
     </a>

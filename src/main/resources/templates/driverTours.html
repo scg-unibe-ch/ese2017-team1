@@ -18,12 +18,12 @@
     <div class="text-right">
         <!-- Logout Button -->
         <a href="/logout">
-            <button type="button" class="btn btn-outline-warning btn-lg">
+            <button type="button" class="btn btn-warning btn-lg">
                 Logout
             </button>
         </a>
         <a href="/info/user">
-            <button type="button" class="btn btn-outline-warning btn-lg">
+            <button type="button" class="btn btn-warning btn-lg">
                 Userinfo
             </button>
         </a>
@@ -49,7 +49,7 @@
         <td><li class="list-group-item list-group-item-warning" th:text="${match.client.name}"/></td>
         <td>
             <a th:href="${'/driverProductOrder/'+tour.id+'/'+match.id}">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-warning btn-lg">
                     mehr
                 </button>
             </a>
@@ -161,10 +161,10 @@
 </script>
 </div>
 <br/>
-    <button class="btn btn-outline-warning btn-lg" type="button" onclick="history.back()">Zurück</button>
+    <button class="btn btn-warning btn-lg" type="button" onclick="history.back()">Zurück</button>
     <div class="btn-group" role="group" style="float: right">
         <a th:href="${'/endTourCheck/'+tour.id}">
-            <button type="button" class="btn btn-outline-warning btn-lg">
+            <button type="button" class="btn btn-warning btn-lg">
                 Tour abschliessen
             </button>
         </a>
