@@ -30,9 +30,12 @@
                 </button>
             </a>
         </div>
-        <br/>
-        Möchten Sie diese Tour wirklich abschliessen?
     </h1>
+    <br/>
+    <br/>
+    <div align="center">
+        Möchten Sie diese Tour wirklich abschliessen?
+    </div>
     <br/>
     <table style="width:100%">
         <thead>
@@ -65,19 +68,14 @@
         </tr>
         </tbody>
     </table>
-    <div class="col-md-3 mb-3">
-        <div class="btn-group" role="group">
-            <a>
-                <button type="button" class="btn btn-outline-warning btn-lg" onclick="javascript:history.back()">
-                    Zurück
-                </button>
-            </a>
-            <a th:href="${'/endTour/'+tour.id}">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Tour definitiv abschliessen!
-                </button>
-            </a>
-        </div>
+    <br/>
+    <button class="btn btn-outline-warning btn-lg" type="button" onclick="history.back()">Zurück</button>
+    <div class="btn-group" role="group" style="float: right">
+        <a th:href="${'/endTour/'+tour.id}">
+            <button type="button" class="btn btn-outline-warning btn-lg">
+                Tour definitiv abschliessen!
+            </button>
+        </a>
     </div>
 </div>
 

@@ -161,14 +161,8 @@
 </script>
 </div>
 <br/>
-
-<div class="col-md-3 mb-3">
-    <div class="btn-group" role="group">
-        <a>
-            <button type="button" class="btn btn-outline-warning btn-lg" onclick="javascript:history.back()">
-                Zurück
-            </button>
-        </a>
+    <button class="btn btn-outline-warning btn-lg" type="button" onclick="history.back()">Zurück</button>
+    <div class="btn-group" role="group" style="float: right">
         <a th:href="${'/endTourCheck/'+tour.id}">
             <button type="button" class="btn btn-outline-warning btn-lg">
                 Tour abschliessen
@@ -176,11 +170,8 @@
         </a>
     </div>
 </div>
-</div>
 
 <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvRi8WcVAqTsx-TC7Xi_spt2wCNTuolyc&amp;callback=initMap"></script>
 
 </body>
-
-
 </html>
