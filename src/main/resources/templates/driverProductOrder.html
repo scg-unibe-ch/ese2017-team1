@@ -30,6 +30,7 @@
     </div>
 </h1>
 <br/>
+<br/>
 <div align="center">
     <h1>Ausgewählter Auftrag</h1>
 </div>
@@ -56,14 +57,14 @@
                 Zurück
             </button>
         </a>
-        <a th:href="${'/driverProductOrder/'+tour.id+'/'+prod.id+'/akzeptiert'}">
-            <button type="button" class="btn btn-outline-warning btn-lg">
-                Akzeptiert
-            </button>
-        </a>
         <a th:href="${'/driverProductOrder/'+tour.id+'/'+prod.id+'/abgelehnt'}">
             <button type="button" class="btn btn-outline-warning btn-lg">
                 Abgelehnt
+            </button>
+        </a>
+        <a th:href="${'/driverProductOrder/'+tour.id+'/'+prod.id+'/akzeptiert'}">
+            <button type="button" class="btn btn-outline-warning btn-lg">
+                Akzeptiert
             </button>
         </a>
     </div>
