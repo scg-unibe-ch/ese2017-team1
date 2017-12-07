@@ -11,7 +11,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -64,11 +66,19 @@ public class ClientRequestTest {
 
 
     @Test
-    public void getDriver() throws Exception {
+    public void getSelectClient() throws Exception {
         this.mockMvc.perform(get("/selectClient"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("selectClient"));
     }
+
+    // does not work yet
+    /*@Test
+    public void getSearchClient() throws Exception {
+        this.mockMvc.perform(get("/searchClient"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("searchClient"));
+    }*/
 
 
 }

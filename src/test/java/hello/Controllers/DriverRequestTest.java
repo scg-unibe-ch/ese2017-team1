@@ -11,6 +11,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import java.security.Principal;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -78,4 +80,16 @@ public class DriverRequestTest {
                 .andExpect(view().name("showToursDriver"));
     }*/
 
+
+
+    // will we probably need, does not work yet
+    /*private Principal getPrincipal(String name){
+        Principal principal = new Principal() {
+            @Override
+            public String getName() {
+                return name;
+            }
+        };
+        return principal;
+    }*/
 }
