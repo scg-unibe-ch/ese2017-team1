@@ -31,36 +31,32 @@
             </a>
         </div>
         <br/>
-        Folgender Auftrag wurde gelöscht:
+        Dieser User wurde gelöscht:
     </h1>
     <table style="width:100%">
         <thead>
         <tr>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Stadt'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Land'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Anz. Paletten'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'UserId'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Vorname'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Nachname'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Email'"/></b></td>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.name}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.city}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.land}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.palettes}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${user.id}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${user.name}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${user.lastName}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${user.email}"/></td>
         </tr>
         </tbody>
     </table>
     <br/>
     <div class="col-md-3 mb-3">
         <div class="btn-group" role="group">
-            <a href="/showJobs">
+            <a href="/showUsers">
                 <button type="button" class="btn btn-outline-warning btn-lg">
-                    Zurück zur Übersicht
+                    Zurück
                 </button>
             </a>
         </div>

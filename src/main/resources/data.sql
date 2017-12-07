@@ -19,6 +19,15 @@ ALTER TABLE `role`
   REFERENCES `user`(`user_id`)
   ON DELETE CASCADE;*/
 
+ALTER TABLE `user_role`
+DROP FOREIGN KEY `FK859n2jvi8ivhui0rl0esws6o`;
+ALTER TABLE `user_role`
+ADD CONSTRAINT `FK859n2jvi8ivhui0rl0esws6o`
+FOREIGN KEY (`user_id`)
+REFERENCES `user`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `user_role`
+DROP FOREIGN KEY `FKa68196081fvovjhkek5m97n3y`;
+
 
 INSERT INTO `role` (`role`) VALUES
   ('ROLE_ADMIN'),
