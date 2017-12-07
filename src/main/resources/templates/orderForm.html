@@ -37,7 +37,7 @@
     <br/>
     <form th:action="@{/orderForm(id=${param.id})}" method="post" th:object="${productOrder}" class="container" id="needs-validation" style="align-content: center">
         <div class="row">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-12 mb-12">
                 <label for="Produktbeschreibung" style="color: orange">Produktbeschreibung:</label>
                     <div class="input-group">
                         <select class="form-control" id="Produktbeschreibung" name="productId">
@@ -47,20 +47,21 @@
                 </div>
             </div>
         <div class="row">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-12 mb-12">
                 <label for="Menge" style="color: orange">Menge:</label>
                     <div class="input-group">
                         <input type="number" th:field="*{amount}" placeholder="Menge" class="form-control" id="Menge" min="1" required="amount"></input>
                     </div>
             </div>
         </div>
-        <a href="/selectClient">
-            <button type="button" class="btn btn-outline-warning">
-                Zurück zur Übersicht
-            </button>
-        </a>
-        <button class="btn btn-outline-warning" type="reset">Reset</button>
-        <button class="btn btn-outline-warning" type="submit">Bestellung Speichern</button>
+        <button class="btn btn-outline-warning btn-lg" type="button" onclick="history.back()">Zurück</button>
+        <div class="btn-group" role="group" style="float: right">
+            <button class="btn btn-outline-warning btn-lg" type="reset">Reset</button>
+            <button class="btn btn-outline-warning btn-lg" type="submit">Bestellung Speichern</button>
+        </div>
+
+
+
     </form>
 
     <!-- Optional JavaScript -->

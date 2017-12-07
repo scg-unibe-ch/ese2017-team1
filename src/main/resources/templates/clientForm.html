@@ -35,6 +35,7 @@
         </div>
     </h1>
     <br/>
+    <br/>
     <form th:action="@{/clientForm}" method="post" th:object="${client}" class="container" id="needs-validation" style="align-content: center">
         <div class="row">
             <div class="col-md-6 mb-3">
@@ -43,7 +44,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 mb-3">
+            <div class="col-md-6 mb-3">
                 <label for="Strasse" style="color: orange">Strasse:</label>
                 <input type="text" th:field="*{street}" class="form-control" id="Strasse" placeholder="Strasse" required="street"></input>
             </div>
@@ -61,15 +62,15 @@
                 <input type="text" th:field="*{phone}" class="form-control" id="Telefon" placeholder="Telefon" required="name"></input>
             </div>
 
-            <div class="col-md-3 mb-3">
+            <div class="col-md-6 mb-3">
                 <label for="Email" style="color: orange">Email (optional):</label>
                 <input type="email" th:field="*{email}" class="form-control" id="Email" placeholder="Email"></input>
             </div>
         </div>
-        <div class="btn-group" role="group">
-            <button class="btn btn-outline-warning" type="button" onclick="history.back()">Zurück</button>
-            <button class="btn btn-outline-warning" type="reset">Reset</button>
-            <button class="btn btn-outline-warning" type="submit">Kunde Speichern</button>
+        <button class="btn btn-outline-warning btn-lg" type="button" onclick="history.back()">Zurück</button>
+        <div class="btn-group" role="group" style="float: right">
+            <button class="btn btn-outline-warning btn-lg" type="reset">Reset</button>
+            <button class="btn btn-outline-warning btn-lg" type="submit">Kunde Speichern</button>
         </div>
     </form>
 

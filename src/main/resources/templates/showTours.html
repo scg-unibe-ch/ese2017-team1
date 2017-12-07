@@ -31,6 +31,8 @@
             </a>
         </div>
     </h1>
+    <br/>
+    <br/>
     <div align="center">
        <h1>Tourenübersicht</h1>
     </div>
@@ -88,24 +90,18 @@
         </tbody>
     </table>
     <br/>
-    <div class="col-md-3 mb-3">
-        <div class="btn-group" role="group">
-            <a href="/newTourCreate">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Neue Tour erstellen
-                </button>
-            </a>
-            <a href="/showToursOld">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Abgeschlossene Touren
-                </button>
-            </a>
-            <a href="/logistician">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Zurück zur Übersicht
-                </button>
-            </a>
-        </div>
+    <button class="btn btn-outline-warning btn-lg" type="button" onclick="history.back()">Zurück</button>
+    <div class="btn-group" role="group" style="float: right">
+        <a href="/showToursOld">
+            <button type="button" class="btn btn-outline-warning btn-lg">
+                Abgeschlossene Touren
+            </button>
+        </a>
+        <a href="/newTourCreate">
+            <button type="button" class="btn btn-outline-warning btn-lg">
+                Neue Tour erstellen
+            </button>
+        </a>
     </div>
 </div>
 

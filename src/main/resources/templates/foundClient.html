@@ -41,24 +41,24 @@
         <li class="list-group-item list-group-item-warning" th:text="'Telefon: ' + ${client.phone}"/>
         <li class="list-group-item list-group-item-warning" th:text="'Email: ' + ${client.email}"/>
     </ul>
-    <div class="col-md-3 mb-3">
-        <div class="btn-group" role="group">
-            <a href="/logistician">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Zurück zur Übersicht
-                </button>
-            </a>
-            <a href="/clientForm">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Weitere Kunden hinzufügen
-                </button>
-            </a>
-            <a th:href="@{/orderForm(id=${client.id})}">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Diesem Kunden einen Auftrag zuordnen
-                </button>
-            </a>
-        </div>
+    <div>
+        <a href="/logistician">
+            <button type="button" class="btn btn-outline-warning btn-lg">
+                Zurück
+            </button>
+        </a>
+    </div>
+    <div class="btn-group" role="group" style="float: right">
+        <a href="/clientForm">
+            <button type="button" class="btn btn-outline-warning btn-lg">
+                Kunden hinzufügen
+            </button>
+        </a>
+        <a th:href="@{/orderForm(id=${client.id})}">
+            <button type="button" class="btn btn-outline-warning btn-lg">
+                Auftrag zuordnen
+            </button>
+        </a>
     </div>
 </div>
 
