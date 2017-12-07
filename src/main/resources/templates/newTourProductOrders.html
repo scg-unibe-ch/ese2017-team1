@@ -149,6 +149,7 @@
                 var marker2;
                 // Here the map is initialized
                 var bernExwi = {lat: 46.951129, lng: 7.438773};
+                var bernExwi2 = {lat: 46.95113, lng: 7.43877};
                 var directionDisplay;
                 var directionsService = new google.maps.DirectionsService();
                 directionsDisplay = new google.maps.DirectionsRenderer();
@@ -159,6 +160,10 @@
                 // Here the point is set
                 marker1 = new google.maps.Marker({
                     position: bernExwi,
+                    map: map
+                });
+                marker2 = new google.maps.Marker({
+                    position: bernExwi2,
                     map: map
                 });
                 var addresses = [[${addresses}]];
@@ -192,7 +197,7 @@
                     var waypts = [];
 
 
-                    for (var i = 0; i < addresses.length-1; i++) {
+                    for (var i = 0; i < addresses.length; i++) {
                         var addr = addresses[i];
                         if (addr !== "") {
                             waypts.push({
@@ -202,7 +207,7 @@
                         }
                     }
                     start = bernExwi;
-                    end =  addresses[addresses.length-1];
+                    end =  bernExwi2;
                     var request = {
                         origin: start,
                         destination: end,
