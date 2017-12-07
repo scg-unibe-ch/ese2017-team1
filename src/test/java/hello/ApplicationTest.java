@@ -7,8 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 
 /**
- * Should test whether application starts.
- * Somehow does not work anymore, no idea why.
+ * Tests whether application starts.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
