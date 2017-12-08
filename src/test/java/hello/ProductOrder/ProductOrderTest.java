@@ -13,6 +13,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.*;
 
+/**
+ * Very stupid test but maybe we can work on it later.
+ * repository.save() does not work
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class ProductOrderTest {
@@ -20,7 +24,6 @@ public class ProductOrderTest {
 
     @Autowired
     private ProductOrderRepository repository;
-
 
 
     @Test
@@ -34,11 +37,11 @@ public class ProductOrderTest {
 
         productOrder.setId(id);
         productOrder.setClient(client);
+        productOrder.setProduct(product);
 
         //this.repository.save(productOrder);
+        //assertThat(this.repository.findOne(id).getClient()).isEqualTo(client);
 
-
-        ProductOrder user = this.repository.findOne(id);
         assertThat(productOrder.getClient()).isEqualTo(client);
     }
 

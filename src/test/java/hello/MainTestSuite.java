@@ -1,7 +1,7 @@
 package hello;
 import hello.Controllers.*;
 import hello.ProductOrder.ProductOrderTest;
-import hello.Services.SomeTest;
+import hello.Repositories.ClientRepositoryTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -20,7 +20,7 @@ import org.junit.runners.Suite;
         SmokeTest.class,
         //ProductOrderTest.class,
         ClientRequestTest.class,
-        //SomeTest.class,
+        ClientRepositoryTest.class,
         ApplicationTest.class,
 
 
