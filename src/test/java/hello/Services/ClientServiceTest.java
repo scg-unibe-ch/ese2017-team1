@@ -24,6 +24,9 @@ public class ClientServiceTest {
     @Autowired
     private ClientRepository repository;
 
+    @Autowired
+    private ClientService clientService;
+
 
     /**
      * Tests whether client is saved correctly in Repository.
@@ -44,7 +47,7 @@ public class ClientServiceTest {
         client.setStreet("Mannystreet 21");
         client.setPhone("079 840 33 22");
 
-        this.repository.save(client);
+        clientService.save(client);
 
         assertThat(repository.findByName("Pandorra").getCity()).isEqualTo("Langenthal");
         assertThat(repository.findByName("Pandorra").getEmail()).isEqualTo("test@example.com");
@@ -54,6 +57,5 @@ public class ClientServiceTest {
         assertThat(repository.findByName("Pandorra").getStreet()).isEqualTo("Mannystreet 21");
 
     }
-
 }
 
