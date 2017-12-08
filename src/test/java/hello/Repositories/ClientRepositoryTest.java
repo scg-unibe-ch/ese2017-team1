@@ -10,21 +10,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import hello.Application;
-import hello.Client.Client;
-import hello.Repositories.ClientRepository;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 
 /**
- * Very stupid test but maybe we can work on it later.
- * repository.save() does not work
+ * Tests whether a client is saved correctly in the ClientRepository.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -34,11 +22,6 @@ public class ClientRepositoryTest {
     @Autowired
     private ClientRepository repository;
 
-
-    /**
-     * Tests whether client is saved correctly in Repository.
-     * Maybe stupid?
-     */
     @Test
     public void saveClient() throws Exception {
 
@@ -62,6 +45,5 @@ public class ClientRepositoryTest {
         assertThat(repository.findByName("Pandorra").getLand()).isEqualTo("Indien");
         assertThat(repository.findByName("Pandorra").getPhone()).isEqualTo("079 840 33 22");
         assertThat(repository.findByName("Pandorra").getStreet()).isEqualTo("Mannystreet 21");
-
     }
 }
