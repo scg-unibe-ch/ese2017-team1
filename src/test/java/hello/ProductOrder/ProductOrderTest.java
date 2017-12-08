@@ -1,5 +1,6 @@
 package hello.ProductOrder;
 
+import hello.Application;
 import hello.Client.Client;
 import hello.Product.Product;
 import hello.ProductOrders.ProductOrder;
@@ -7,17 +8,19 @@ import hello.Repositories.ProductOrderRepository;
 import org.junit.*;
 import org.junit.runner.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.*;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.*;
 
-
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = Application.class)
 public class ProductOrderTest {
 
 
     @Autowired
     private ProductOrderRepository repository;
+
 
 
     @Test
@@ -31,6 +34,8 @@ public class ProductOrderTest {
 
         productOrder.setId(id);
         productOrder.setClient(client);
+
+        //this.repository.save(productOrder);
 
 
         ProductOrder user = this.repository.findOne(id);
