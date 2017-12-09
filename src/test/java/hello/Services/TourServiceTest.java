@@ -1,6 +1,7 @@
 package hello.Services;
 
-import hello.Repositories.ProductOrderRepository;
+import hello.Product.Product;
+import hello.ProductOrders.ProductOrder;
 import hello.Repositories.TourRepository;
 import hello.Tour.Tour;
 import hello.Trucks.Trailer;
@@ -29,8 +30,16 @@ public class TourServiceTest {
     ArrayList<Tour> tours;
     ArrayList<Tour> finishedTours;
     ArrayList<Tour> incompTours;
+    ArrayList<ProductOrder> products;
     Long tourId;
     Long driverId;
+    Tour tour;
+    Long vehId;
+    Vehicle veh;
+    Long traiId;
+    Trailer trai;
+    Long prodId;
+    ProductOrder prod;
 
     @TestConfiguration
     static class TourServiceTestContextConfiguration {
@@ -74,13 +83,40 @@ public class TourServiceTest {
         tours = new ArrayList<>();
         finishedTours = new ArrayList<>();
         incompTours = new ArrayList<>();
+        products = new ArrayList<>();
 
         driverId = (long) 8;
 
+        vehId = (long) 1;
+        veh = new Vehicle();
+        veh.setId(vehId);
+        veh.setFree(3);
+        veh.setPalettesAmount(0);
+        vehicleService.save(veh);
+
+        traiId = (long) 1;
+        trai = new Trailer();
+        trai.setId(traiId);
+        trai.setFree(3);
+        trai.setPalettesAmount(30);
+        trailerService.save(trai);
+
+        tourId = (long) 5;
+        tour = new Tour();
+        tour.setId(tourId);
+
+        prodId = (long) 7;
+        prod = new ProductOrder();
+        prod.setId(prodId);
+        prod.setTour(null);
+        prod.setAmount("4");
+        Product product = new Product();
+        product.setPalettes(3);
+        prod.setProduct(product);
+
         // not finished tour
-        tourId = (long) 1;
         Tour tour1 = new Tour();
-        tour1.setId(tourId);
+        tour1.setId((long) 1);
         tour1.setDriver(driver);
         tour1.setVehicle(vehicle);
         tour1.setTrailer(trailer);
@@ -112,6 +148,13 @@ public class TourServiceTest {
         Mockito.when(tourService.findTour(tourId)).thenReturn(tour1);
         Mockito.when(driver.getUserId()).thenReturn(driverId);
         Mockito.when(user.getId()).thenReturn(driverId);
+        Mockito.when(tourRepository.findOne(tourId)).thenReturn(tour);
+        Mockito.when(vehicle.getPalettesAmount()).thenReturn(1);
+        Mockito.when(trailer.getPalettesAmount()).thenReturn(26);
+        Mockito.when(vehicleService.findVehicle(vehId)).thenReturn(veh);
+        Mockito.when(trailerService.findTrailer(traiId)).thenReturn(trai);
+        Mockito.when(productOrderService.findProductOrder(prodId)).thenReturn(prod);
+        Mockito.when(productOrderService.listTourProductOrders(tourId)).thenReturn(products);
     }
 
 
@@ -138,6 +181,73 @@ public class TourServiceTest {
     @Test
     public void listFinishedTours() throws Exception {
         assertThat(tourService.listFinishedTours()).isEqualTo(finishedTours);
+    }
+
+    @Test
+    public void findTour() {
+        assertThat(tourService.findTour(tourId)).isEqualTo(tour);
+    }
+
+    @Test
+    public void freePalettes(){
+        assertThat(tour.getFreePalettes()).isEqualTo(null);
+        tour.setTrailer(trailer);
+        tour.setVehicle(vehicle);
+        tourService.freePalettes(tour);
+        assertThat(tour.getFreePalettes()).isEqualTo(27);
+    }
+
+    @Test
+    public void assignVehicle() {
+        tourService.assignVehicle(tourId,vehId);
+        assertThat(tour.getVehicle().getId()).isEqualTo(vehId);
+        assertThat(veh.getFree()).isEqualTo(2);
+        assertThat(tour.getFreePalettes()).isEqualTo(veh.getPalettesAmount());
+    }
+
+    @Test
+    public void assignTrailer() {
+        tourService.assignTrailer(tourId,traiId);
+        assertThat(tour.getTrailer().getId()).isEqualTo(traiId);
+        assertThat(trai.getFree()).isEqualTo(2);
+        assertThat(tour.getFreePalettes()).isEqualTo(trai.getPalettesAmount());
+    }
+
+    @Test
+    public void addProduct(){
+        tour.setFreePalettes(11);
+        tourService.addProduct(tourId,prodId,(long) 1);
+        assertThat(prod.getTour()).isEqualTo(null);
+        assertThat(tour.getFreePalettes()).isEqualTo(11);
+        tour.setFreePalettes(12);
+        tourService.addProduct(tourId,prodId,(long) 1);
+        assertThat(prod.getTour()).isEqualTo(tour);
+        assertThat(tour.getFreePalettes()).isEqualTo(0);
+        tourService.addProduct(tourId,prodId,(long) -1);
+        assertThat(prod.getTour()).isEqualTo(null);
+        assertThat(tour.getFreePalettes()).isEqualTo(12);
+    }
+
+    @Test
+    public void cleanTour(){
+        tour.setVehicle(veh);
+        tour.setTrailer(trai);
+        prod.setTour(tour);
+        products.add(prod);
+        tourService.cleanTour(tourId);
+        assertThat(prod.getTour()).isEqualTo(null);
+        assertThat(trai.getFree()).isEqualTo(4);
+        assertThat(veh.getFree()).isEqualTo(4);
+    }
+
+    @Test
+    public void finishTour(){
+        tour.setVehicle(veh);
+        tour.setTrailer(trai);
+        prod.setTour(tour);
+        products.add(prod);
+        tourService.finishTour(tourId);
+        assertThat(tour.getFinished()).isEqualTo(1);
     }
 }
 
