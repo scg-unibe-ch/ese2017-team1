@@ -27,7 +27,8 @@ public class ProductOrderServiceTest {
     ArrayList<ProductOrder> products;
     ArrayList<ProductOrder> notAccProducts;
     ArrayList<ProductOrder> notAccNoTourProducts;
-
+    ArrayList<ProductOrder> tourProductOrders;
+    Long tourId;
 
     @TestConfiguration
     static class EmployeeServiceImplTestContextConfiguration {
@@ -53,7 +54,10 @@ public class ProductOrderServiceTest {
     private ProductService productService;
 
     @MockBean
-    private Tour tour;
+    private Client client;
+
+    @MockBean
+    private Product product;
 
 
     @Before
@@ -62,45 +66,60 @@ public class ProductOrderServiceTest {
         accProducts = new ArrayList<>();
         notAccProducts = new ArrayList<>();
         notAccNoTourProducts = new ArrayList<>();
+        tourProductOrders = new ArrayList<>();
 
-        Client clientAcc = new Client();
-        Client clientNotAcc = new Client();
-        Client client = new Client();
-        Product product = new Product();
-        //Tour tour = new Tour();
         Long idAcc = Long.valueOf(1);
         Long idNotAcc = Long.valueOf(2);
         Long id = Long.valueOf(3);
+        tourId = Long.valueOf(4);
+        Long anotherTourId = Long.valueOf(20);
+        Tour tour = new Tour();
+        tour.setId(tourId);
+        Tour anotherTour = new Tour();
+        anotherTour.setId(anotherTourId);
 
         ProductOrder productOrderAcc = new ProductOrder();
         productOrderAcc.setId(idAcc);
-        productOrderAcc.setClient(clientAcc);
+        productOrderAcc.setClient(client);
+        productOrderAcc.setTour(tour);
         productOrderAcc.setProduct(product);
         productOrderAcc.setAccOrRej("akzeptiert");
+        productOrderAcc.getTour().setId(tourId);
         products.add(productOrderAcc);
 
         ProductOrder productOrderNotAcc = new ProductOrder();
         productOrderNotAcc.setId(idNotAcc);
-        productOrderNotAcc.setClient(clientNotAcc);
+        productOrderNotAcc.setTour(tour);
+        productOrderNotAcc.setClient(client);
         productOrderNotAcc.setProduct(product);
         productOrderNotAcc.setAccOrRej("abgelehnt");
+        productOrderNotAcc.getTour().setId(tourId);
         products.add(productOrderNotAcc);
 
         ProductOrder productOrder = new ProductOrder();
         productOrder.setId(id);
         productOrder.setClient(client);
+        productOrder.setTour(anotherTour);
         productOrder.setProduct(product);
         productOrder.setAccOrRej("keine Angabe");
+        productOrder.getTour().setId(anotherTourId);
         products.add(productOrder);
 
         Mockito.when(productOrderRepository.findAll())
                 .thenReturn(products);
+
+        Mockito.when(tourService.findTour(tourId))
+                .thenReturn(tour);
+
 
         accProducts.add(productOrderAcc);
         notAccProducts.add(productOrderNotAcc);
         notAccProducts.add(productOrder);
         notAccNoTourProducts.add(productOrderNotAcc);
         notAccNoTourProducts.add(productOrder);
+        tourProductOrders.add(productOrderAcc);
+        tourProductOrders.add(productOrderNotAcc);
+
     }
 
 
@@ -122,6 +141,11 @@ public class ProductOrderServiceTest {
     @Test
     public void listNotAccNoTourProductOrders() throws Exception {
         assertThat(productOrderService.listNotAccNoTourProductOrders()).isEqualTo(notAccNoTourProducts);
+    }
+
+    @Test
+    public void listTourProductOrders() throws Exception {
+        assertThat(productOrderService.listTourProductOrders(tourId)).isEqualTo(tourProductOrders);
     }
 }
 
