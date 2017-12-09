@@ -11,6 +11,9 @@ import org.junit.runners.Suite;
 /**
  * Tests all test classes listed.
  * Commented out tests do not work yet.
+ *
+ * We did not test the classes ClientService, DriverService and ProductService
+ * since they rely mainly on the Repository classes which we test separately.
  */
 
 @RunWith(Suite.class)
