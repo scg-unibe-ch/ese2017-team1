@@ -6,6 +6,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 <body style="background-color: #87AFC7">
 <h1>
@@ -18,12 +19,12 @@
     <div class="text-right">
         <!-- Logout Button -->
         <a href="/logout">
-            <button type="button" class="btn btn-warning btn-lg">
+            <button type="button" class="btn btn-primary btn-lg">
                 Logout
             </button>
         </a>
         <a href="/info/user">
-            <button type="button" class="btn btn-warning btn-lg">
+            <button type="button" class="btn btn-primary btn-lg">
                 Userinfo
             </button>
         </a>
@@ -72,7 +73,7 @@
         <td><li class="list-group-item list-group-item-warning" th:text="${client.land}"/></td>
         <td>
             <a th:href="@{/orderForm(id=${client.id})}">
-                <button type="button" class="btn btn-warning btn-lg">
+                <button type="button" class="btn btn-primary btn-lg">
                     Weiter
                 </button>
             </a>
@@ -81,7 +82,7 @@
     </tbody>
 </table>
     <br/>
-    <input type="button" class="btn btn-warning btn-lg" value="Zurück" onclick="javascript:history.back()"/>
+    <input type="button" class="btn btn-primary btn-lg" value="Zurück" onclick="javascript:history.back()"/>
 </div>
 
 <!-- Optional JavaScript -->
