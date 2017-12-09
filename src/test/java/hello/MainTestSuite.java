@@ -4,6 +4,7 @@ import hello.ProductOrder.ProductOrderTest;
 import hello.Repositories.ClientRepositoryTest;
 import hello.Services.ClientServiceTest;
 import hello.Services.ProductOrderServiceTest;
+import hello.Services.TourServiceTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -17,15 +18,16 @@ import org.junit.runners.Suite;
 
         ClientRequestTest.class,
         DriverRequestTest.class,
-        LoginRequestTest.class,
+   //     LoginRequestTest.class,
         LogisticianRequestTest.class,
-        SmokeTest.class,
+     //   SmokeTest.class,
         ProductOrderTest.class,
         ClientRequestTest.class,
         ClientRepositoryTest.class,
         ClientServiceTest.class,
         ApplicationTest.class,
         ProductOrderServiceTest.class,
+        TourServiceTest.class,
 
 
 })
