@@ -32,9 +32,11 @@ public class ProductOrderServiceTest {
     ArrayList<ProductOrder> notAccProducts;
     ArrayList<ProductOrder> notAccNoTourProducts;
     ArrayList<ProductOrder> tourProductOrders;
-    Long tourId;
-    ProductOrder productOrderNoTour;
-    Client client;
+    ArrayList<String> addresses;
+    Long tourId, id;
+    ProductOrder productOrderNoTour, productOrder, productOrderAcc;
+    Client client, clientA;
+    Long productId;
 
     @TestConfiguration
     static class EmployeeServiceImplTestContextConfiguration {
@@ -70,10 +72,12 @@ public class ProductOrderServiceTest {
         notAccProducts = new ArrayList<>();
         notAccNoTourProducts = new ArrayList<>();
         tourProductOrders = new ArrayList<>();
+        addresses = new ArrayList<>();
 
         Long idAcc = Long.valueOf(1);
         Long idNotAcc = Long.valueOf(2);
-        Long id = Long.valueOf(3);
+        id = Long.valueOf(3);
+        productId = Long.valueOf(20);
 
         tourId = Long.valueOf(4);
         Long anotherTourId = Long.valueOf(20);
@@ -84,13 +88,21 @@ public class ProductOrderServiceTest {
 
         client = new Client();
         client.setId(id);
+        client.setStreet("ExWi 21");
+        client.setLand("CH");
+        client.setCity("Bern");
+
+        clientA = new Client();
+        clientA.setId(id);
+        clientA.setStreet("Musterstrasse 13");
+        clientA.setLand("Frankreich");
+        clientA.setCity("Paris");
 
         // accepted ProductOrder with Tour
-        ProductOrder productOrderAcc = new ProductOrder();
+        productOrderAcc = new ProductOrder();
         productOrderAcc.setId(idAcc);
-        productOrderAcc.setClient(client);
         productOrderAcc.setTour(tour);
-        productOrderAcc.setProduct(product);
+        productOrderAcc.setClient(client);
         productOrderAcc.setAccOrRej("akzeptiert");
         productOrderAcc.getTour().setId(tourId);
         products.add(productOrderAcc);
@@ -99,25 +111,21 @@ public class ProductOrderServiceTest {
         ProductOrder productOrderNotAcc = new ProductOrder();
         productOrderNotAcc.setId(idNotAcc);
         productOrderNotAcc.setTour(tour);
-        productOrderNotAcc.setClient(client);
-        productOrderNotAcc.setProduct(product);
+        productOrderNotAcc.setClient(clientA);
         productOrderNotAcc.setAccOrRej("abgelehnt");
         productOrderNotAcc.getTour().setId(tourId);
         products.add(productOrderNotAcc);
 
         // not yet accepted or rejected ProductOrder with tour
-        ProductOrder productOrder = new ProductOrder();
+        productOrder = new ProductOrder();
         productOrder.setId(id);
-        productOrder.setClient(client);
         productOrder.setTour(anotherTour);
-        productOrder.setProduct(product);
         productOrder.setAccOrRej("keine Angabe");
         productOrder.getTour().setId(anotherTourId);
         products.add(productOrder);
 
-        // not yet accepted or rejected ProductOrder without tour, id and client
+        // not yet accepted or rejected ProductOrder without tour, id, product and client
         productOrderNoTour = new ProductOrder();
-        productOrderNoTour.setProduct(product);
         productOrderNoTour.setAccOrRej("keine Angabe");
         products.add(productOrderNoTour);
 
@@ -136,7 +144,11 @@ public class ProductOrderServiceTest {
         tourProductOrders.add(productOrderAcc);
         tourProductOrders.add(productOrderNotAcc);
 
-        // mocking functionality of ProductOrderRepository
+        // address of clients in Tour with tourID 4
+        addresses.add("ExWi 21,Bern,CH");
+        addresses.add("Musterstrasse 13,Paris,Frankreich");
+
+        // mocking functionality of ProductOrderRepository and ClientService
         Mockito.when(productOrderRepository.findAll())
                 .thenReturn(products);
 
@@ -154,6 +166,9 @@ public class ProductOrderServiceTest {
 
         Mockito.when(clientService.findClient(id))
                 .thenReturn(client);
+
+        Mockito.when(productService.findProduct(productId))
+                .thenReturn(product);
     }
 
 
@@ -195,19 +210,20 @@ public class ProductOrderServiceTest {
 
     @Test
     public void assignProduct() throws Exception{
-
+        productOrderService.assignProduct(productOrderNoTour, productId);
+        assertThat(productOrderNoTour.getProduct()).isEqualTo(product);
     }
 
     @Test
     public void addresses() throws Exception{
-
+        assertThat(productOrderService.addresses(tourId)).isEqualTo(addresses);
     }
 
     @Test
     public void accOrRej() throws Exception{
-
+        productOrderService.accOrRej(id, "akzeptiert");
+        assertThat(productOrder.getAccOrRej()).isEqualTo("akzeptiert");
     }
-
 }
 
 
