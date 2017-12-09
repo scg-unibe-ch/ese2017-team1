@@ -25,7 +25,7 @@ import org.junit.runners.Suite;
         ClientRepositoryTest.class,
         ClientServiceTest.class,
         ApplicationTest.class,
-        //ProductOrderService.class,
+        ProductOrderService.class,
 
 
 })

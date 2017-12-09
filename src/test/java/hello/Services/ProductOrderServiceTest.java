@@ -1,16 +1,16 @@
 package hello.Services;
 
-import hello.Application;
 import hello.Client.Client;
 import hello.Product.Product;
 import hello.ProductOrders.ProductOrder;
 import hello.Repositories.ProductOrderRepository;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -19,37 +19,38 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
 public class ProductOrderServiceTest {
 
+
+    @TestConfiguration
+    static class EmployeeServiceImplTestContextConfiguration {
+
+        @Bean
+        public ProductOrderService productOrderService() {
+            return new ProductOrderService();
+        }
+    }
 
     @Autowired
     private ProductOrderService productOrderService;
 
     @MockBean
-    private ProductOrderRepository repository;
+    private ProductOrderRepository productOrderRepository;
 
-    @Before
-    public void setup(){
+    @MockBean
+    private TourService tourService;
 
-        Client client = new Client();
-        Product product = new Product();
-        Long id = Long.valueOf(20);
+    @MockBean
+    private ClientService clientService;
 
-        ProductOrder productOrder = new ProductOrder();
-        productOrder.setId(id);
-        productOrder.setClient(client);
-        productOrder.setProduct(product);
-
-        this.productOrderService.save(productOrder);
-    }
+    @MockBean
+    private ProductService productService;
 
 
     @Test
-    public void listAccProductOrders() throws Exception {
+    public void listAllProductOrders() throws Exception {
 
         ArrayList<ProductOrder> products = new ArrayList<>();
-
         Client client = new Client();
         Product product = new Product();
         Long id = Long.valueOf(20);
@@ -60,6 +61,9 @@ public class ProductOrderServiceTest {
         productOrder.setProduct(product);
 
         products.add(productOrder);
+
+        Mockito.when(productOrderRepository.findAll())
+                .thenReturn(products);
 
         assertThat(productOrderService.listAllProductOrders()).isEqualTo(products);
 
