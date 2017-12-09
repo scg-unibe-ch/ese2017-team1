@@ -4,6 +4,7 @@ import hello.Client.Client;
 import hello.Product.Product;
 import hello.ProductOrders.ProductOrder;
 import hello.Repositories.ProductOrderRepository;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -21,10 +22,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 public class ProductOrderServiceTest {
 
+    ArrayList<ProductOrder> accProducts;
+    ArrayList<ProductOrder> products;
+    ArrayList<ProductOrder> notAccProducts;
+
 
     @TestConfiguration
     static class EmployeeServiceImplTestContextConfiguration {
-
         @Bean
         public ProductOrderService productOrderService() {
             return new ProductOrderService();
@@ -47,31 +51,12 @@ public class ProductOrderServiceTest {
     private ProductService productService;
 
 
-    @Test
-    public void listAllProductOrders() throws Exception {
+    @Before
+    public void setup(){
+        products = new ArrayList<>();
+        accProducts = new ArrayList<>();
+        notAccProducts = new ArrayList<>();
 
-        ArrayList<ProductOrder> products = new ArrayList<>();
-        Client client = new Client();
-        Product product = new Product();
-        Long id = Long.valueOf(20);
-
-        ProductOrder productOrder = new ProductOrder();
-        productOrder.setId(id);
-        productOrder.setClient(client);
-        productOrder.setProduct(product);
-
-        products.add(productOrder);
-
-        Mockito.when(productOrderRepository.findAll())
-                .thenReturn(products);
-
-        assertThat(productOrderService.listAllProductOrders()).isEqualTo(products);
-    }
-
-    @Test
-    public void listAccProductOrders() throws Exception {
-
-        ArrayList<ProductOrder> products = new ArrayList<>();
         Client clientAcc = new Client();
         Client clientNotAcc = new Client();
         Client client = new Client();
@@ -104,11 +89,27 @@ public class ProductOrderServiceTest {
         Mockito.when(productOrderRepository.findAll())
                 .thenReturn(products);
 
-        ArrayList<ProductOrder> accProducts = new ArrayList<>();
         accProducts.add(productOrderAcc);
+        notAccProducts.add(productOrderNotAcc);
+        notAccProducts.add(productOrder);
+    }
 
+
+    @Test
+    public void listAllProductOrders() throws Exception {
+        assertThat(productOrderService.listAllProductOrders()).isEqualTo(products);
+    }
+
+    @Test
+    public void listAccProductOrders() throws Exception {
         assertThat(productOrderService.listAccProductOrders()).isEqualTo(accProducts);
     }
+
+    @Test
+    public void listNotAccProductOrders() throws Exception {
+        assertThat(productOrderService.listNotAccProductOrders()).isEqualTo(notAccProducts);
+    }
+
 }
 
 
