@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Tests functionality of ProductOrderService class.
  * We do not test the methods findProductOrder(), save(), delete() since they only depend on the ProductOrderRepository
- * to work and do not have a unique complex logic.
+ * to work and do not have a complex logic.
  */
 @RunWith(SpringRunner.class)
 public class ProductOrderServiceTest {

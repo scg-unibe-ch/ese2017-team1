@@ -3,6 +3,7 @@ import hello.Controllers.*;
 import hello.ProductOrder.ProductOrderTest;
 import hello.Repositories.ClientRepositoryTest;
 import hello.Services.ProductOrderServiceTest;
+import hello.Services.RoleServiceTest;
 import hello.Services.TourServiceTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -29,6 +30,7 @@ import org.junit.runners.Suite;
         ApplicationTest.class,
         ProductOrderServiceTest.class,
         TourServiceTest.class,
+        RoleServiceTest.class,
 
 
 })
