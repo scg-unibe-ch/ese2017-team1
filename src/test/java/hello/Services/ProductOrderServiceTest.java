@@ -4,6 +4,7 @@ import hello.Client.Client;
 import hello.Product.Product;
 import hello.ProductOrders.ProductOrder;
 import hello.Repositories.ProductOrderRepository;
+import hello.Tour.Tour;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +26,7 @@ public class ProductOrderServiceTest {
     ArrayList<ProductOrder> accProducts;
     ArrayList<ProductOrder> products;
     ArrayList<ProductOrder> notAccProducts;
+    ArrayList<ProductOrder> notAccNoTourProducts;
 
 
     @TestConfiguration
@@ -50,17 +52,22 @@ public class ProductOrderServiceTest {
     @MockBean
     private ProductService productService;
 
+    @MockBean
+    private Tour tour;
+
 
     @Before
     public void setup(){
         products = new ArrayList<>();
         accProducts = new ArrayList<>();
         notAccProducts = new ArrayList<>();
+        notAccNoTourProducts = new ArrayList<>();
 
         Client clientAcc = new Client();
         Client clientNotAcc = new Client();
         Client client = new Client();
         Product product = new Product();
+        //Tour tour = new Tour();
         Long idAcc = Long.valueOf(1);
         Long idNotAcc = Long.valueOf(2);
         Long id = Long.valueOf(3);
@@ -92,6 +99,8 @@ public class ProductOrderServiceTest {
         accProducts.add(productOrderAcc);
         notAccProducts.add(productOrderNotAcc);
         notAccProducts.add(productOrder);
+        notAccNoTourProducts.add(productOrderNotAcc);
+        notAccNoTourProducts.add(productOrder);
     }
 
 
@@ -110,6 +119,10 @@ public class ProductOrderServiceTest {
         assertThat(productOrderService.listNotAccProductOrders()).isEqualTo(notAccProducts);
     }
 
+    @Test
+    public void listNotAccNoTourProductOrders() throws Exception {
+        assertThat(productOrderService.listNotAccNoTourProductOrders()).isEqualTo(notAccNoTourProducts);
+    }
 }
 
 
