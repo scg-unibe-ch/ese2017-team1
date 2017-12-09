@@ -10,19 +10,17 @@ import org.springframework.test.context.junit4.SpringRunner;
  * Created by Corina on 09.12.2017.
  */
 @RunWith(SpringRunner.class)
-public class RoleServiceTest {
+public class TrailerServiceTest {
 
     @TestConfiguration
-    static class RoleServiceTestContextConfiguration {
+    static class TrailerServiceTestContextConfiguration {
         @Bean
-        public RoleService roleService() {
-            return new RoleService();
+        public TrailerService trailerService() {
+            return new TrailerService();
         }
     }
 
     @Autowired
-    private RoleService roleService;
-
-
+    private TrailerService trailerService;
 
 }
