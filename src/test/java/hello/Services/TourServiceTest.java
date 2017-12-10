@@ -22,7 +22,11 @@ import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
+/**
+ * Tests functionality of TourService class.
+ * We do not test the methods save() and deleteTour() since they only depend on the TourRepository
+ * to work and do not have a complex logic.
+ */
 @RunWith(SpringRunner.class)
 public class TourServiceTest {
 
