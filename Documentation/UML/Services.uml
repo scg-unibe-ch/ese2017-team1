@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>hello.Services</OriginalElement>
+  <nodes>
+    <node x="0.0" y="356.0">hello.Services.TrailerService</node>
+    <node x="385.0" y="356.0">hello.Services.VehicleService</node>
+    <node x="1475.5" y="0.0">hello.Services.UserService</node>
+    <node x="1146.8953168044077" y="825.8044077134987">hello.Services.RoleService</node>
+    <node x="1064.5" y="18.5">hello.Services.ProductService</node>
+    <node x="558.875" y="786.0">hello.Services.TourService</node>
+    <node x="1835.5" y="111.0">hello.Services.DriverService</node>
+    <node x="786.0" y="208.0">hello.Services.ProductOrderService</node>
+    <node x="1649.5" y="430.0">hello.Services.UserServiceImpl</node>
+    <node x="734.5" y="0.0">hello.Services.ClientService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="hello.Services.ProductOrderService" target="hello.Services.ProductService">
+      <point x="141.25" y="-264.0" />
+      <point x="1209.75" y="183.0" />
+      <point x="1247.5" y="183.0" />
+      <point x="0.0" y="60.5" />
+    </edge>
+    <edge source="hello.Services.UserServiceImpl" target="hello.Services.UserService">
+      <point x="-85.0" y="-190.0" />
+      <point x="1734.5" y="405.0" />
+      <point x="1645.5" y="405.0" />
+      <point x="0.0" y="190.0" />
+    </edge>
+    <edge source="hello.Services.ProductOrderService" target="hello.Services.ClientService">
+      <point x="-141.25" y="-264.0" />
+      <point x="927.25" y="183.0" />
+      <point x="889.5" y="183.0" />
+      <point x="0.0" y="79.0" />
+    </edge>
+    <edge source="hello.Services.TourService" target="hello.Services.TrailerService">
+      <point x="-144.375" y="-282.5" />
+      <point x="607.0" y="766.0" />
+      <point x="182.5" y="766.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+    <edge source="hello.Services.UserServiceImpl" target="hello.Services.DriverService">
+      <point x="85.0" y="-190.0" />
+      <point x="1904.5" y="405.0" />
+      <point x="1993.5" y="405.0" />
+      <point x="0.0" y="79.0" />
+    </edge>
+    <edge source="hello.Services.TourService" target="hello.Services.ProductOrderService">
+      <point x="48.125" y="-282.5" />
+      <point x="799.5" y="756.0" />
+      <point x="927.25" y="756.0" />
+      <point x="-141.25" y="264.0" />
+    </edge>
+    <edge source="hello.Services.ProductOrderService" target="hello.Services.TourService">
+      <point x="141.25" y="264.0" />
+      <point x="1209.75" y="766.0" />
+      <point x="895.75" y="766.0" />
+      <point x="144.375" y="-282.5" />
+    </edge>
+    <edge source="hello.Services.TourService" target="hello.Services.VehicleService">
+      <point x="-48.125" y="-282.5" />
+      <point x="703.25" y="756.0" />
+      <point x="575.5" y="756.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.46124523506988563" x="1076.0" y="697.0" />
+  <SelectedNodes>
+    <node>hello.Services.RoleService</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+
