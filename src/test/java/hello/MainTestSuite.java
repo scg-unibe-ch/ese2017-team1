@@ -2,9 +2,7 @@ package hello;
 import hello.Controllers.*;
 import hello.ProductOrder.ProductOrderTest;
 import hello.Repositories.ClientRepositoryTest;
-import hello.Services.ProductOrderServiceTest;
-import hello.Services.RoleServiceTest;
-import hello.Services.TourServiceTest;
+import hello.Services.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -31,6 +29,9 @@ import org.junit.runners.Suite;
         ProductOrderServiceTest.class,
         TourServiceTest.class,
         RoleServiceTest.class,
+        TrailerServiceTest.class,
+        VehicleServiceTest.class,
+        UserServiceImplTest.class,
 
 
 })

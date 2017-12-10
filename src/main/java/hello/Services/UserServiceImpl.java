@@ -76,8 +76,6 @@ public class UserServiceImpl implements UserService{
      */
     public void deleteUser(Long userId) {
         User user = findUser(userId);
-        // Kann user nicht löschen, da userRole davon abhängig, weiss nicht wie lösen.... Da bei User eigentlich
-        // cascadeType.all, sollte es funktionieren!?
         userRepository.delete(user);
     }
 
