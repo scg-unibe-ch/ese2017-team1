@@ -17,8 +17,9 @@
     <img th:src="@{/images/login.jpg}" class="img-responsive center-block" width="300" height="300" alt="Logo" />
 -->
     <form th:action="@{/login}" method="POST" class="form-signin">
+        <br/>
         <div align="center">
-            <h1 class="form-signin-heading" th:text="WILKOMMEN"></h1>
+            <h1 class="form-signin-heading" th:text="WILLKOMMEN"></h1>
         </div>
         <br/>
 
@@ -28,7 +29,7 @@
                id="password" name="password" class="form-control" /> <br />
 
         <div align="center" th:if="${param.error}">
-            <p style="font-size: 20; color: #FF1C19;">Email oder Password ist ungültig, bitte überprüfen Sie es nochmals!</p>
+            <p style="font-size: 20; color: #01579b;">Email oder Password ist ungültig, bitte überprüfen Sie es nochmals!</p>
         </div>
         <a href="/index">
             <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Login"></button>

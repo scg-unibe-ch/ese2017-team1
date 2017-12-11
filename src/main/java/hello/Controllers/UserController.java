@@ -73,6 +73,6 @@ public class UserController extends WebMvcConfigurerAdapter {
     public String deleteTour(@PathVariable("userId") Long userId, Model model) {
         model.addAttribute("user", userService.findUser(userId));
         userService.deleteUser(userId);
-        return "deleteTour";
+        return "deleteUser";
     }
 }

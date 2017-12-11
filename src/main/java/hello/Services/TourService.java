@@ -38,7 +38,7 @@ public class TourService {
     public ArrayList<Tour> listTours(){
         ArrayList<Tour> tours = new ArrayList<>();
 
-        // Checks if a tour is complete and if yes, it's assigned to tours
+        // Checks if a tour is complete and not finished and if yes, it's assigned to tours
         for (Tour tour1 : listAllTours()) {
             if (tour1.getFinished() == null) {
                 if (tour1.getDriver() != null && tour1.getVehicle() != null && tour1.getTrailer() != null) {

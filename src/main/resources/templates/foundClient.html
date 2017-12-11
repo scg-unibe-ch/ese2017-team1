@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 <body>
 <div class="container">
@@ -20,13 +21,8 @@
         <div class="text-right">
             <!-- Logout Button -->
             <a href="/logout">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-primary btn-lg">
                     Logout
-                </button>
-            </a>
-            <a href="/info/user">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Userinfo
                 </button>
             </a>
         </div>
@@ -41,24 +37,25 @@
         <li class="list-group-item list-group-item-warning" th:text="'Telefon: ' + ${client.phone}"/>
         <li class="list-group-item list-group-item-warning" th:text="'Email: ' + ${client.email}"/>
     </ul>
-    <div class="col-md-3 mb-3">
-        <div class="btn-group" role="group">
-            <a href="/logistician">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Zurück zur Übersicht
-                </button>
-            </a>
-            <a href="/clientForm">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Weitere Kunden hinzufügen
-                </button>
-            </a>
-            <a th:href="@{/orderForm(id=${client.id})}">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Diesem Kunden einen Auftrag zuordnen
-                </button>
-            </a>
-        </div>
+    <br/>
+    <div>
+        <a href="/logistician">
+            <button type="button" class="btn btn-primary btn-lg">
+                Zurück
+            </button>
+        </a>
+    </div>
+    <div class="btn-group" role="group" style="float: right">
+        <a href="/clientForm">
+            <button type="button" class="btn btn-primary btn-lg">
+                Kunden hinzufügen
+            </button>
+        </a>
+        <a th:href="@{/orderForm(id=${client.id})}">
+            <button type="button" class="btn btn-primary btn-lg">
+                Auftrag zuordnen
+            </button>
+        </a>
     </div>
 </div>
 

@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 <body style="background-color: #87AFC7">
 <div class="container">
@@ -20,18 +21,18 @@
         <div class="text-right">
             <!-- Logout Button -->
             <a href="/logout">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-primary btn-lg">
                     Logout
                 </button>
             </a>
-            <a href="/info/user">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Userinfo
-                </button>
-            </a>
         </div>
-        Möchten Sie folgende Tour wirklich löschen?
     </h1>
+        <br/>
+        <br/>
+        <div align="center">
+            <h1>Möchten Sie folgende Tour wirklich löschen?</h1>
+        </div>
+        <br/>
     <table style="width:100%">
         <thead>
         <tr>
@@ -76,19 +77,13 @@
         </tbody>
     </table>
     <br/>
-    <div class="col-md-3 mb-3">
-        <div class="btn-group" role="group">
-            <a>
-                <button type="button" class="btn btn-outline-warning btn-lg" onclick="javascript:history.back()">
-                    Zurück
-                </button>
-            </a>
-            <a th:href="${'/deleteTour/'+tour.id}">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Tour definitiv löschen!
-                </button>
-            </a>
-        </div>
+    <button class="btn btn-primary btn-lg" type="button" onclick="history.back()">Zurück</button>
+    <div class="btn-group" role="group" style="float: right">
+        <a th:href="${'/deleteTour/'+tour.id}">
+            <button type="button" class="btn btn-primary btn-lg">
+                Tour definitiv löschen!
+            </button>
+        </a>
     </div>
 </div>
 

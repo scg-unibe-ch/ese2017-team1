@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 <body style="background-color: #87AFC7">
 <div class="container">
@@ -20,47 +21,42 @@
         <div class="text-right">
             <!-- Logout Button -->
             <a href="/logout">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-primary btn-lg">
                     Logout
                 </button>
             </a>
-            <a href="/info/user">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Userinfo
-                </button>
-            </a>
+        </div>
+    </h1>
+        <br/>
+        <br/>
+        <div align="center">
+            <h1>Dieser User wurde gelöscht:</h1>
         </div>
         <br/>
-        Folgender Auftrag wurde gelöscht:
-    </h1>
     <table style="width:100%">
         <thead>
         <tr>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Kunde'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Stadt'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Land'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Produkt'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Menge'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Anz. Paletten'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'UserId'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Vorname'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Nachname'"/></b></td>
+            <td><b><li class="list-group-item list-group-item-warning" th:text="'Email'"/></b></td>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.name}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.city}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.client.land}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.productName}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.amount}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${prod.product.palettes}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${user.id}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${user.name}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${user.lastName}"/></td>
+            <td><li class="list-group-item list-group-item-warning" th:text="${user.email}"/></td>
         </tr>
         </tbody>
     </table>
     <br/>
     <div class="col-md-3 mb-3">
         <div class="btn-group" role="group">
-            <a href="/showJobs">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Zurück zur Übersicht
+            <a href="/showUsers">
+                <button type="button" class="btn btn-primary btn-lg">
+                    Zurück
                 </button>
             </a>
         </div>

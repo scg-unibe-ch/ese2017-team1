@@ -11,6 +11,7 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     </head>
 
     <body style = "background-color: #87AFC7">
@@ -23,17 +24,13 @@
         <div class="text-right">
             <!-- Logout Button -->
             <a href="/logout">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-primary btn-lg">
                     Logout
-                </button>
-            </a>
-            <a href="/info/user">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Userinfo
                 </button>
             </a>
         </div>
     </h1>
+    <br/>
     <br/>
     <form th:action="@{/clientForm}" method="post" th:object="${client}" class="container" id="needs-validation" style="align-content: center">
         <div class="row">
@@ -43,7 +40,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 mb-3">
+            <div class="col-md-6 mb-3">
                 <label for="Strasse" style="color: orange">Strasse:</label>
                 <input type="text" th:field="*{street}" class="form-control" id="Strasse" placeholder="Strasse" required="street"></input>
             </div>
@@ -61,15 +58,15 @@
                 <input type="text" th:field="*{phone}" class="form-control" id="Telefon" placeholder="Telefon" required="name"></input>
             </div>
 
-            <div class="col-md-3 mb-3">
+            <div class="col-md-6 mb-3">
                 <label for="Email" style="color: orange">Email (optional):</label>
                 <input type="email" th:field="*{email}" class="form-control" id="Email" placeholder="Email"></input>
             </div>
         </div>
-        <div class="btn-group" role="group">
-            <button class="btn btn-outline-warning" type="button" onclick="history.back()">Zurück</button>
-            <button class="btn btn-outline-warning" type="reset">Reset</button>
-            <button class="btn btn-outline-warning" type="submit">Kunde Speichern</button>
+        <button class="btn btn-primary btn-lg" type="button" onclick="history.back()">Zurück</button>
+        <div class="btn-group" role="group" style="float: right">
+            <button class="btn btn-primary btn-lg" type="reset">Reset</button>
+            <button class="btn btn-primary btn-lg" type="submit">Kunde Speichern</button>
         </div>
     </form>
 

@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 <body style="background-color: #87AFC7">
 <div class="container">
@@ -20,17 +21,13 @@
         <div class="text-right">
             <!-- Logout Button -->
             <a href="/logout">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-primary btn-lg">
                     Logout
-                </button>
-            </a>
-            <a href="/info/user">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Userinfo
                 </button>
             </a>
         </div>
     </h1>
+        <br/>
         <br/>
     <div align="center">
         <h1>Neue Tour erstellen</h1>
@@ -43,7 +40,7 @@
             <td><li class="list-group-item list-group-item-warning" th:text="${tour.id}"/></td>
             <td>
                 <a th:href="${'/newTour/'+tour.id}">
-                    <button type="button" class="btn btn-outline-warning btn-lg">
+                    <button type="button" class="btn btn-primary btn-lg">
                         Los!
                     </button>
                 </a>
@@ -56,11 +53,10 @@
         </tbody>
     </table>
     <br/>
-    <br/>
     <div class="col-md-3 mb-3">
         <div class="btn-group" role="group">
             <a href="/showTours">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-primary btn-lg">
                     Zurück zur Übersicht
                 </button>
             </a>

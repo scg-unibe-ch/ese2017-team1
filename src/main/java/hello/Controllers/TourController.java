@@ -123,6 +123,7 @@ public class TourController extends WebMvcConfigurerAdapter {
         model.addAttribute("tour",tour);
         model.addAttribute("products", productOrderService.listNotAccNoTourProductOrders());
         model.addAttribute("tourProducts", productOrderService.listTourProductOrders(tourId));
+        model.addAttribute("addresses", productOrderService.addresses(tourId));
         return "newTourProductOrders";
     }
 
@@ -139,6 +140,7 @@ public class TourController extends WebMvcConfigurerAdapter {
         model.addAttribute("tour", tourService.findTour(tourId));
         model.addAttribute("products", productOrderService.listNotAccNoTourProductOrders());
         model.addAttribute("tourProducts", productOrderService.listTourProductOrders(tourId));
+        model.addAttribute("addresses", productOrderService.addresses(tourId));
         return "newTourProductOrders";
     }
 
@@ -154,14 +156,17 @@ public class TourController extends WebMvcConfigurerAdapter {
     public String tourProduct(@PathVariable("tourId") Long tourId, @PathVariable("prodId") Long prodId, @PathVariable ("add") Long add, Model model) {
         Tour tour = tourService.findTour(tourId);
         ProductOrder product = productOrderService.findProductOrder(prodId);
-        Integer free = tour.getFreePalettes() - (product.getProduct().getPalettes()*Integer.parseInt(product.getAmount()));
-        if(free < 0){
-            model.addAttribute("error", true);
+        if (add > 0){
+            Integer free = tour.getFreePalettes() - (product.getProduct().getPalettes()*Integer.parseInt(product.getAmount()));
+            if(free < 0){
+                model.addAttribute("error", true);
+            }
         }
         tourService.addProduct(tourId, prodId, add);
         model.addAttribute("tour", tour);
         model.addAttribute("products", productOrderService.listNotAccNoTourProductOrders());
         model.addAttribute("tourProducts", productOrderService.listTourProductOrders(tourId));
+        model.addAttribute("addresses", productOrderService.addresses(tourId));
         return "newTourProductOrders";
     }
 

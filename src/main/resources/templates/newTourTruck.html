@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 <body style="background-color: #87AFC7">
 <div class="container">
@@ -20,17 +21,13 @@
         <div class="text-right">
             <!-- Logout Button -->
             <a href="/logout">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-primary btn-lg">
                     Logout
-                </button>
-            </a>
-            <a href="/info/user">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Userinfo
                 </button>
             </a>
         </div>
     </h1>
+        <br/>
         <br/>
     <div align="center">
         <h1>Wählen Sie ein Fahrzeug für diese Tour aus</h1>
@@ -51,7 +48,7 @@
             <td><li class="list-group-item list-group-item-warning" th:text="${veh.free}"/></td>
             <td>
                 <a th:href="${'/newTourTrailer/'+tour.id+'/'+veh.id}">
-                    <button type="button" class="btn btn-outline-warning btn-lg">
+                    <button type="button" class="btn btn-primary btn-lg">
                         Weiter
                     </button>
                 </a>
@@ -59,6 +56,7 @@
         </tr>
         </tbody>
     </table>
+    <br/>
     <br/>
     <div align="center">
         <h1>Nicht mehr verfügbare Fahrzeuge</h1>
@@ -80,18 +78,11 @@
     </table>
     <br/>
     <div class="col-md-3 mb-3">
-        <div class="btn-group" role="group">
-            <a href="/showTours">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Zurück zur Übersicht
-                </button>
-            </a>
             <a>
-                <button type="button" class="btn btn-outline-warning btn-lg" onclick="javascript:history.back()">
+                <button type="button" class="btn btn-primary btn-lg" onclick="javascript:history.back()">
                     Zurück
                 </button>
             </a>
-        </div>
     </div>
 
 </div>

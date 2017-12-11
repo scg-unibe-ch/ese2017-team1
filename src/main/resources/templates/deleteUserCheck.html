@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 <body style="background-color: #87AFC7">
 <div class="container">
@@ -20,19 +21,18 @@
         <div class="text-right">
             <!-- Logout Button -->
             <a href="/logout">
-                <button type="button" class="btn btn-outline-warning btn-lg">
+                <button type="button" class="btn btn-primary btn-lg">
                     Logout
                 </button>
             </a>
-            <a href="/info/user">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Userinfo
-                </button>
-            </a>
         </div>
-        <br/>
-        Möchten Sie diesen User wirklich löschen?
     </h1>
+    <br/>
+    <br/>
+    <div align="center">
+        <h1> Möchten Sie diesen User wirklich löschen?</h1>
+    </div>
+    <br/>
     <table style="width:100%">
         <thead>
         <tr>
@@ -40,7 +40,6 @@
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Vorname'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Nachname'"/></b></td>
             <td><b><li class="list-group-item list-group-item-warning" th:text="'Email'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Rolle'"/></b></td>
         </tr>
         </thead>
         <tbody>
@@ -49,24 +48,17 @@
             <td><li class="list-group-item list-group-item-warning" th:text="${user.name}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${user.lastName}"/></td>
             <td><li class="list-group-item list-group-item-warning" th:text="${user.email}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${user.roles}"/></td>
         </tr>
         </tbody>
     </table>
     <br/>
-    <div class="col-md-3 mb-3">
-        <div class="btn-group" role="group">
-            <a href="/showUsers">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    Zurück
-                </button>
-            </a>
-            <a th:href="${'/deleteUser/'+user.id}">
-                <button type="button" class="btn btn-outline-warning btn-lg">
-                    User definitiv löschen!
-                </button>
-            </a>
-        </div>
+    <button class="btn btn-primary btn-lg" type="button" onclick="history.back()">Zurück</button>
+    <div class="btn-group" role="group" style="float: right">
+        <a th:href="${'/deleteUser/'+user.id}">
+            <button type="button" class="btn btn-primary btn-lg">
+                User definitiv löschen!
+            </button>
+        </a>
     </div>
 </div>
 

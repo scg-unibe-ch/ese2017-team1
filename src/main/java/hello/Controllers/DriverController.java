@@ -60,9 +60,17 @@ public class DriverController extends WebMvcConfigurerAdapter {
     @RequestMapping(value="/driverTours/{tourId}")
     public String driverTours(@PathVariable("tourId") Long tourId, Model model) {
         ArrayList<String> addresses = productOrderService.addresses(tourId);
+        ArrayList<ProductOrder> productOrders = productOrderService.listTourProductOrders(tourId);
+
+        for(ProductOrder productOrder : productOrders){
+            if(productOrder.getAccOrRej().equalsIgnoreCase("keine Angabe"))
+                model.addAttribute("error",true);
+            else
+                model.addAttribute("noError",true);
+        }
 
         model.addAttribute("tour", tourService.findTour(tourId));
-        model.addAttribute("matches", productOrderService.listTourProductOrders(tourId));
+        model.addAttribute("matches", productOrders);
         model.addAttribute("addresses", addresses.toArray());
 
         return "driverTours";
@@ -106,11 +114,6 @@ public class DriverController extends WebMvcConfigurerAdapter {
     @RequestMapping(value="/endTourCheck/{tourId}")
     public String endTourCheck(@PathVariable("tourId") Long tourId, Model model) {
         ArrayList<ProductOrder> productOrders = productOrderService.listTourProductOrders(tourId);
-        for(ProductOrder productOrder : productOrders){
-            if(productOrder.getAccOrRej().equalsIgnoreCase("keine Angabe")){
-                return "endTourFailed";
-            }
-        }
         model.addAttribute("tour", tourService.findTour(tourId));
         model.addAttribute("productOrders", productOrders);
         return "endTourCheck";
