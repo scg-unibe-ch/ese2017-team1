@@ -96,7 +96,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/showToursDriver").hasAuthority("ROLE_DRIVER")
                 .antMatchers("/acceptedOrRejected").hasAuthority("ROLE_DRIVER")
                 .antMatchers("/driverTours/**").hasAuthority("ROLE_DRIVER")
-                .antMatchers("/driverProductOrder").hasAuthority("ROLE_DRIVER")
+                .antMatchers("/driverProductOrder/**").hasAuthority("ROLE_DRIVER")
                 .antMatchers("/endTour/**").hasAuthority("ROLE_DRIVER")
                 .antMatchers("/endTourCheck/**").hasAuthority("ROLE_DRIVER")
 
