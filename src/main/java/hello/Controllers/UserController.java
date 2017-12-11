@@ -1,7 +1,9 @@
 package hello.Controllers;
 
 import hello.Services.RoleService;
+import hello.Services.TourService;
 import hello.Services.UserService;
+import hello.Tour.Tour;
 import hello.Users.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,8 @@ public class UserController extends WebMvcConfigurerAdapter {
     private UserService userService;
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private TourService tourService;
 
 
     @RequestMapping("/showUsers")
@@ -61,7 +65,10 @@ public class UserController extends WebMvcConfigurerAdapter {
      */
     @RequestMapping(value = "/deleteUserCheck/{userId}")
     public String deleteUserCheck(@PathVariable("userId") Long userId, Model model){
-        model.addAttribute("user", userService.findUser(userId));
+        User user = userService.findUser(userId);
+        model.addAttribute("user", user);
+        if(!tourService.listDriverTours(user).isEmpty())
+            model.addAttribute("tour",true);
         return "deleteUserCheck";
     }
 
@@ -71,7 +78,12 @@ public class UserController extends WebMvcConfigurerAdapter {
      */
     @RequestMapping(value = "/deleteUser/{userId}")
     public String deleteTour(@PathVariable("userId") Long userId, Model model) {
-        model.addAttribute("user", userService.findUser(userId));
+        User user = userService.findUser(userId);
+        model.addAttribute("user", user);
+        if(!tourService.listDriverTours(user).isEmpty()){
+            for(Tour tour : tourService.listDriverTours(user))
+                tourService.deleteTour(tour.getId());
+        }
         userService.deleteUser(userId);
         return "deleteUser";
     }

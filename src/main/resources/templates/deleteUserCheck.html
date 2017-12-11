@@ -52,6 +52,10 @@
         </tbody>
     </table>
     <br/>
+    <div align="center" th:if="${tour}">
+        <p style="font-size: 20; color: #01579b;">Wenn Sie diesen User löschen, werden auch seine Touren gelöscht!</p>
+    </div>
+    <br/>
     <button class="btn btn-primary btn-lg" type="button" onclick="history.back()">Zurück</button>
     <div class="btn-group" role="group" style="float: right">
         <a th:href="${'/deleteUser/'+user.id}">
