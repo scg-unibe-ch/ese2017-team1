@@ -12,26 +12,29 @@
 </head>
 <body style="background-color: #87AFC7">
     <h1>
-    <div align="left">
-        <a href="/driver">
-            <img th:src="@{/images/FirmaESE.png}" style="position: absolute; top:0; left: 0;" height="108" width="144"/>
-        </a>
-    </div>
-    <div class="text-right">
-       <!-- Logout Button -->
-        <a href="/logout">
-            <button type="button" class="btn btn-primary btn-lg">
-                Logout
-            </button>
-        </a>
-    </div>
+        <div class="container">
+            <div align="left">
+                <a href="/driver">
+                    <img th:src="@{/images/FirmaESE.png}" style="position: absolute; top:0; left: 0;" height="108" width="144"/>
+                </a>
+            </div>
+            <div class="text-right">
+            <!-- Logout Button -->
+                <a href="/logout">
+                    <button type="button" class="btn btn-primary btn-lg">
+                        Logout
+                    </button>
+                </a>
+            </div>
+        </div>
     </h1>
     <br/>
     <br/>
         <div align="center">
-            <h1>Ihre bevorstehenden Touren:</h1>
+            <h1>Ihre bevorstehenden Touren</h1>
         </div>
     <br/>
+    <div class="container">
     <table style="width:100%">
         <thead>
         <tr>
@@ -53,6 +56,7 @@
         </tr>
         </tbody>
     </table>
+    </div>
     <br/>
     <div class="col-md-3 mb-3">
         <div class="btn-group" role="group">
