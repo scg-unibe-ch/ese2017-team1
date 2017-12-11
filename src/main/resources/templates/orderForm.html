@@ -10,11 +10,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     </head>
     <body style = "background-color: #87AFC7">
     <h1>
+        <div class="container">
         <div align="left">
             <a href="/logistician">
                 <img th:src="@{/images/FirmaESE.png}" style="position: absolute; top:0; left: 0;" height="108" width="144"/>
@@ -28,27 +28,32 @@
                 </button>
             </a>
         </div>
+        </div>
     </h1>
     <br/>
     <br/>
     <form th:action="@{/orderForm(id=${param.id})}" method="post" th:object="${productOrder}" class="container" id="needs-validation" style="align-content: center">
         <div class="row">
-            <div class="col-md-12 mb-12">
-                <label for="Produktbeschreibung" style="color: orange">Produktbeschreibung:</label>
-                    <div class="input-group">
+            <div class="col-md-4 mb-3"></div>
+            <div class="col-md-4 mb-3">
+                <h4><label for="Produktbeschreibung" style="color: black">Produktbeschreibung:</label></h4>
+                    <div class="form-group">
                         <select class="form-control" id="Produktbeschreibung" name="productId">
                             <option th:each="var:${products}" th:value="${var.id}" th:text="${var.productName}"></option>
                         </select>
                     </div>
-                </div>
+            </div>
+            <div class="col-md-4 mb-3"></div>
             </div>
         <div class="row">
-            <div class="col-md-12 mb-12">
-                <label for="Menge" style="color: orange">Menge:</label>
-                    <div class="input-group">
+            <div class="col-md-4 mb-3"></div>
+            <div class="col-md-4 mb-3">
+                <h4><label for="Menge" style="color: black">Menge:</label></h4>
+                    <div class="form-group">
                         <input type="number" th:field="*{amount}" placeholder="Menge" class="form-control" id="Menge" min="1" required="amount"></input>
                     </div>
             </div>
+            <div class="col-md-4 mb-3"></div>
         </div>
         <br/>
         <button class="btn btn-primary btn-lg" type="button" onclick="history.back()">Zurück</button>
