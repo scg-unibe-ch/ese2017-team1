@@ -16,6 +16,7 @@
 
     <body style = "background-color: #87AFC7">
     <h1>
+        <div class="container">
         <div align="left">
             <a href="/logistician">
                 <img th:src="@{/images/FirmaESE.png}" style="position: absolute; top:0; left: 0;" height="108" width="144"/>
@@ -29,37 +30,38 @@
                 </button>
             </a>
         </div>
+        </div>
     </h1>
     <br/>
     <br/>
     <form th:action="@{/clientForm}" method="post" th:object="${client}" class="container" id="needs-validation" style="align-content: center">
         <div class="row">
             <div class="col-md-6 mb-3">
-                <label for="Name" style="color: orange">Name:</label>
+                <h4><label for="Name" style="color: black">Name:</label></h4>
                 <input type="text" th:field="*{name}" class="form-control" id="Name" placeholder="Name" required="name"></input>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 mb-3">
-                <label for="Strasse" style="color: orange">Strasse:</label>
+                <h4><label for="Strasse" style="color: black">Strasse:</label></h4>
                 <input type="text" th:field="*{street}" class="form-control" id="Strasse" placeholder="Strasse" required="street"></input>
             </div>
             <div class="col-md-3 mb-3">
-                <label for="Stadt" style="color: orange">Stadt:</label>
+                <h4><label for="Stadt" style="color: black">Stadt:</label></h4>
                 <input type="text" th:field="*{city}" class="form-control" id="Stadt" placeholder="Stadt" required="city"></input>
             </div>
             <div class="col-md-3 mb-3">
-                <label for="Land" style="color: orange">Land:</label>
+                <h4><label for="Land" style="color: black">Land:</label></h4>
                 <input type="text" th:field="*{land}" class="form-control" id="Land" placeholder="Land" required="land"></input>
             </div>
 
             <div class="col-md-6 mb-3">
-                <label for="Telefon" style="color: orange">Telefon:</label>
+                <h4><label for="Telefon" style="color: black">Telefon:</label></h4>
                 <input type="text" th:field="*{phone}" class="form-control" id="Telefon" placeholder="Telefon" required="name"></input>
             </div>
 
             <div class="col-md-6 mb-3">
-                <label for="Email" style="color: orange">Email (optional):</label>
+                <h4><label for="Email" style="color: black">Email (optional):</label></h4>
                 <input type="email" th:field="*{email}" class="form-control" id="Email" placeholder="Email"></input>
             </div>
         </div>
