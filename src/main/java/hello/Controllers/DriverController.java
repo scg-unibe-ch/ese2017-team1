@@ -138,13 +138,13 @@ public class DriverController extends WebMvcConfigurerAdapter {
     @GetMapping("/changePasswordDriver")
     public String newPassword(Model model) {
         model.addAttribute("password", new Password());
-        return "changePassword";
+        return "changePasswordDriver";
     }
 
     @PostMapping(value = "/changePasswordDriver")
     public String passwordSubmit(@ModelAttribute("password") Password password, Model model) {
         userService.changePassword(password.getPassword());
         model.addAttribute("changed", true);
-        return "changePassword";
+        return "changePasswordDriver";
     }
 }
