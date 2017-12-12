@@ -251,7 +251,7 @@ INSERT INTO `logistician` (`id`, `email`, `first_name`, `last_name`, `phone_numb
 
 INSERT INTO `product_order` (`id`, `amount`, `product_id`, `client_id`, `acc_or_rej`) VALUES
 (1, '1', 100, 28, 'keine Angabe'),
-(2, '4', 9, 22, 'keine Angabe');
+(2, '4', 9, 21, 'keine Angabe');
 
 -- All drivers (user_id 1 to 9) have password "driver"
 -- All logisticians (user_id 10 to 18) have password "logistician"
