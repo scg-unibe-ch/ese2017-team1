@@ -4,33 +4,19 @@ import hello.Application;
 import hello.Client.Client;
 import hello.Product.Product;
 import hello.ProductOrders.ProductOrder;
-import hello.Repositories.ProductOrderRepository;
-import hello.Services.ClientService;
-import hello.Services.ProductOrderService;
 import org.junit.*;
 import org.junit.runner.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.*;
 
 /**
- * Very stupid test but maybe we can work on it later.
- * repository.save() does not work
+ * Tests methods of the ProductOrder class.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class ProductOrderTest {
-
-
-    @Autowired
-    private ProductOrderRepository repository;
-
-    @MockBean
-    private ProductOrderService productOrderService;
-
 
     @Test
     public void testExample() throws Exception {
@@ -45,10 +31,9 @@ public class ProductOrderTest {
         productOrder.setClient(client);
         productOrder.setProduct(product);
 
-        this.productOrderService.save(productOrder);
-        //assertThat(this.repository.findOne(id).getClient()).isEqualTo(client);
-
         assertThat(productOrder.getClient()).isEqualTo(client);
+        assertThat(productOrder.getId()).isEqualTo(id);
+        assertThat(productOrder.getProduct()).isEqualTo(product);
     }
 
 }

@@ -6,17 +6,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import java.security.Principal;
-
-import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -74,25 +69,4 @@ public class DriverRequestTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("driver"));
     }
-
-    // does not work since it needs id of user logged in
-    /*@Test
-    public void getShowToursDriver() throws Exception {
-        this.mockMvc.perform(get("/showToursDriver"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("showToursDriver"));
-    }*/
-
-
-
-    // will we probably need, does not work yet
-    /*private Principal getPrincipal(String name){
-        Principal principal = new Principal() {
-            @Override
-            public String getName() {
-                return name;
-            }
-        };
-        return principal;
-    }*/
 }

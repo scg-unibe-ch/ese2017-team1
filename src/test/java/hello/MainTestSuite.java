@@ -8,20 +8,30 @@ import org.junit.runners.Suite;
 
 /**
  * Tests all test classes listed.
- * Commented out tests do not work yet.
  *
- * We did not test the classes ClientService, DriverService and ProductService
- * since they rely mainly on the Repository classes which we test separately.
+ * We have a lot of our logic implemented in the Service classes so we test these in the folder "Services". *
+ * We did not test the classes ClientService, DriverService and ProductService since they rely mainly on the Repository classes
+ * where we used the CrudRepository from which we expect that it work since we did not change any of the implemented methods.
+ *
+ * We did a test for the ClientRepository but as mentioned we do not expect errors from the Repository classes
+ * because we rely here only on the CrudRepository which we expect to work.
+ *
+ * We tested some of the methods of the ProductOrder class but we do not test the rest since these
+ * are very simple getter and setter methods. The same applies to the Product class, Role class, Tour class,
+ * classes in the folder "Trucks", Client class, Driver class, Logistician class, User class, Password class.
+ *
+ * We test whether the Controllers are initialized which means that they are not null when the Application is run (SmokeTest).
+ * Additionally we test whether some of the Controller methods are valid when they are requested. But since we
+ * put most of the functionalities in the Service classes (which we tested) we do not test more in the Controllers.
  */
-
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 
         ClientRequestTest.class,
         DriverRequestTest.class,
-   //     LoginRequestTest.class,
+        LoginRequestTest.class,
         LogisticianRequestTest.class,
-     //   SmokeTest.class,
+        SmokeTest.class,
         ProductOrderTest.class,
         ClientRequestTest.class,
         ClientRepositoryTest.class,

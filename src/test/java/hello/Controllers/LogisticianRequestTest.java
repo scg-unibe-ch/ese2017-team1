@@ -50,7 +50,6 @@ public class LogisticianRequestTest {
     private VehicleService vehicleService;
 
 
-
     @Before
     public void setup() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -69,6 +68,5 @@ public class LogisticianRequestTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("logistician"));
     }
-
 }
 
