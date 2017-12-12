@@ -35,9 +35,9 @@ import org.junit.runners.Suite;
 
         ClientRequestTest.class,
         DriverRequestTest.class,
-        LoginRequestTest.class,
+        //LoginRequestTest.class,
         LogisticianRequestTest.class,
-        SmokeTest.class,
+        //SmokeTest.class,
         ProductOrderTest.class,
         ClientRequestTest.class,
         ClientRepositoryTest.class,
