@@ -69,6 +69,10 @@ public class UserController extends WebMvcConfigurerAdapter {
         model.addAttribute("user", user);
         if(!tourService.listDriverTours(user).isEmpty())
             model.addAttribute("tour",true);
+        if(user.equals(userService.currentUser()))
+            model.addAttribute("current",true);
+        else
+            model.addAttribute("noCurrent",true);
         return "deleteUserCheck";
     }
 
