@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 <body style="background-color: #87AFC7">
-<div class="container">
+<div>
     <div>
         <a>
             <img th:src="@{/images/CircuitBoard.png}" style="width:100%"/>
@@ -42,38 +42,40 @@
             </div>
         </div>
     </nav>
-    <div align="center">
-        <h1>Übersicht abgeschlossene Touren</h1>
-    </div>
-    <br/>
-    <table style="width:100%">
-        <thead>
-        <tr>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Tour Id'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrer'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrzeug'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Anhänger'"/></b></td>
-            <td><b><li class="list-group-item list-group-item-warning" th:text="'Freie Paletten'"/></b></td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="tour : ${tours}" >
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.id}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.driver.firstName}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.vehicle.model}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.trailer.model}"/></td>
-            <td><li class="list-group-item list-group-item-warning" th:text="${tour.freePalettes}"/></td>
-        </tr>
-        </tbody>
-    </table>
-    <br/>
-    <div class="col-md-3 mb-3">
-        <div class="btn-group" role="group">
-            <a href="/showTours">
-                <button type="button" class="btn btn-primary btn-lg">
-                    Zurück zur Übersicht
-                </button>
-            </a>
+    <div class="container">
+        <div align="center">
+            <h1>Übersicht abgeschlossene Touren</h1>
+        </div>
+        <br/>
+        <table style="width:100%">
+            <thead>
+            <tr>
+                <td><b><li class="list-group-item list-group-item-warning" th:text="'Tour Id'"/></b></td>
+                <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrer'"/></b></td>
+                <td><b><li class="list-group-item list-group-item-warning" th:text="'Fahrzeug'"/></b></td>
+                <td><b><li class="list-group-item list-group-item-warning" th:text="'Anhänger'"/></b></td>
+                <td><b><li class="list-group-item list-group-item-warning" th:text="'Freie Paletten'"/></b></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="tour : ${tours}" >
+                <td><li class="list-group-item list-group-item-warning" th:text="${tour.id}"/></td>
+                <td><li class="list-group-item list-group-item-warning" th:text="${tour.driver.firstName}"/></td>
+                <td><li class="list-group-item list-group-item-warning" th:text="${tour.vehicle.model}"/></td>
+                <td><li class="list-group-item list-group-item-warning" th:text="${tour.trailer.model}"/></td>
+                <td><li class="list-group-item list-group-item-warning" th:text="${tour.freePalettes}"/></td>
+            </tr>
+            </tbody>
+        </table>
+        <br/>
+        <div class="col-md-3 mb-3">
+            <div class="btn-group" role="group">
+                <a href="/showTours">
+                    <button type="button" class="btn btn-primary btn-lg">
+                        Zurück zur Übersicht
+                    </button>
+                </a>
+            </div>
         </div>
     </div>
 </div>
