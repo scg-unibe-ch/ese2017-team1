@@ -23,6 +23,11 @@ import org.junit.runners.Suite;
  * We test whether the Controllers are initialized which means that they are not null when the Application is run (SmokeTest).
  * Additionally we test whether some of the Controller methods are valid when they are requested. But since we
  * put most of the functionalities in the Service classes (which we tested) we do not test more in the Controllers.
+ *
+ * In addition we test in the ApplicationTest whether the Application is started without an error.
+ *
+ * Finally we also expect the WebMvnConfig to work because it has only one method that returns a Bean depending on the BCryptPasswordEncoder.
+ * We also expect the SecurityConfiguration to work since our part was only to give the right access to the right pages.
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({

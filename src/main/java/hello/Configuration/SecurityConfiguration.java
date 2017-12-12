@@ -41,9 +41,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * Here we still need to change the permit, we have to work
-     * with the logistician and the drivers. We have to give them different
-     * access to the program/webpage
+     * Changes access of the pages. Some pages can be accessed publicly and others are only meant for
+     * users with role logistician or driver that have to be logged in to view them.
      * @param http
      * @throws Exception
      */
@@ -120,7 +119,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .ignoring()
                 .antMatchers("/resources/**", "/css/**", "/js/**", "/images/**");
     }
-
-
-
 }
