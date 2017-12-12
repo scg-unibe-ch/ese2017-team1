@@ -56,8 +56,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/mapView").permitAll()
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/index").permitAll()
-                
-                .antMatchers("/changePassword").hasAnyAuthority("ROLE_LOGISTICIAN","ROLE_DRIVER")
 
                 .antMatchers("/assignedJob").hasAuthority("ROLE_LOGISTICIAN")
                 .antMatchers("/jobToDriver").hasAuthority("ROLE_LOGISTICIAN")
@@ -77,6 +75,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/deleteUserCheck/**").hasAuthority("ROLE_LOGISTICIAN")
                 .antMatchers("/deleteUser/**").hasAuthority("ROLE_LOGISTICIAN")
 
+                .antMatchers("/changePassword").hasAuthority("ROLE_LOGISTICIAN")
+
                 .antMatchers("/showJobs").hasAuthority("ROLE_LOGISTICIAN")
                 .antMatchers("/deleteJobCheck/**").hasAuthority("ROLE_LOGISTICIAN")
                 .antMatchers("/deleteJob/**").hasAuthority("ROLE_LOGISTICIAN")
@@ -92,6 +92,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/showToursOld").hasAuthority("ROLE_LOGISTICIAN")
 
                 .antMatchers("/driver").hasAuthority("ROLE_DRIVER")
+                .antMatchers("/changePasswordDriver").hasAuthority("ROLE_DRIVER")
+
                 .antMatchers("/showToursDriver").hasAuthority("ROLE_DRIVER")
                 .antMatchers("/acceptedOrRejected").hasAuthority("ROLE_DRIVER")
                 .antMatchers("/driverTours/**").hasAuthority("ROLE_DRIVER")
