@@ -2,6 +2,7 @@ package hello.Controllers;
 
 import hello.Services.ProductOrderService;
 import hello.Services.TourService;
+import hello.Users.Password;
 import hello.Users.User;
 import hello.ProductOrders.ProductOrder;
 import hello.Services.UserService;
@@ -10,8 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.ArrayList;
@@ -133,5 +133,18 @@ public class DriverController extends WebMvcConfigurerAdapter {
         tourService.finishTour(tourId);
 
         return "endTour";
+    }
+
+    @GetMapping("/changePasswordDriver")
+    public String newPassword(Model model) {
+        model.addAttribute("password", new Password());
+        return "changePassword";
+    }
+
+    @PostMapping(value = "/changePasswordDriver")
+    public String passwordSubmit(@ModelAttribute("password") Password password, Model model) {
+        userService.changePassword(password.getPassword());
+        model.addAttribute("changed", true);
+        return "changePassword";
     }
 }
