@@ -41,6 +41,11 @@ public class UserController extends WebMvcConfigurerAdapter {
 
     @PostMapping("/newUser")
     public String userSubmit(@ModelAttribute("user") User user, @RequestParam("roleId") Long roleId, Model model) {
+        model.addAttribute("roles", roleService.list());
+        if(userService.userExists(user)) {
+            model.addAttribute("exists", true);
+            return "newUser";
+        }
         userService.saveUser(user, roleId);
         model.addAttribute("userRole", roleService.findRole(roleId));
         return "addedUser";
@@ -81,7 +86,7 @@ public class UserController extends WebMvcConfigurerAdapter {
      * @param userId Id of user that has been deleted
      */
     @RequestMapping(value = "/deleteUser/{userId}")
-    public String deleteTour(@PathVariable("userId") Long userId, Model model) {
+    public String deleteUser(@PathVariable("userId") Long userId, Model model) {
         User user = userService.findUser(userId);
         model.addAttribute("user", user);
         if(!tourService.listDriverTours(user).isEmpty()){

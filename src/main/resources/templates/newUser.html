@@ -97,6 +97,10 @@
         <div class="col-md-4 mb-3"></div>
     </div>
     <br/>
+    <div align="center" th:if="${exists}">
+        <p style="font-size: 18px; color: #01579b;">Es besteht bereits ein User mit der gleichen Emailadresse!</p>
+    </div>
+    <br/>
     <div class="btn-group" role="group" style="float: left">
         <a href="/showUsers">
             <button class="btn btn-primary btn-lg" type="submit">Zurück</button>

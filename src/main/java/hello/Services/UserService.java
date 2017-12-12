@@ -17,4 +17,6 @@ public interface UserService {
     public void changePassword(String password);
 
     public User currentUser();
+
+    boolean userExists(User user);
 }

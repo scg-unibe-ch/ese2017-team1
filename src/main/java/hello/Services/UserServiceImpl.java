@@ -123,4 +123,13 @@ public class UserServiceImpl implements UserService{
         userRepository.save(user);
     }
 
+    @Override
+    public boolean userExists(User user){
+        User exists = findUserByEmail(user.getEmail());
+        if(exists!=null)
+            return true;
+        else
+            return false;
+    }
+
 }
